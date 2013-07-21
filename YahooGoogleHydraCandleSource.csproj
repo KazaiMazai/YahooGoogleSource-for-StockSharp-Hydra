@@ -8,8 +8,8 @@
     <ProjectGuid>{E73C38D7-86FD-4402-9CB7-056B04B7D5EA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>StockSharp.Hydra.Yahoo</RootNamespace>
-    <AssemblyName>StockSharp.Hydra.Yahoo</AssemblyName>
+    <RootNamespace>StockSharp.Hydra.YahooGoogle</RootNamespace>
+    <AssemblyName>StockSharp.Hydra.YahooGoogle</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -34,11 +34,13 @@
     <RunPostBuildEvent>Always</RunPostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Ecng.Collections">
-      <HintPath>..\..\..\References\Ecng.Collections.dll</HintPath>
+    <Reference Include="Ecng.Collections, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>F:\проекты\S#\StockSharp_4.1.12_Sources\References\Ecng.Collections.dll</HintPath>
     </Reference>
-    <Reference Include="Ecng.Common">
-      <HintPath>..\..\..\References\Ecng.Common.dll</HintPath>
+    <Reference Include="Ecng.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>F:\проекты\S#\StockSharp_4.1.12_Sources\References\Ecng.Common.dll</HintPath>
     </Reference>
     <Reference Include="Ecng.ComponentModel">
       <HintPath>..\..\..\References\Ecng.ComponentModel.dll</HintPath>
@@ -51,22 +53,25 @@
     </Reference>
     <Reference Include="PowerCollections, Version=1.0.2224.30206, Culture=neutral, PublicKeyToken=8d05ee679e87a45f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\References\PowerCollections.dll</HintPath>
+      <HintPath>F:\проекты\S#\StockSharp_4.1.12_Sources\References\PowerCollections.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="StockSharp.Algo">
-      <HintPath>..\..\..\References\StockSharp.Algo.dll</HintPath>
+    <Reference Include="StockSharp.Algo, Version=4.1.12.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>F:\проекты\S#\StockSharp_4.1.15_Sources\References\StockSharp.Algo.dll</HintPath>
     </Reference>
-    <Reference Include="StockSharp.BusinessEntities">
-      <HintPath>..\..\..\References\StockSharp.BusinessEntities.dll</HintPath>
+    <Reference Include="StockSharp.BusinessEntities, Version=4.1.12.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>F:\проекты\S#\StockSharp_4.1.15_Sources\References\StockSharp.BusinessEntities.dll</HintPath>
     </Reference>
     <Reference Include="StockSharp.Hydra.Core, Version=4.1.5.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Hydra\bin\Release\StockSharp.Hydra.Core.dll</HintPath>
+      <HintPath>F:\проекты\S#\Hydra\StockSharp.Hydra.Core.dll</HintPath>
     </Reference>
-    <Reference Include="StockSharp.Logging">
-      <HintPath>..\..\..\References\StockSharp.Logging.dll</HintPath>
+    <Reference Include="StockSharp.Logging, Version=4.1.12.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>F:\проекты\S#\StockSharp_4.1.15_Sources\References\StockSharp.Logging.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -75,22 +80,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="YahooHistorySource.cs" />
-    <Compile Include="YahooSecurityStorage.cs" />
-    <Compile Include="YahooSource.cs" />
+    <Compile Include="YahooGoogelHistorySource.cs" />
+    <Compile Include="YahooGoogleSecurityStorage.cs" />
+    <Compile Include="YahooGoogleSource.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="yahoo.png" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Finam\Finam.csproj">
-      <Project>{218090FF-7AEE-4404-A330-700B9A506022}</Project>
-      <Name>Finam</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>call ..\..\..\plugins.bat $(ProjectName) $(ConfigurationName)</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
