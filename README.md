@@ -1,4 +1,4 @@
-YahooSource-for-StockSharp-Hydra
+YahooGoogleSource-for-StockSharp-Hydra
 ================================
 
 Yahoo source of historical end-of-day candles data.
