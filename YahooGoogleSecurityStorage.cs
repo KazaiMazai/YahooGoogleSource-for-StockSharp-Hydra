@@ -13,14 +13,14 @@ namespace StockSharp.Hydra.Yahoo
     using StockSharp.BusinessEntities;
     using StockSharp.Hydra.Core;
 
-    class YahooSecurityStorage : ISecurityStorage
+    class YahooGoogleSecurityStorage : ISecurityStorage
     {
         private readonly ISecurityStorage _underlyingStorage;
         private readonly SynchronizedDictionary<string, Security> _cacheByYahooId = new SynchronizedDictionary<string, Security>();
 
         public IEnumerable<Security> YahooSecurities { get { return _cacheByYahooId.Values; } }
 
-        public YahooSecurityStorage(ISecurityStorage underlyingStorage, HydraEntityRegistry entityRegistry)
+        public YahooGoogleSecurityStorage(ISecurityStorage underlyingStorage, HydraEntityRegistry entityRegistry)
         {
             if (underlyingStorage == null)
                 throw new ArgumentNullException("underlyingStorage");
@@ -41,6 +41,12 @@ namespace StockSharp.Hydra.Yahoo
             return _cacheByYahooId.TryGetValue((string)fieldValue);
         }
 
+        public IEnumerable<Security> Lookup(Security criteria)
+        {
+            return new[] { criteria };
+
+        }
+
         public void Save(Security security)
         {
             _underlyingStorage.Save(security);
@@ -52,10 +58,13 @@ namespace StockSharp.Hydra.Yahoo
             if (security == null)
                 throw new ArgumentNullException("security");
 
-            var yahooId = security.ExtensionInfo.TryGetValue(YahooHistorySource.YahooSecurityIdField);
+            var yahooId = security.ExtensionInfo.TryGetValue(YahooGoogelHistorySource.YahooSecurityIdField);
 
             if (yahooId != null)
                 _cacheByYahooId.SafeAdd((string)yahooId, key => security);
         }
+
+        
+         
     }
 }
