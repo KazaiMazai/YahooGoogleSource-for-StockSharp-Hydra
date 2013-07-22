@@ -52,7 +52,7 @@ namespace Yahoo
                   if(_cachedCandleList!=null)
                       if(_cachedCandleList.Count>0)
                       {
-                          if(_cachedSecurity.Code== security.Code && _cachedBeginDate<=beginDate && _cachedEndDate>= endDate && _cachedTimeframe.TotalSeconds==timeframe.TotalSeconds)
+                          if(_cachedSecurity.Code== security.Code && _cachedTimeframe.TotalSeconds==timeframe.TotalSeconds)
                               return _cachedCandleList.Where(c => c.OpenTime >= beginDate && c.OpenTime <= endDate);
                           }
 
@@ -65,7 +65,7 @@ namespace Yahoo
                   {
                       data =
                       web.DownloadString(string.Format("http://ichart.finance.yahoo.com/table.csv?s={0}&c={1}",
-                                                       security.ShortName, beginDate.Year));
+                                                       security.ShortName, 1900));
                  
                   }
                   catch
@@ -205,12 +205,36 @@ namespace Yahoo
 
           }
 
+          public ExchangeBoard GetSmartExchangeBoard()
+          {
+              var exchangeBoard = ExchangeBoard.GetOrCreateBoard("SMART", code => new ExchangeBoard
+              {
+                  Exchange = new Exchange { Name = code },
+                  Code = code,
+                  IsSupportAtomicReRegister = true,
+                  IsSupportMarketOrders = true,
+                  WorkingTime = ExchangeBoard.Nasdaq.WorkingTime.Clone()
+              });
+
+              return exchangeBoard;
+
+          }
+
           public List<Security> GetNASDAQNewSecurities(string symbolFile)
           {
               var fileInfo = new FileInfo(symbolFile);
               if (!fileInfo.Exists) throw new FileNotFoundException("YahooGoogelHistorySource: path=" + symbolFile);
               StreamReader contractsFile = File.OpenText(symbolFile);
               var securities = new List<Security>();
+
+             var exchangeBoard = ExchangeBoard.GetOrCreateBoard("SMART", code => new ExchangeBoard
+                                                                              {
+                                                                                  Exchange = new Exchange {Name = code},
+                                                                                  Code = code,
+                                                                                  IsSupportAtomicReRegister = true,
+                                                                                  IsSupportMarketOrders = true, 
+                                                                                  WorkingTime = ExchangeBoard.Nasdaq.WorkingTime.Clone() 
+                                                                              });
                
               while (true)
               {
@@ -234,8 +258,7 @@ namespace Yahoo
                           security.Type = SecurityTypes.Stock;
                           security.Currency = CurrencyTypes.USD;
                           security.Name = code;
-                          security.ExchangeBoard = ExchangeBoard.Nasdaq;
-                          security.ExchangeBoard.Code = "SMART";
+                          security.ExchangeBoard = exchangeBoard;
                           security.MinStepPrice = 0.01m;
                           security.MinStepSize = 0.01m;
                           security.ShortName = code;
@@ -273,7 +296,14 @@ namespace Yahoo
               if (!fileInfo.Exists) throw new FileNotFoundException("YahooGoogelHistorySource: path=" + symbolFile);
               StreamReader contractsFile = File.OpenText(symbolFile);
               var securities = new List<Security>();
-
+              var exchangeBoard = ExchangeBoard.GetOrCreateBoard("SMART", code => new ExchangeBoard
+              {
+                  Exchange = new Exchange { Name = code },
+                  Code = code,
+                  IsSupportAtomicReRegister = true,
+                  IsSupportMarketOrders = true,
+                  WorkingTime = ExchangeBoard.Nasdaq.WorkingTime.Clone()
+              });
               while (true)
               {
                   string code = contractsFile.ReadLine();
@@ -293,8 +323,7 @@ namespace Yahoo
                           security.Type = SecurityTypes.Stock;
                           security.Currency = CurrencyTypes.USD;
                           security.Name = code;
-                          security.ExchangeBoard = ExchangeBoard.Nyse;
-                          security.ExchangeBoard.Code = "SMART";
+                          security.ExchangeBoard = exchangeBoard;
                           security.MinStepPrice = 0.01m;
                           security.MinStepSize = 0.01m;
                           security.ShortName = code;
