@@ -25,7 +25,7 @@ namespace StockSharp.Hydra.Yahoo
             if (underlyingStorage == null)
                 throw new ArgumentNullException("underlyingStorage");
 
-
+            
 
             foreach (var security in entityRegistry.Securities)
                 TryAddToCache(security);

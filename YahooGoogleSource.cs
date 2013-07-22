@@ -245,6 +245,8 @@ namespace StockSharp.Hydra
         {
 
             this.AddDebugLog("GetNewSecurities()");
+            EntityRegistry.ExchangeBoards.Save(_source.GetSmartExchangeBoard());
+
             var securities = new List<Security>();
 
             if (_settings.UseNASDAQ)
