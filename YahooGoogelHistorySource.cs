@@ -30,6 +30,7 @@ namespace Yahoo
           private Security _cachedSecurity;
           private TimeSpan _cachedTimeframe;
           private List<TimeFrameCandle> _cachedCandleList;
+          private DateTime _lastUpdate;
 
           public YahooGoogelHistorySource(ISecurityStorage securityStorage) : base(securityStorage)
           {
@@ -53,6 +54,7 @@ namespace Yahoo
                       if(_cachedCandleList.Count>0)
                       {
                           if(_cachedSecurity.Code== security.Code && _cachedTimeframe.TotalSeconds==timeframe.TotalSeconds)
+                              if(DateTime.Now -_lastUpdate<TimeSpan.FromMinutes(30))
                               return _cachedCandleList.Where(c => c.OpenTime >= beginDate && c.OpenTime <= endDate);
                           }
 
@@ -200,6 +202,7 @@ namespace Yahoo
                    _cachedEndDate = _cachedCandleList.Last().OpenTime;
                   _cachedSecurity = security;
                   _cachedTimeframe = timeframe;
+                  _lastUpdate = DateTime.Now;
                    return _cachedCandleList.Where(c => c.OpenTime >= beginDate && c.OpenTime <= endDate); 
               }
 
