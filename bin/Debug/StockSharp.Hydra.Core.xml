@@ -93,6 +93,11 @@
             Событие о загрузке маркет-данных.
             </summary>
         </member>
+        <member name="P:StockSharp.Hydra.Core.IMarketDataSource.IsSupportLookupSecurities">
+            <summary>
+            Поддерживает ли источник <see cref="M:StockSharp.BusinessEntities.ITrader.LookupSecurities(StockSharp.BusinessEntities.Security)"/>.
+            </summary>
+        </member>
         <member name="M:StockSharp.Hydra.Core.BaseMarketDataSource.Init(StockSharp.Hydra.Core.MarketDataSourceSettings)">
             <summary>
             Инициализировать источник.
@@ -140,10 +145,10 @@
         <member name="M:StockSharp.Hydra.Core.BaseMarketDataSource.CheckWorkingTime">
             <summary>
             Проверить рабочее время источника.
-            Если время вне диапазона (<see cref="P:StockSharp.Hydra.Core.MarketDataSourceSettings.WorkingFrom"/> и <see cref="P:StockSharp.Hydra.Core.MarketDataSourceSettings.WorkingTo"/>),
-            то <see cref="P:StockSharp.Hydra.Core.BaseMarketDataSource.ProcessState"/> устанавливается в <see cref="F:StockSharp.Hydra.Core.SourceProcessStates.Suspend"/>,
-            иначе <see cref="P:StockSharp.Hydra.Core.BaseMarketDataSource.ProcessState"/> устанавливается в <see cref="F:StockSharp.Hydra.Core.SourceProcessStates.Started"/>.
             </summary>
+            <returns>
+            Если время вне диапазона (<see cref="P:StockSharp.Hydra.Core.MarketDataSourceSettings.WorkingFrom"/> и <see cref="P:StockSharp.Hydra.Core.MarketDataSourceSettings.WorkingTo"/>),
+            то возвращается false. Иначе, true.</returns>
         </member>
         <member name="M:StockSharp.Hydra.Core.BaseMarketDataSource.Load">
             <summary>
@@ -155,20 +160,6 @@
             Сохранить сделки в хранилище.
             </summary>
             <param name="trades">Сделки.</param>
-        </member>
-        <member name="M:StockSharp.Hydra.Core.BaseMarketDataSource.DeleteTrades(System.Collections.Generic.IEnumerable{StockSharp.BusinessEntities.Security},System.DateTime)">
-            <summary>
-            Удалить сделки из хранилища.
-            </summary>
-            <param name="securities">Инструменты, по которым необходимо удалить сделки.</param>
-            <param name="date">Дата, за которую необходимо удалить сделки.</param>
-        </member>
-        <member name="M:StockSharp.Hydra.Core.BaseMarketDataSource.DeleteTrades(StockSharp.BusinessEntities.Security,System.DateTime)">
-            <summary>
-            Удалить сделки из хранилища.
-            </summary>
-            <param name="security">Инструмент.</param>
-            <param name="date">Дата.</param>
         </member>
         <member name="M:StockSharp.Hydra.Core.BaseMarketDataSource.SaveTrades(StockSharp.BusinessEntities.Security,System.Collections.Generic.IEnumerable{StockSharp.BusinessEntities.Trade},System.Boolean)">
             <summary>
@@ -206,22 +197,15 @@
             <param name="raiseDataLoadedEvent">Нужно ли вызвать событие <see cref="E:StockSharp.Hydra.Core.BaseMarketDataSource.DataLoaded"/>.</param>
             <returns>Метрика новых данных.</returns>
         </member>
-        <member name="M:StockSharp.Hydra.Core.BaseMarketDataSource.SaveCandles(StockSharp.BusinessEntities.Security,System.TimeSpan,System.Collections.Generic.IEnumerable{StockSharp.Algo.Candles.Candle},System.Boolean)">
+        <member name="M:StockSharp.Hydra.Core.BaseMarketDataSource.SaveCandles``1(StockSharp.BusinessEntities.Security,System.Object,System.Collections.Generic.IEnumerable{``0},System.Boolean)">
             <summary>
             Сохранить свечки по инструменту в хранилище.
             </summary>
+            <typeparam name="TCandle">Тип свечки.</typeparam>
             <param name="security">Инструмент.</param>
-            <param name="tf">Тайм-фрейм.</param>
+            <param name="candleArg">Параметр формирования свечки. Например, для <see cref="T:StockSharp.Algo.Candles.TimeFrameCandle"/> это значение <see cref="P:StockSharp.Algo.Candles.TimeFrameCandle.TimeFrame"/>.</param>
             <param name="candles">Свечки.</param>
             <param name="raiseDataLoadedEvent">Нужно ли вызвать событие <see cref="E:StockSharp.Hydra.Core.BaseMarketDataSource.DataLoaded"/>.</param>
-        </member>
-        <member name="M:StockSharp.Hydra.Core.BaseMarketDataSource.DeleteCandles(StockSharp.BusinessEntities.Security,System.TimeSpan,System.DateTime)">
-            <summary>
-            Удалить свечки из хранилища.
-            </summary>
-            <param name="security">Инструмент.</param>
-            <param name="tf">Тайм-фрейм.</param>
-            <param name="date">Дата.</param>
         </member>
         <member name="M:StockSharp.Hydra.Core.BaseMarketDataSource.RaiseDataLoaded(StockSharp.BusinessEntities.Security,System.Tuple{System.Type,System.Nullable{System.DateTime},System.Int32})">
             <summary>
@@ -293,6 +277,11 @@
             </summary>
             <returns>True, если поддерживает, иначе, false.</returns>
         </member>
+        <member name="P:StockSharp.Hydra.Core.BaseMarketDataSource.IsSupportLookupSecurities">
+            <summary>
+            Поддерживает ли источник <see cref="M:StockSharp.BusinessEntities.ITrader.LookupSecurities(StockSharp.BusinessEntities.Security)"/>.
+            </summary>
+        </member>
         <member name="P:StockSharp.Hydra.Core.BaseMarketDataSource.SecurityStorage">
             <summary>
             Хранилище инструментов.
@@ -303,14 +292,9 @@
             Инструменты, для которых необходимо произвести загрузку данных.
             </summary>
         </member>
-        <member name="P:StockSharp.Hydra.Core.BaseMarketDataSource.ProcessState">
+        <member name="P:StockSharp.Hydra.Core.BaseMarketDataSource.State">
             <summary>
             Состояние работы источника.
-            </summary>
-        </member>
-        <member name="P:StockSharp.Hydra.Core.BaseMarketDataSource.StartDate">
-            <summary>
-            Дата начала работы источника.
             </summary>
         </member>
         <member name="P:StockSharp.Hydra.Core.BaseMarketDataSource.SupportedDataTypes">
@@ -328,34 +312,29 @@
             Событие изменения настроек.
             </summary>
         </member>
-        <member name="T:StockSharp.Hydra.Core.SourceProcessStates">
+        <member name="T:StockSharp.Hydra.Core.MarketDataSourceStates">
             <summary>
             Состояния источника.
             </summary>
         </member>
-        <member name="F:StockSharp.Hydra.Core.SourceProcessStates.Stopped">
+        <member name="F:StockSharp.Hydra.Core.MarketDataSourceStates.Stopped">
             <summary>
             Остановлен.
             </summary>
         </member>
-        <member name="F:StockSharp.Hydra.Core.SourceProcessStates.Stopping">
+        <member name="F:StockSharp.Hydra.Core.MarketDataSourceStates.Stopping">
             <summary>
             Останавливается.
             </summary>
         </member>
-        <member name="F:StockSharp.Hydra.Core.SourceProcessStates.Started">
+        <member name="F:StockSharp.Hydra.Core.MarketDataSourceStates.Started">
             <summary>
             Запущен.
             </summary>
         </member>
-        <member name="F:StockSharp.Hydra.Core.SourceProcessStates.Starting">
+        <member name="F:StockSharp.Hydra.Core.MarketDataSourceStates.Starting">
             <summary>
             Запускается.
-            </summary>
-        </member>
-        <member name="F:StockSharp.Hydra.Core.SourceProcessStates.Suspend">
-            <summary>
-            Приостановлен.
             </summary>
         </member>
         <member name="T:StockSharp.Hydra.Core.Extensions">
@@ -477,6 +456,12 @@
             <param name="security">Инструмент.</param>
             <returns>Свечные периоды <see cref="P:StockSharp.Algo.Candles.TimeFrameCandle.TimeFrame"/>.
             Если инструмент не содержит информацию о периодах, то будет возвращено пустое множество.</returns>
+        </member>
+        <member name="M:StockSharp.Hydra.Core.Extensions.SaveSecurities(System.Collections.Generic.IEnumerable{StockSharp.BusinessEntities.Security})">
+            <summary>
+            Сохранить инструменты в хранилище.
+            </summary>
+            <param name="securities">Инструменты.</param>
         </member>
         <member name="T:StockSharp.Hydra.Core.HydraEntityRegistry">
             <summary>
@@ -786,6 +771,12 @@
             </summary>
             <returns>Новые инструменты.</returns>
         </member>
+        <member name="M:StockSharp.Hydra.Core.ISecuritySource.GetLookupSecurities(StockSharp.BusinessEntities.Security)">
+            <summary>
+            Получить инструменты через <see cref="M:StockSharp.BusinessEntities.ITrader.LookupSecurities(StockSharp.BusinessEntities.Security)"/>.
+            </summary>
+            <returns>Инструменты.</returns>
+        </member>
         <member name="T:StockSharp.Hydra.Core.MarketDataSourceSettings">
             <summary>
             Настройки источника <see cref="T:StockSharp.Hydra.Core.IMarketDataSource"/>.
@@ -869,6 +860,11 @@
             Расширенная информация, храняющая в себе дополнительные настройки для источника.
             </summary>
         </member>
+        <member name="P:StockSharp.Hydra.Core.MarketDataSourceSettings.IntervalPropertyVisible">
+            <summary>
+            Позывать интервал.
+            </summary>
+        </member>
         <member name="E:StockSharp.Hydra.Core.MarketDataSourceSettings.PropertyChanged">
             <summary>
             Событие изменения настроек.
@@ -898,12 +894,13 @@
             </summary>
             <typeparam name="TTrader">Тип шлюза.</typeparam>
         </member>
-        <member name="M:StockSharp.Hydra.Core.MarketDataTrader`1.#ctor(StockSharp.Algo.History.ISecurityStorage,System.Func{`0})">
+        <member name="M:StockSharp.Hydra.Core.MarketDataTrader`1.#ctor(StockSharp.Algo.History.ISecurityStorage,StockSharp.Hydra.Core.IMarketDataSource,System.Func{`0})">
             <summary>
             Создать <see cref="T:StockSharp.Hydra.Core.MarketDataTrader`1"/>.
             </summary>
             <param name="securityStorage">Интерфейс для доступа к хранилищу информации об инструментах.</param>
             <param name="createTrader">Обработчик, создающий шлюз к торговой системе.</param>
+            <param name="source">Источник.</param>
         </member>
         <member name="M:StockSharp.Hydra.Core.MarketDataTrader`1.InitializeTrader">
             <summary>
@@ -976,6 +973,12 @@
         <member name="M:StockSharp.Hydra.Core.MarketDataTrader`1.GetNewSecurities">
             <summary>
             Получить новые инструменты.
+            </summary>
+            <returns>Новые инструменты.</returns>
+        </member>
+        <member name="M:StockSharp.Hydra.Core.MarketDataTrader`1.GetLookupSecurities(StockSharp.BusinessEntities.Security)">
+            <summary>
+            Получить новые инструменты через <see cref="M:StockSharp.BusinessEntities.ITrader.LookupSecurities(StockSharp.BusinessEntities.Security)"/>.
             </summary>
             <returns>Новые инструменты.</returns>
         </member>
@@ -1078,6 +1081,12 @@
         <member name="M:StockSharp.Hydra.Core.TraderMarketDataSource`1.GetNewSecurities">
             <summary>
             Получить новые инструменты.
+            </summary>
+            <returns>Новые инструменты.</returns>
+        </member>
+        <member name="M:StockSharp.Hydra.Core.TraderMarketDataSource`1.GetLookupSecurities(StockSharp.BusinessEntities.Security)">
+            <summary>
+            Получить новые инструменты через <see cref="M:StockSharp.BusinessEntities.ITrader.LookupSecurities(StockSharp.BusinessEntities.Security)"/>.
             </summary>
             <returns>Новые инструменты.</returns>
         </member>
