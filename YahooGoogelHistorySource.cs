@@ -116,24 +116,25 @@ namespace Yahoo
 
 
 
-
-
+                              try
+                              {
+                                   
                               var OpenTime = DateTime.Parse(cols[0]);
 
 
                               decimal OpenPrice = -6m, HighPrice = -6m, LowPrice = -6m, ClosePrice = -6m, TotalVolume = -6m;
-
+                              
                               if (!decimal.TryParse(cols[1], out OpenPrice))
-                                  throw new InvalidDataException("Google data error. Symbol: " + security.Id);
-                              if (!decimal.TryParse(cols[2], out HighPrice))  
-                              throw   new InvalidDataException("Google data error. Symbol: " + security.Id);
-                              if (!decimal.TryParse(cols[3], out LowPrice))  
-                              throw    new InvalidDataException("Google data error. Symbol: " + security.Id);
-                              if (!decimal.TryParse(cols[4], out ClosePrice))  
-                              throw   new InvalidDataException("Google data error. Symbol: " + security.Id);
-                              if (!decimal.TryParse(cols[5], out TotalVolume))  
-                              throw   new InvalidDataException("Google data error. Symbol: " + security.Id);
-
+                                      throw new InvalidDataException("Google data error. Symbol: " + security.Id);
+                                  if (!decimal.TryParse(cols[2], out HighPrice))
+                                      throw new InvalidDataException("Google data error. Symbol: " + security.Id);
+                                  if (!decimal.TryParse(cols[3], out LowPrice))
+                                      throw new InvalidDataException("Google data error. Symbol: " + security.Id);
+                                  if (!decimal.TryParse(cols[4], out ClosePrice))
+                                      throw new InvalidDataException("Google data error. Symbol: " + security.Id);
+                                  if (!decimal.TryParse(cols[5], out TotalVolume))
+                                      throw new InvalidDataException("Google data error. Symbol: " + security.Id);
+                             
 
                               var candle = new TimeFrameCandle();
 
@@ -155,6 +156,12 @@ namespace Yahoo
                               candle.Security = security;
 
                               candleList.Add(candle);
+                              }
+                              catch (Exception ex)
+                              {
+
+                                  _errorSecurititesList.Add(security.Id);
+                              }
 
                           }
                       }
@@ -181,8 +188,10 @@ namespace Yahoo
 
                       string[] parseDate = cols[0].Split("-");
 
-
-                        candle.OpenTime = new DateTime(int.Parse(parseDate[0]), int.Parse(parseDate[1]),
+                      try
+                      { 
+                      
+                      candle.OpenTime = new DateTime(int.Parse(parseDate[0]), int.Parse(parseDate[1]),
                                                      int.Parse(parseDate[2]));
                       candle.CloseTime = candle.OpenTime + timeframe;
                       candle.TimeFrame = timeframe;
@@ -191,9 +200,16 @@ namespace Yahoo
                       candle.LowPrice = decimal.Parse(cols[3]);
                       candle.ClosePrice = decimal.Parse(cols[4]);
                       candle.TotalVolume = decimal.Parse(cols[5]);
+                      
                       candle.Security = security;
 
                       candleList.Add(candle);
+
+                      }
+                      catch (Exception ex)
+                      {
+                          _errorSecurititesList.Add(security.Id);
+                      }
 
                   }
                    _cachedCandleList  = candleList.OrderBy
