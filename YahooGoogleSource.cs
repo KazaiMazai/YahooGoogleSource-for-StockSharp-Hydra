@@ -91,8 +91,8 @@ namespace StockSharp.Hydra
         private YahooGoogelHistorySource _source;
         private IEnumerable<Security> _selectedSecurities;
         private YahooGoogleSecurityStorage _yahooGoogleSecurityStorage;
+         
 
-       
         protected override void ApplySettings(MarketDataSourceSettings settings, bool isNew)
         {
             _settings = new YahooSettings(settings);
@@ -208,7 +208,17 @@ namespace StockSharp.Hydra
             get { return new[] { typeof(Candle) }; }
         }
 
-        public override bool IsSupportHistoricalData { get { return true; } }
+       
+        public override bool IsSupportLookupSecurities
+        {
+            get { return false; }
+        }
+
+        public override bool IsSupportHistoricalData
+        {
+            get { return true; }
+        }
+
 
         public override void SaveSettings()
         {
