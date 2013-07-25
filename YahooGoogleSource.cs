@@ -128,7 +128,7 @@ namespace StockSharp.Hydra
             }
              foreach (var security in _selectedSecurities)
             {
-                if (ProcessState!= SourceProcessStates.Started)
+                if (State!= MarketDataSourceStates.Started)
                 {
                     this.AddInfoLog("Прерывание загрузки данных.");
                     return;
@@ -149,7 +149,7 @@ namespace StockSharp.Hydra
             {
                 foreach (var period in periods)
                 {
-                    if (ProcessState != SourceProcessStates.Started)
+                    if (State != MarketDataSourceStates.Started)
                     {
                         this.AddInfoLog("Прерывание загрузки данных.");
                         return;
@@ -166,7 +166,7 @@ namespace StockSharp.Hydra
 
                     foreach (var emptyDate in emptyDates)
                     {
-                        if (ProcessState != SourceProcessStates.Started)
+                        if (State != MarketDataSourceStates.Started)
                         {
                             this.AddInfoLog("Прерывание загрузки данных.");
                             return;
@@ -275,8 +275,11 @@ namespace StockSharp.Hydra
 
         }
 
-
-        
+        public IEnumerable<Security> GetLookupSecurities(Security criteria)
+        {
+            return new[] {criteria};
+        }
+   
     }
 
     

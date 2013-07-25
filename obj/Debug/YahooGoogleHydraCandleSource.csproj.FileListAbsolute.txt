@@ -58,3 +58,5 @@ C:\Users\1 000 000 usd\Documents\YahooGoogleSource-for-StockSharp-Hydra\bin\Debu
 C:\Users\1 000 000 usd\Documents\YahooGoogleSource-for-StockSharp-Hydra\obj\Debug\StockSharp.Hydra.YahooGoogle.dll
 C:\Users\1 000 000 usd\Documents\YahooGoogleSource-for-StockSharp-Hydra\obj\Debug\StockSharp.Hydra.YahooGoogle.pdb
 C:\Users\1 000 000 usd\Documents\YahooGoogleSource-for-StockSharp-Hydra\obj\Debug\YahooGoogleHydraCandleSource.csprojResolveAssemblyReference.cache
+C:\Users\1 000 000 usd\Documents\YahooGoogleSource-for-StockSharp-Hydra\bin\Debug\ScheduleTimer.dll
+C:\Users\1 000 000 usd\Documents\YahooGoogleSource-for-StockSharp-Hydra\bin\Debug\ScheduleTimer.xml
