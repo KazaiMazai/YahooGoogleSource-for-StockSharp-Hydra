@@ -33,22 +33,31 @@ namespace StockSharp.Hydra
 
             [Category("Yahoo")]
             [DisplayName("Временной отступ")]
-            [Description("Временной отступ в днях от текущей даты, который необходим для предотвращения скачивания неполных данных за текущую торговую сессию.")]
+            [Description("Временной отступ в днях от текущей даты, c которого необходимо загружать данные")]
             public int YahooOffset
             {
-                get { return ExtensionInfo["FinamOffset"].To<int>(); }
-                set { ExtensionInfo["FinamOffset"] = value; }
+                get { return ExtensionInfo["YahooOffset"].To<int>(); }
+                set { ExtensionInfo["YahooOffset"] = value; }
             }
            
            
             [Category("Yahoo")]
             [DisplayName("Начальная дата")]
-            [Description("Начальная дата")]
+            [Description("Начальная дата для перезагрузки всех данных")]
             public DateTime StartFrom
 			{
 				get { return ExtensionInfo["StartFrom"].To<DateTime>(); }
 				set { ExtensionInfo["StartFrom"] = value; }
 			}
+
+            [Category("Yahoo")]
+            [DisplayName("Режим перезагрузки")]
+            [Description("Начальная дата для перезагрузки всех данных")]
+            public bool Reload
+            {
+                get { return ExtensionInfo["Reload"].To<bool>(); }
+                set { ExtensionInfo["Reload"] = value; }
+            }
 		 
 
             [Category("Yahoo")]
@@ -118,8 +127,10 @@ namespace StockSharp.Hydra
             if (this.GetAllSecurity() != null) _selectedSecurities = _yahooGoogleSecurityStorage.YahooSecurities;
             else _selectedSecurities = Securities;
 
-            var startDate = _settings.StartFrom;
-            var endDate = DateTime.Today - TimeSpan.FromDays(_settings.YahooOffset);
+            DateTime startDate;
+            if (_settings.Reload) startDate = _settings.StartFrom;
+            else startDate = DateTime.Today - TimeSpan.FromDays(_settings.YahooOffset);
+            var endDate = DateTime.Today;
 
             var allDates = new List<DateTime>();
              for (; startDate <= endDate; startDate = startDate.AddDays(1))
