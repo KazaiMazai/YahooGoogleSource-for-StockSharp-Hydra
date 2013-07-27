@@ -109,11 +109,12 @@ namespace StockSharp.Hydra
             if (isNew)
             {
                 _settings.YahooOffset = 1;
-                _settings.StartFrom = new DateTime(2000,1,1);
+                _settings.StartFrom = new DateTime(1900,1,1);
                 _settings.NasdaqSymbolsFile = "\\nasdaqTickers.txt";
                 _settings.NYSESymbolsFile = "\\nyseTickers.txt";
                 _settings.UseNASDAQ = true;
                 _settings.UseNYSE = false;
+                _settings.Reload = true;
             }
             
              _yahooGoogleSecurityStorage = new YahooGoogleSecurityStorage(SecurityStorage, EntityRegistry);
