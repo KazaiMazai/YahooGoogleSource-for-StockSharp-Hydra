@@ -226,12 +226,15 @@ namespace Yahoo
 
           public ExchangeBoard GetSmartExchangeBoard()
           {
+
               var exchangeBoard = ExchangeBoard.GetOrCreateBoard("SMART", code => new ExchangeBoard
               {
-                  Exchange = new Exchange { Name = code },
+
+                  Exchange = new Exchange { Name = "SMART Routing", EngName = "SMART Routing", RusName = "Смарт роутинг", TimeZoneInfo = Exchange.Nasdaq.TimeZoneInfo },
                   Code = code,
                   IsSupportAtomicReRegister = true,
                   IsSupportMarketOrders = true,
+
                   WorkingTime = ExchangeBoard.Nasdaq.WorkingTime.Clone()
               });
 

@@ -3,7 +3,6 @@ C:\Users\1 000 000 usd\Documents\YahooGoogleSource-for-StockSharp-Hydra\bin\Debu
 C:\Users\1 000 000 usd\Documents\YahooGoogleSource-for-StockSharp-Hydra\bin\Debug\PowerCollections.dll
 C:\Users\1 000 000 usd\Documents\YahooGoogleSource-for-StockSharp-Hydra\bin\Debug\StockSharp.Algo.dll
 C:\Users\1 000 000 usd\Documents\YahooGoogleSource-for-StockSharp-Hydra\bin\Debug\StockSharp.BusinessEntities.dll
-C:\Users\1 000 000 usd\Documents\YahooGoogleSource-for-StockSharp-Hydra\bin\Debug\StockSharp.Hydra.Core.dll
 C:\Users\1 000 000 usd\Documents\YahooGoogleSource-for-StockSharp-Hydra\bin\Debug\StockSharp.Logging.dll
 C:\Users\1 000 000 usd\Documents\YahooGoogleSource-for-StockSharp-Hydra\bin\Debug\SmartFormat.dll
 C:\Users\1 000 000 usd\Documents\YahooGoogleSource-for-StockSharp-Hydra\bin\Debug\Ecng.Reflection.dll
