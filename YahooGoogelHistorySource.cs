@@ -34,26 +34,29 @@ namespace Yahoo
 
           public YahooGoogelHistorySource(ISecurityStorage securityStorage) : base(securityStorage)
           {
-              
+              var securities = new List<Security>();
+              string filepath = Directory.GetCurrentDirectory() + "\\YahooGoogleSourceTickers.txt";
 
-              
-            //  UsMarket.WorkingTime.Times = new Range<TimeSpan>[1];
-          //    UsMarket.WorkingTime.Times[0] = new Range<TimeSpan>(new TimeSpan(17, 30, 0), new TimeSpan(0, 0, 0));
+              var fileInfo = new FileInfo(filepath);
+              if (!fileInfo.Exists)
+              {
+                  File.CreateText(filepath);
+                  
+              }
 
           }
           
           public IEnumerable<Candle> GetCandles(Security security, DateTime beginDate,DateTime endDate,TimeSpan timeframe)
           {
               if (Math.Abs(timeframe.TotalHours - 24) > 0.000001)
-                  throw new InvalidDataException("unsupported timeframe " + security.ShortName);
+                  throw new InvalidDataException("unsupported timeframe " + security.Code);
 
-             
               
               {
                   if(_cachedCandleList!=null)
                       if(_cachedCandleList.Count>0)
                       {
-                          if(_cachedSecurity.Code== security.Code && _cachedTimeframe.TotalSeconds==timeframe.TotalSeconds)
+                          if(_cachedSecurity.Code== security.Code && Math.Abs(_cachedTimeframe.TotalSeconds - timeframe.TotalSeconds) < 0.00001)
                               if(DateTime.Now -_lastUpdate<TimeSpan.FromMinutes(30))
                               return _cachedCandleList.Where(c => c.OpenTime >= beginDate && c.OpenTime <= endDate);
                           }
@@ -67,7 +70,7 @@ namespace Yahoo
                   {
                       data =
                       web.DownloadString(string.Format("http://ichart.finance.yahoo.com/table.csv?s={0}&c={1}",
-                                                       security.ShortName, 1900));
+                                                       security.Code, 1900));
                  
                   }
                   catch
@@ -97,11 +100,15 @@ namespace Yahoo
                       if (data == "")
                          {
                               _errorSecurititesList.Add(security.Id);
+                              using (StreamWriter w = File.AppendText(Directory.GetCurrentDirectory() + "\\ErrorTickers.txt"))
+                              {
+                                 w.WriteLine(security.Id);
+                              }
                               return candleList;
                           }
                       else
                       {
-                          data = data.Replace(",", ";");
+                           data = data.Replace(",", ";");
 
                           data = data.Replace(".", ",");
 
@@ -161,6 +168,10 @@ namespace Yahoo
                               {
 
                                   _errorSecurititesList.Add(security.Id);
+                                  using (StreamWriter w = File.AppendText(Directory.GetCurrentDirectory() + "\\ErrorTickers.txt"))
+                                  {
+                                      w.WriteLine(security.Id);
+                                  }
                               }
 
                           }
@@ -209,6 +220,10 @@ namespace Yahoo
                       catch (Exception ex)
                       {
                           _errorSecurititesList.Add(security.Id);
+                          using (StreamWriter w = File.AppendText(Directory.GetCurrentDirectory() + "\\ErrorTickers.txt"))
+                          {
+                              w.WriteLine(security.Id);
+                          }
                       }
 
                   }
@@ -226,35 +241,36 @@ namespace Yahoo
 
           public ExchangeBoard GetSmartExchangeBoard()
           {
-              var exchangeBoard = ExchangeBoard.GetOrCreateBoard("SMART", code => new ExchangeBoard
+
+              var exchangeBoard = ExchangeBoard.GetOrCreateBoard("SMART", notExistingExchangeBoardCode => new ExchangeBoard
               {
-                  Exchange = new Exchange { Name = code },
-                  Code = code,
+                  Exchange = new Exchange {Name = notExistingExchangeBoardCode + " Exchange", EngName = notExistingExchangeBoardCode + " Exchange", RusName = notExistingExchangeBoardCode + " по-русски" },
+                  Code = notExistingExchangeBoardCode,
                   IsSupportAtomicReRegister = true,
                   IsSupportMarketOrders = true,
-                  WorkingTime = ExchangeBoard.Nasdaq.WorkingTime.Clone()
+                  WorkingTime = ExchangeBoard.Nasdaq.WorkingTime
               });
+
 
               return exchangeBoard;
 
           }
 
-          public List<Security> GetNASDAQNewSecurities(string symbolFile)
+          public List<Security> GetSecuritiesFromTxt()
           {
-              var fileInfo = new FileInfo(symbolFile);
-              if (!fileInfo.Exists) throw new FileNotFoundException("YahooGoogelHistorySource: path=" + symbolFile);
-              StreamReader contractsFile = File.OpenText(symbolFile);
               var securities = new List<Security>();
+              string filepath = Directory.GetCurrentDirectory() + "\\YahooGoogleSourceTickers.txt";
 
-             var exchangeBoard = ExchangeBoard.GetOrCreateBoard("SMART", code => new ExchangeBoard
-                                                                              {
-                                                                                  Exchange = new Exchange {Name = code},
-                                                                                  Code = code,
-                                                                                  IsSupportAtomicReRegister = true,
-                                                                                  IsSupportMarketOrders = true, 
-                                                                                  WorkingTime = ExchangeBoard.Nasdaq.WorkingTime.Clone() 
-                                                                              });
-               
+              var fileInfo = new FileInfo(filepath);
+              if (!fileInfo.Exists)
+              {
+                  File.CreateText(filepath);
+                  return securities;
+              }
+
+
+              StreamReader contractsFile = File.OpenText(filepath);
+           
               while (true)
               {
                   string line=   contractsFile.ReadLine();
@@ -265,15 +281,28 @@ namespace Yahoo
                   string[] tickers = line.Split(' ');
                   foreach (var ticker in tickers)
                   {
-                      var code = ticker.Trim();
+                      var securityId = ticker.Trim();
+                      var splitedId = securityId.Split('@');
 
-                     var security = SecurityStorage.LoadBy("Id", code + "@SMART");
+                      var code = splitedId[0];
+                      var exchangeBoardCode = splitedId[1];
+
+                      var security = SecurityStorage.LoadBy("Id", securityId);
                       if(security==null)
                       {
+                          var exchangeBoard = ExchangeBoard.GetOrCreateBoard(exchangeBoardCode, notExistingExchangeBoardCode => new ExchangeBoard
+                          {
+                              Exchange = new Exchange { Name = notExistingExchangeBoardCode + " Exchange", EngName = notExistingExchangeBoardCode + " Exchange", RusName = notExistingExchangeBoardCode + " по-русски"},
+                              Code = notExistingExchangeBoardCode,
+                              IsSupportAtomicReRegister = true,
+                              IsSupportMarketOrders = true,
+                              WorkingTime = ExchangeBoard.Nasdaq.WorkingTime
+                          });
 
-                          security=EntityFactory.Instance.CreateSecurity(code+"@SMART");
 
-                          security.Id = code + "@SMART";
+                          security = EntityFactory.Instance.CreateSecurity(securityId);
+
+                          security.Id = securityId;
                           security.Type = SecurityTypes.Stock;
                           security.Currency = CurrencyTypes.USD;
                           security.Name = code;
@@ -290,9 +319,7 @@ namespace Yahoo
                           
                           SecurityStorage.Save(security);
 
-
                       }
-
 
                       securities.Add(security);
 
@@ -304,74 +331,8 @@ namespace Yahoo
               contractsFile.Close();
               return securities;
 
-
-
           }
-          public List<Security> GetNYSENewSecurities(string symbolFile)
-          {
-
-               
-              var fileInfo = new FileInfo(symbolFile);
-              if (!fileInfo.Exists) throw new FileNotFoundException("YahooGoogelHistorySource: path=" + symbolFile);
-              StreamReader contractsFile = File.OpenText(symbolFile);
-              var securities = new List<Security>();
-              var exchangeBoard = ExchangeBoard.GetOrCreateBoard("SMART", code => new ExchangeBoard
-              {
-                  Exchange = new Exchange { Name = code },
-                  Code = code,
-                  IsSupportAtomicReRegister = true,
-                  IsSupportMarketOrders = true,
-                  WorkingTime = ExchangeBoard.Nasdaq.WorkingTime.Clone()
-              });
-              while (true)
-              {
-                  string code = contractsFile.ReadLine();
-                  if (code == null) break;
-                  else
-                  {
-
-
-                      code = code.Trim();
-                      var security = SecurityStorage.LoadBy("Id", code + "@SMART");
-                      if (security == null)
-                      {
-
-                          security = EntityFactory.Instance.CreateSecurity(code + "@SMART");
-
-                          security.Id = code + "@SMART";
-                          security.Type = SecurityTypes.Stock;
-                          security.Currency = CurrencyTypes.USD;
-                          security.Name = code;
-                          security.ExchangeBoard = exchangeBoard;
-                          security.MinStepPrice = 0.01m;
-                          security.MinStepSize = 0.01m;
-                          security.ShortName = code;
-                          security.Code = code;
-
-                          security.ExtensionInfo = new Dictionary<object, object>();
-                          security.ExtensionInfo.Add(YahooSecurityIdField, code);
-                          security.ExtensionInfo.Add(YahooMarketIdField, security.ExchangeBoard.Code);
-                          security.ExtensionInfo.Add("LastCandleTime", (new DateTime(1900, 1, 1)).To<long>());
-
-                          SecurityStorage.Save(security);
-
-
-                      }
-
-
-                      securities.Add(security);
-
-                  }
-
-
-
-              }
-              contractsFile.Close();
-              return securities;
-
-
-
-          }
+          
         
       }
 
