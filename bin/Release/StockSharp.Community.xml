@@ -79,6 +79,16 @@
             </summary>
             <param name="address">Адрес сервиса.</param>
         </member>
+        <member name="M:StockSharp.Community.AuthenticationClient.Login">
+            <summary>
+            Произвести вхов в систему.
+            </summary>
+        </member>
+        <member name="M:StockSharp.Community.AuthenticationClient.Logout">
+            <summary>
+            Выйти из системы.
+            </summary>
+        </member>
         <member name="M:StockSharp.Community.AuthenticationClient.GetId(System.Guid)">
             <summary>
             Получить идентификатор пользователя.
@@ -94,6 +104,16 @@
         <member name="P:StockSharp.Community.AuthenticationClient.Instance">
             <summary>
             Общий клиент авторизации для всего приложения.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Community.AuthenticationClient.Credentials">
+            <summary>
+            Информация о логине и пароле для доступа к StockSharp.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Community.AuthenticationClient.IsLoggedIn">
+            <summary>
+            Прошел ли успешно авторизацию клиент.
             </summary>
         </member>
         <member name="P:StockSharp.Community.AuthenticationClient.SessionId">
@@ -118,6 +138,11 @@
         <member name="P:StockSharp.Community.BaseCommunityClient`1.SessionId">
             <summary>
             Идентификатор сессии, полученный из <see cref="M:StockSharp.Community.IAuthenticationService.Login(System.String,System.String)"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Community.BaseCommunityClient`1.UserId">
+            <summary>
+            Идентификатор пользователя для <see cref="P:StockSharp.Community.BaseCommunityClient`1.SessionId"/>.
             </summary>
         </member>
         <member name="T:StockSharp.Community.ChatClient">
@@ -773,9 +798,9 @@
             Класс, хранящих в себе логин и пароль для доступа к сервисам http://stocksharp.com
             </summary>
         </member>
-        <member name="P:StockSharp.Community.ServerCredentials.Instance">
+        <member name="M:StockSharp.Community.ServerCredentials.#ctor">
             <summary>
-            Объект класса <see cref="T:StockSharp.Community.ServerCredentials"/>.
+            Создать <see cref="T:StockSharp.Community.ServerCredentials"/>.
             </summary>
         </member>
         <member name="P:StockSharp.Community.ServerCredentials.Login">

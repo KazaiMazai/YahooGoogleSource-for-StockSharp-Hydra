@@ -255,6 +255,12 @@
             </summary>
             <returns>Копия объекта.</returns>
         </member>
+        <member name="M:StockSharp.BusinessEntities.Security.CopyTo(StockSharp.BusinessEntities.Security)">
+            <summary>
+            Скопировать поля текущего инструмента в <paramref name="destination"/>.
+            </summary>
+            <param name="destination">Инструмент, в который необходимо скопировать поля.</param>
+        </member>
         <member name="M:StockSharp.BusinessEntities.Security.BeginUpdate">
             <summary>
             Начать обновление данных. Окончание обновление данных инициируется через <see cref="M:StockSharp.BusinessEntities.UpdateTransaction.Dispose"/>.
@@ -1504,6 +1510,31 @@
             Информация об Украiнська Бiржа.
             </summary>
         </member>
+        <member name="P:StockSharp.BusinessEntities.Exchange.Amex">
+            <summary>
+            Информация о бирже AMEX (American Stock Exchange).
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Exchange.Cme">
+            <summary>
+            Информация о бирже CME (Chicago Mercantile Exchange).
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Exchange.Cbot">
+            <summary>
+            Информация о бирже CBOT (Chicago Board of Trade).
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Exchange.Cce">
+            <summary>
+            Информация о бирже CCE (Chicago Climate Exchange).
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Exchange.Nymex">
+            <summary>
+            Информация о бирже NYMEX (New York Mercantile Exchange).
+            </summary>
+        </member>
         <member name="P:StockSharp.BusinessEntities.Exchange.Nyse">
             <summary>
             Информация о бирже NYSE (New York Stock Exchange).
@@ -1512,6 +1543,11 @@
         <member name="P:StockSharp.BusinessEntities.Exchange.Nasdaq">
             <summary>
             Информация о бирже NASDAQ.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Exchange.Nqlx">
+            <summary>
+            Информация о бирже NQLX.
             </summary>
         </member>
         <member name="P:StockSharp.BusinessEntities.Exchange.Lse">
@@ -1634,6 +1670,11 @@
             Информация о бирже TASE (Tel Aviv Stock Exchange).
             </summary>
         </member>
+        <member name="P:StockSharp.BusinessEntities.Exchange.Lmax">
+            <summary>
+            Информация о бирже LMAX (LMAX Exchange).
+            </summary>
+        </member>
         <member name="P:StockSharp.BusinessEntities.Exchange.ExtensionInfo">
             <summary>
             Расширенная информация по бирже.
@@ -1652,13 +1693,20 @@
             Создать <see cref="T:StockSharp.BusinessEntities.ExchangeBoard"/>.
             </summary>
         </member>
-        <member name="M:StockSharp.BusinessEntities.ExchangeBoard.GetBoard(System.String,System.Func{System.String,StockSharp.BusinessEntities.ExchangeBoard})">
+        <member name="M:StockSharp.BusinessEntities.ExchangeBoard.GetBoard(System.String)">
             <summary>
             Получить площадку по ее коду.
             </summary>
             <param name="code">Код площадки.</param>
-            <param name="createBoard">Создать площадку, если она не найдена.</param>
-            <returns>Найденная площадка. Если площадки с переданным названием не существует и <paramref name="createBoard"/> равен null, то будет возвращено null.</returns>
+            <returns>Найденная площадка. Если площадки с переданным названием не существует, то будет возвращено null.</returns>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.ExchangeBoard.GetOrCreateBoard(System.String,System.Func{System.String,StockSharp.BusinessEntities.ExchangeBoard})">
+            <summary>
+            Получить площадку по ее коду. Если площадки с переданным кодом не существует, то она будет создана.
+            </summary>
+            <param name="code">Код площадки.</param>
+            <param name="createBoard">Обработчик, создающий площадку, если она не найдена. Если значение равно null, то площадка создается с инициализацией по-умолчанию.</param>
+            <returns>Биржевая площадка.</returns>
         </member>
         <member name="M:StockSharp.BusinessEntities.ExchangeBoard.ToString">
             <summary>
@@ -1697,12 +1745,517 @@
         </member>
         <member name="P:StockSharp.BusinessEntities.ExchangeBoard.Micex">
             <summary>
-            Информация о площадке ММВБ биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            Информация о индексах биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexAuct">
+            <summary>
+            Информация о площадке Auct биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexAubb">
+            <summary>
+            Информация о площадке Aubb биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexCasf">
+            <summary>
+            Информация о площадке Casf биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexEqbr">
+            <summary>
+            Информация о площадке Eqbr биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexEqbs">
+            <summary>
+            Информация о площадке Eqbs биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexEqdp">
+            <summary>
+            Информация о площадке Eqdp биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexEqeu">
+            <summary>
+            Информация о площадке Eqeu биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexEqus">
+            <summary>
+            Информация о площадке Equs биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexEqnb">
+            <summary>
+            Информация о площадке Eqnb биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexEqne">
+            <summary>
+            Информация о площадке Eqne биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexEqnl">
+            <summary>
+            Информация о площадке Eqnl биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexEqno">
+            <summary>
+            Информация о площадке Eqno биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexEqob">
+            <summary>
+            Информация о площадке Eqob биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexEqos">
+            <summary>
+            Информация о площадке Eqos биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexEqov">
+            <summary>
+            Информация о площадке Eqov биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexEqlv">
+            <summary>
+            Информация о площадке Eqlv биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexEqdb">
+            <summary>
+            Информация о площадке Eqdb биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexEqde">
+            <summary>
+            Информация о площадке Eqde биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexEqli">
+            <summary>
+            Информация о площадке Eqli биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexEqqi">
+            <summary>
+            Информация о площадке Eqqi биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexSmal">
+            <summary>
+            Информация о площадке Smal биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexSpob">
+            <summary>
+            Информация о площадке Spob биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexTqbr">
+            <summary>
+            Информация о площадке Tqbr биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexTqbs">
+            <summary>
+            Информация о площадке Tqbs биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexTqeu">
+            <summary>
+            Информация о площадке Tqeu биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexTqus">
+            <summary>
+            Информация о площадке Tqus биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexTqnb">
+            <summary>
+            Информация о площадке Tqnb биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexTqne">
+            <summary>
+            Информация о площадке Tqne биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexTqnl">
+            <summary>
+            Информация о площадке Tqnl биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexTqno">
+            <summary>
+            Информация о площадке Tqno биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexTqob">
+            <summary>
+            Информация о площадке Tqob биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexTqos">
+            <summary>
+            Информация о площадке Tqos биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexTqov">
+            <summary>
+            Информация о площадке Tqov биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexTqlv">
+            <summary>
+            Информация о площадке Tqlv биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexTqli">
+            <summary>
+            Информация о площадке Tqli биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexTqqi">
+            <summary>
+            Информация о площадке Tqqi биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexEqrp">
+            <summary>
+            Информация о площадке Eqrp биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexPsrp">
+            <summary>
+            Информация о площадке Psrp биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexRfnd">
+            <summary>
+            Информация о площадке Rfnd биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexTadm">
+            <summary>
+            Информация о площадке Tadm биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexNadm">
+            <summary>
+            Информация о площадке Nadm биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexPsau">
+            <summary>
+            Информация о площадке Psau биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexPaus">
+            <summary>
+            Информация о площадке Paus биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexPsbb">
+            <summary>
+            Информация о площадке Psbb биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexPseq">
+            <summary>
+            Информация о площадке Pseq биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexPses">
+            <summary>
+            Информация о площадке Pses биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexPseu">
+            <summary>
+            Информация о площадке Pseu биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexPsdb">
+            <summary>
+            Информация о площадке Psdb биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexPsde">
+            <summary>
+            Информация о площадке Psde биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexPsus">
+            <summary>
+            Информация о площадке Psus биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexPsnb">
+            <summary>
+            Информация о площадке Psnb биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexPsne">
+            <summary>
+            Информация о площадке Psne биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexPsnl">
+            <summary>
+            Информация о площадке Psnl биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexPsno">
+            <summary>
+            Информация о площадке Psno биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexPsob">
+            <summary>
+            Информация о площадке Psob биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexPsos">
+            <summary>
+            Информация о площадке Psos биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexPsov">
+            <summary>
+            Информация о площадке Psov биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexPslv">
+            <summary>
+            Информация о площадке Pslv биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexPsli">
+            <summary>
+            Информация о площадке Psli биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexPsqi">
+            <summary>
+            Информация о площадке Psqi биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexRpeu">
+            <summary>
+            Информация о площадке Rpeu биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexRpma">
+            <summary>
+            Информация о площадке Rpma биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexRpmo">
+            <summary>
+            Информация о площадке Rpmo биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexFbcb">
+            <summary>
+            Информация о площадке Fbcb биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexFbfx">
+            <summary>
+            Информация о площадке Fbfx биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexIrk2">
+            <summary>
+            Информация о площадке Irk2 биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexRpqi">
+            <summary>
+            Информация о площадке Rpqi биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexPteq">
+            <summary>
+            Информация о площадке Pteq биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexPtes">
+            <summary>
+            Информация о площадке Ptes биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexPteu">
+            <summary>
+            Информация о площадке Pteu биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexPtus">
+            <summary>
+            Информация о площадке Ptus биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexPtnb">
+            <summary>
+            Информация о площадке Ptnb биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexPtne">
+            <summary>
+            Информация о площадке Ptne биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexPtnl">
+            <summary>
+            Информация о площадке Ptnl биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexPtno">
+            <summary>
+            Информация о площадке Ptno биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexPtob">
+            <summary>
+            Информация о площадке Ptob биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexPtos">
+            <summary>
+            Информация о площадке Ptos биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexPtov">
+            <summary>
+            Информация о площадке Ptov биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexPtlv">
+            <summary>
+            Информация о площадке Ptlv биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexPtli">
+            <summary>
+            Информация о площадке Ptli биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexPtqi">
+            <summary>
+            Информация о площадке Ptqi биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexScvc">
+            <summary>
+            Информация о площадке Scvc биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexRpng">
+            <summary>
+            Информация о площадке Rpng биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexRpfg">
+            <summary>
+            Информация о площадке Rpfg биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexCbcr">
+            <summary>
+            Информация о площадке Cbcr биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexCred">
+            <summary>
+            Информация о площадке Cred биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexDepz">
+            <summary>
+            Информация о площадке Depz биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexDpvb">
+            <summary>
+            Информация о площадке Dpvb биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexDpfk">
+            <summary>
+            Информация о площадке Dpfk биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexDpfo">
+            <summary>
+            Информация о площадке Dpfo биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexDppf">
+            <summary>
+            Информация о площадке Dppf биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexCets">
+            <summary>
+            Информация о площадке Cets биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexCngd">
+            <summary>
+            Информация о площадке Cngd биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexTran">
+            <summary>
+            Информация о площадке Tran биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexJunior">
+            <summary>
+            Информация о площадке Qjsim биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
             </summary>
         </member>
         <member name="P:StockSharp.BusinessEntities.ExchangeBoard.Ux">
             <summary>
-            Информация о площадке биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Ux"/>.
+            Информация о площадке срочного рынка биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Ux"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.UxStock">
+            <summary>
+            Информация о площадке фондового рынка биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Ux"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.Cme">
+            <summary>
+            Информация о площадке биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Cme"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.Cce">
+            <summary>
+            Информация о площадке биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Cce"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.Cbot">
+            <summary>
+            Информация о площадке биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Cbot"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.Nymex">
+            <summary>
+            Информация о площадке биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Nymex"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.Amex">
+            <summary>
+            Информация о площадке биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Amex"/>.
             </summary>
         </member>
         <member name="P:StockSharp.BusinessEntities.ExchangeBoard.Nyse">
@@ -1713,6 +2266,11 @@
         <member name="P:StockSharp.BusinessEntities.ExchangeBoard.Nasdaq">
             <summary>
             Информация о площадке биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Nasdaq"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.Nqlx">
+            <summary>
+            Информация о площадке биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Nqlx"/>.
             </summary>
         </member>
         <member name="P:StockSharp.BusinessEntities.ExchangeBoard.Lse">
@@ -1835,6 +2393,11 @@
             Информация о площадке биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Tase"/>.
             </summary>
         </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.Lmax">
+            <summary>
+            Информация о площадке биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Lmax"/>.
+            </summary>
+        </member>
         <member name="P:StockSharp.BusinessEntities.ExchangeBoard.Code">
             <summary>
             Код площадки.
@@ -1878,6 +2441,16 @@
             <remarks>
             Необходима в случае хранения в программе дополнительной информации, ассоциированной с биржей.
             </remarks>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.IsMicex">
+            <summary>
+            Является ли площадка ММВБ площадкой.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.IsUxStock">
+            <summary>
+            Является ли площадка площадкой фондового рынка биржи UX.
+            </summary>
         </member>
         <member name="T:StockSharp.BusinessEntities.ExtandableEntityHelper">
             <summary>
@@ -1952,7 +2525,7 @@
         <member name="M:StockSharp.BusinessEntities.ITrader.LookupSecurities(StockSharp.BusinessEntities.Security)">
             <summary>
             Найти инструменты, соответствующие фильтру <paramref name="criteria"/>.
-            Найденные инструменты будут переданы через событие <see cref="E:StockSharp.BusinessEntities.ITrader.NewSecurities"/>.
+            Найденные инструменты будут переданы через событие <see cref="E:StockSharp.BusinessEntities.ITrader.LookupResult"/>.
             </summary>
             <param name="criteria">Инструмент, поля которого будут использоваться в качестве фильтра.</param>
         </member>
@@ -2001,14 +2574,14 @@
             </summary>
             <param name="order">Заявка, которую нужно отменить.</param>
         </member>
-        <member name="M:StockSharp.BusinessEntities.ITrader.CancelOrders(System.Nullable{System.Boolean},StockSharp.BusinessEntities.Portfolio,System.Nullable{StockSharp.BusinessEntities.OrderDirections},System.String,StockSharp.BusinessEntities.Security)">
+        <member name="M:StockSharp.BusinessEntities.ITrader.CancelOrders(System.Nullable{System.Boolean},StockSharp.BusinessEntities.Portfolio,System.Nullable{StockSharp.BusinessEntities.OrderDirections},StockSharp.BusinessEntities.ExchangeBoard,StockSharp.BusinessEntities.Security)">
             <summary>
             Отменить группу заявок на бирже по фильтру.
             </summary>
             <param name="isStopOrder">True, если нужно отменить только стоп-заявки, false - если только обычный и null - если оба типа.</param>
             <param name="portfolio">Портфель. Если значение равно null, то портфель не попадает в фильтр снятия заявок.</param>
             <param name="direction">Направление заявки. Если значение равно null, то направление не попадает в фильтр снятия заявок.</param>
-            <param name="classCode">Код класса. Если переданная строка пустая, то код не попадает в фильтр снятия заявок.</param>
+            <param name="board">Торговая площадка. Если значение равно null, то площадка не попадает в фильтр снятия заявок.</param>
             <param name="security">Инструмент. Если значение равно null, то инструмент не попадает в фильтр снятия заявок.</param>
         </member>
         <member name="M:StockSharp.BusinessEntities.ITrader.RegisterMarketDepth(StockSharp.BusinessEntities.Security)">
@@ -2072,6 +2645,16 @@
             Остановить получение новой информации по портфелю.
             </summary>
             <param name="portfolio">Портфель, по которому необходимо остановить получение новой информации.</param>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.ITrader.RegisterNews">
+            <summary>
+            Начать получать новости.
+            </summary>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.ITrader.UnRegisterNews">
+            <summary>
+            Остановить получение новостей.
+            </summary>
         </member>
         <member name="M:StockSharp.BusinessEntities.ITrader.IsSupport(StockSharp.BusinessEntities.Security)">
             <summary>
@@ -2180,6 +2763,11 @@
             Событие появления новых записей в логе заявок.
             </summary>
         </member>
+        <member name="E:StockSharp.BusinessEntities.ITrader.NewNews">
+            <summary>
+            Событие появления новости.
+            </summary>
+        </member>
         <member name="E:StockSharp.BusinessEntities.ITrader.Connected">
             <summary>
             Событие успешного подключения.
@@ -2209,6 +2797,11 @@
             <summary>
             Событие, сигнализирующее об изменении текущего времени на биржевых площадках <see cref="P:StockSharp.BusinessEntities.ITrader.ExchangeBoards"/>.
             Передается разница во времени, прошедшее с последнего вызова события. Первый раз событие передает значение <see cref="F:System.TimeSpan.Zero"/>.
+            </summary>
+        </member>
+        <member name="E:StockSharp.BusinessEntities.ITrader.LookupResult">
+            <summary>
+            Событие, передающее результат поиска, запущенного через метод <see cref="M:StockSharp.BusinessEntities.ITrader.LookupSecurities(StockSharp.BusinessEntities.Security)"/>.
             </summary>
         </member>
         <member name="P:StockSharp.BusinessEntities.ITrader.ExchangeBoards">
@@ -2260,6 +2853,11 @@
         <member name="P:StockSharp.BusinessEntities.ITrader.Positions">
             <summary>
             Получить все позиции.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ITrader.News">
+            <summary>
+            Все новости.
             </summary>
         </member>
         <member name="P:StockSharp.BusinessEntities.ITrader.IsConnected">
@@ -2701,6 +3299,11 @@
             Середина спреда.
             </summary>
         </member>
+        <member name="P:StockSharp.BusinessEntities.MarketDepthPair.IsFull">
+            <summary>
+            Пара котировок содержит <see cref="P:StockSharp.BusinessEntities.MarketDepthPair.Bid"/> и <see cref="P:StockSharp.BusinessEntities.MarketDepthPair.Ask"/>.
+            </summary>
+        </member>
         <member name="T:StockSharp.BusinessEntities.MyTrade">
             <summary>
             Собственная сделка.
@@ -2739,6 +3342,54 @@
             <remarks>
             Необходима в случае хранения в программе дополнительной информации, ассоциированной с собственной сделкой.
             Например, размер комиссии, валюту, тип сделки.
+            </remarks>
+        </member>
+        <member name="T:StockSharp.BusinessEntities.News">
+            <summary>
+            Новость.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.News.Id">
+            <summary>
+            Номер новости.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.News.ExchangeBoard">
+            <summary>
+            Биржевая площадка, для которой опубликована новость.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.News.Security">
+            <summary>
+            Инструмент, для которого опубликована новость.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.News.Source">
+            <summary>
+            Источник новости.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.News.Title">
+            <summary>
+            Заголовок.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.News.Message">
+            <summary>
+            Текст новости.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.News.Time">
+            <summary>
+            Время появления новости.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.News.ExtensionInfo">
+            <summary>
+            Расширенная информация.
+            </summary>
+            <remarks>
+            Необходима в случае хранения в программе дополнительной информации.
             </remarks>
         </member>
         <member name="T:StockSharp.BusinessEntities.OrderDirections">
@@ -2817,11 +3468,6 @@
         <member name="F:StockSharp.BusinessEntities.OrderTypes.Rps">
             <summary>
             Заявка на внебиржевую сделку.
-            </summary>
-        </member>
-        <member name="F:StockSharp.BusinessEntities.OrderTypes.Iceberg">
-            <summary>
-            Айсберг-заявка.
             </summary>
         </member>
         <member name="F:StockSharp.BusinessEntities.OrderTypes.Execute">
@@ -3057,7 +3703,7 @@
         </member>
         <member name="P:StockSharp.BusinessEntities.Order.VisibleVolume">
             <summary>
-            Видимое количество контрактов в заявке. Используется только при <see cref="P:StockSharp.BusinessEntities.Order.Type"/> равным <see cref="F:StockSharp.BusinessEntities.OrderTypes.Iceberg"/>.
+            Видимое количество контрактов в заявке.
             </summary>
         </member>
         <member name="P:StockSharp.BusinessEntities.Order.Direction">
@@ -4053,6 +4699,21 @@
             <summary>
             Закончить транзакцию на чтение данных, запущенную через <see cref="M:StockSharp.BusinessEntities.IAtomic.BeginRead(System.Boolean)"/>.
             </summary>
+        </member>
+        <member name="T:StockSharp.BusinessEntities.AtomicHelper">
+            <summary>
+            Вспомогательный класс для работы с <see cref="T:StockSharp.BusinessEntities.IAtomic"/>.
+            </summary>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.AtomicHelper.SafeRead``2(``0,System.Func{``0,``1})">
+            <summary>
+            Получить значение с автоматическим открытием транзакции на чтение.
+            </summary>
+            <typeparam name="TAtomic">Тип торгового объекта, реализующего <see cref="T:StockSharp.BusinessEntities.IAtomic"/>.</typeparam>
+            <typeparam name="TValue">Тип возвращаемого значения.</typeparam>
+            <param name="atomic">Торговый объект, реализующий <see cref="T:StockSharp.BusinessEntities.IAtomic"/>.</param>
+            <param name="getValue">Обработчик, возвращающие значение.</param>
+            <returns>Значение.</returns>
         </member>
         <member name="T:StockSharp.BusinessEntities.WorkingTime">
             <summary>
