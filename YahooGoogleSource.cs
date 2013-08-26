@@ -33,7 +33,7 @@ namespace StockSharp.Hydra
 
             [Category("Yahoo")]
             [DisplayName("Временной отступ")]
-            [Description("Временной отступ в днях от текущей даты, c которого необходимо загружать данные")]
+            [Description("Временной отступ в днях от текущей даты, начиная c которого необходимо загружать данные")]
             public int YahooOffset
             {
                 get { return ExtensionInfo["YahooOffset"].To<int>(); }
@@ -53,46 +53,13 @@ namespace StockSharp.Hydra
             [Category("Yahoo")]
             [DisplayName("Режим перезагрузки")]
             [Description("Начальная дата для перезагрузки всех данных")]
-            public bool Reload
+            public bool ReDownLoad
             {
-                get { return ExtensionInfo["Reload"].To<bool>(); }
-                set { ExtensionInfo["Reload"] = value; }
+                get { return ExtensionInfo["ReDownLoad"].To<bool>(); }
+                set { ExtensionInfo["ReDownLoad"] = value; }
             }
 		 
 
-            [Category("Yahoo")]
-            [DisplayName("Путь к файлу символов Nasdaq")]
-            [Description("Файл символов инструментов для загрузки")]
-            public string NasdaqSymbolsFile
-            {
-                get { return (string)ExtensionInfo["NasdaqSymbolsFile"]; }
-                set { ExtensionInfo["NasdaqSymbolsFile"] = value; }
-            }
-
-            [Category("Yahoo")]
-            [DisplayName("Путь к файлу символов NYSE")]
-            [Description("Файл символов инструментов для загрузки")]
-            public string NYSESymbolsFile
-            {
-                get { return (string)ExtensionInfo["NYSESymbolsFile"]; }
-                set { ExtensionInfo["NYSESymbolsFile"] = value; }
-            }
-            [Category("Yahoo")]
-            [DisplayName("Загружать инструменты NASDAQ")]
-            [Description("Загружать инструменты NASDAQ")]
-            public bool UseNASDAQ
-            {
-                get { return (bool)ExtensionInfo["UseNASDAQ"]; }
-                set { ExtensionInfo["UseNASDAQ"] = value; }
-            }
-            [Category("Yahoo")]
-            [DisplayName("Загружать инструменты NYSE")]
-            [Description("Загружать инструменты NYSE")]
-            public bool UseNYSE
-            {
-                get { return (bool)ExtensionInfo["UseNYSE"]; }
-                set { ExtensionInfo["UseNYSE"] = value; }
-            }
 
         }
 
@@ -110,11 +77,7 @@ namespace StockSharp.Hydra
             {
                 _settings.YahooOffset = 1;
                 _settings.StartFrom = new DateTime(1900,1,1);
-                _settings.NasdaqSymbolsFile = "\\nasdaqTickers.txt";
-                _settings.NYSESymbolsFile = "\\nyseTickers.txt";
-                _settings.UseNASDAQ = true;
-                _settings.UseNYSE = false;
-                _settings.Reload = true;
+               _settings.ReDownLoad = true;
             }
             
              _yahooGoogleSecurityStorage = new YahooGoogleSecurityStorage(SecurityStorage, EntityRegistry);
@@ -129,7 +92,7 @@ namespace StockSharp.Hydra
             else _selectedSecurities = Securities;
 
             DateTime startDate;
-            if (_settings.Reload) startDate = _settings.StartFrom;
+            if (_settings.ReDownLoad) startDate = _settings.StartFrom;
             else startDate = DateTime.Today - TimeSpan.FromDays(_settings.YahooOffset);
             var endDate = DateTime.Today;
 
@@ -187,7 +150,10 @@ namespace StockSharp.Hydra
                         this.AddInfoLog("Старт загрузки {0} свечек за {1} для {2}.", period, emptyDate.ToShortDateString(), security.Id);
 
                         var candles = _source.GetCandles(security, emptyDate, emptyDate, period);
-                        SaveCandles(security, period, candles);
+                        if (candles.Count() > 0)
+                        {
+                            SaveCandles(security, period, candles);
+                        }
                     }
                 }
             }
@@ -271,19 +237,14 @@ namespace StockSharp.Hydra
 
             var securities = new List<Security>();
 
-            if (_settings.UseNASDAQ)
-            if(_settings.NasdaqSymbolsFile.Length>0)
-            securities.AddRange(  _source.GetNASDAQNewSecurities(_settings.NasdaqSymbolsFile));
-            
-            if(_settings.UseNYSE)
-            if (_settings.NYSESymbolsFile.Length > 0)
-                securities.AddRange(_source.GetNYSENewSecurities(_settings.NYSESymbolsFile));
+           
+            securities.AddRange(  _source.GetSecuritiesFromTxt());
+             
 
             var timeframe = TimeSpan.FromDays(1);
             foreach (var security in securities)
             {
                
-
                 SetCandlePeriods(security, new[] {timeframe});
                 security.AddSource(typeof (Candle), this);
                 EntityRegistry.Securities.Save(security);
@@ -291,7 +252,6 @@ namespace StockSharp.Hydra
             }
 
             return securities;
-
 
 
 
