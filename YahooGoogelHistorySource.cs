@@ -311,6 +311,7 @@ namespace Yahoo
                           security.MinStepSize = 0.01m;
                           security.ShortName = code;
                           security.Code = code;
+                          security.Class = "YahooGoogleSource";
 
                           security.ExtensionInfo = new Dictionary<object, object>();
                           security.ExtensionInfo.Add(YahooSecurityIdField, code);
