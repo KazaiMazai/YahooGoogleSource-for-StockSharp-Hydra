@@ -21,8 +21,8 @@ namespace Yahoo
 {
       class YahooGoogelHistorySource : BaseHistorySource
       {
-          public static string YahooSecurityIdField= "YahooSecurityId";
-          public static string YahooMarketIdField = "YahooMarketId";
+        // public static string YahooSecurityIdField= "YahooSecurityId";
+        //  public static string YahooMarketIdField = "YahooMarketId";
           private  List<string> _errorSecurititesList = new List<string>();
 
           private DateTime _cachedBeginDate ;
@@ -312,11 +312,9 @@ namespace Yahoo
                           security.ShortName = code;
                           security.Code = code;
                           security.Class = "YahooGoogleSource";
-
                           security.ExtensionInfo = new Dictionary<object, object>();
-                          security.ExtensionInfo.Add(YahooSecurityIdField, code);
-                          security.ExtensionInfo.Add(YahooMarketIdField, security.ExchangeBoard.Code);
-                          security.ExtensionInfo.Add("LastCandleTime",(new DateTime(1900,1,1)).To<long>());
+ 
+                        
                           
                           SecurityStorage.Save(security);
 

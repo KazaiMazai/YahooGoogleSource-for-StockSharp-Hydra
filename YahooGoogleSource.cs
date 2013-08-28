@@ -217,17 +217,7 @@ namespace StockSharp.Hydra
 
             return tempPath;
         }
-        public   void SetCandlePeriods(  Security security, IEnumerable<TimeSpan> periods)
-        {
-            if (security == null)
-                throw new ArgumentNullException("security");
-
-            if (periods == null)
-                throw new ArgumentNullException("periods");
-
-            security.ExtensionInfo["CandlePeriods"] = periods.Select(p => p.To<long>()).ToArray();
-        }
-
+      
        
         public IEnumerable<Security> GetNewSecurities( )
         {
@@ -245,7 +235,7 @@ namespace StockSharp.Hydra
             foreach (var security in securities)
             {
                
-                SetCandlePeriods(security, new[] {timeframe});
+               
                 security.AddSource(typeof (Candle), this);
                 EntityRegistry.Securities.Save(security);
                 
