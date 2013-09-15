@@ -68,9 +68,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>F:\проекты\S#\StockSharp_4.1.15_Sources\References\StockSharp.BusinessEntities.dll</HintPath>
     </Reference>
-    <Reference Include="StockSharp.Hydra.Core, Version=4.1.14.5, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="StockSharp.Hydra.Core, Version=4.1.5.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>F:\проекты\S#\Hydra\StockSharp.Hydra.Core.dll</HintPath>
+      <HintPath>F:\проекты\S#\Hydra 4.1.16.1\StockSharp.Hydra.Core.dll</HintPath>
     </Reference>
     <Reference Include="StockSharp.Logging, Version=4.1.12.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
