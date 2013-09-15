@@ -58,6 +58,18 @@
             </summary>
             <param name="message">Отладочное сообщение.</param>
         </member>
+        <member name="M:StockSharp.Logging.LogListener.Load(Ecng.Serialization.SettingsStorage)">
+            <summary>
+            Загрузить настройки.
+            </summary>
+            <param name="storage">Хранилище настроек.</param>
+        </member>
+        <member name="M:StockSharp.Logging.LogListener.Save(Ecng.Serialization.SettingsStorage)">
+            <summary>
+            Сохранить настройки.
+            </summary>
+            <param name="storage">Хранилище настроек.</param>
+        </member>
         <member name="P:StockSharp.Logging.LogListener.Filters">
             <summary>
             Фильтры сообщений, которыми указывается, какие сообщения следует обрабатывать.
@@ -100,12 +112,10 @@
             Логгер, отсылающий данные на email. 
             </summary>
         </member>
-        <member name="M:StockSharp.Logging.EmailLogListener.#ctor(System.String,System.String)">
+        <member name="M:StockSharp.Logging.EmailLogListener.#ctor">
             <summary>
             Создать <see cref="T:StockSharp.Logging.EmailLogListener"/>.
             </summary>
-            <param name="from">Адрес, от имени которого будет отравлено сообщение.</param>
-            <param name="to">Адрес, куда будет отравлено сообщение.</param>
         </member>
         <member name="M:StockSharp.Logging.EmailLogListener.CreateClient">
             <summary>
@@ -126,6 +136,18 @@
             </summary>
             <param name="messages">Отладочные сообщения.</param>
         </member>
+        <member name="M:StockSharp.Logging.EmailLogListener.Load(Ecng.Serialization.SettingsStorage)">
+            <summary>
+            Загрузить настройки.
+            </summary>
+            <param name="storage">Хранилище настроек.</param>
+        </member>
+        <member name="M:StockSharp.Logging.EmailLogListener.Save(Ecng.Serialization.SettingsStorage)">
+            <summary>
+            Сохранить настройки.
+            </summary>
+            <param name="storage">Хранилище настроек.</param>
+        </member>
         <member name="P:StockSharp.Logging.EmailLogListener.From">
             <summary>
             Адрес, от имени которого будет отравлено сообщение.
@@ -138,7 +160,7 @@
         </member>
         <member name="T:StockSharp.Logging.ErrorLoggingAttribute">
             <summary>
-            Атрибут для WCF сервер, который автоматически записывает все ошибки в <see cref="M:StockSharp.Logging.LoggingHelper.LogError(System.Exception)"/>.
+            Атрибут для WCF сервер, который автоматически записывает все ошибки в <see cref="M:StockSharp.Logging.LoggingHelper.LogError(System.Exception,System.String)"/>.
             </summary>
         </member>
         <member name="T:StockSharp.Logging.ExternalLogListener">
@@ -211,6 +233,18 @@
             Записать сообщения.
             </summary>
             <param name="messages">Отладочные сообщения.</param>
+        </member>
+        <member name="M:StockSharp.Logging.FileLogListener.Load(Ecng.Serialization.SettingsStorage)">
+            <summary>
+            Загрузить настройки.
+            </summary>
+            <param name="storage">Хранилище настроек.</param>
+        </member>
+        <member name="M:StockSharp.Logging.FileLogListener.Save(Ecng.Serialization.SettingsStorage)">
+            <summary>
+            Сохранить настройки.
+            </summary>
+            <param name="storage">Хранилище настроек.</param>
         </member>
         <member name="M:StockSharp.Logging.FileLogListener.DisposeManaged">
             <summary>
@@ -361,6 +395,18 @@
             <summary>
             Освободить занятые ресурсы.
             </summary>
+        </member>
+        <member name="M:StockSharp.Logging.BaseLogSource`1.Load(Ecng.Serialization.SettingsStorage)">
+            <summary>
+            Загрузить настройки.
+            </summary>
+            <param name="storage">Хранилище настроек.</param>
+        </member>
+        <member name="M:StockSharp.Logging.BaseLogSource`1.Save(Ecng.Serialization.SettingsStorage)">
+            <summary>
+            Сохранить настройки.
+            </summary>
+            <param name="storage">Хранилище настроек.</param>
         </member>
         <member name="P:StockSharp.Logging.BaseLogSource`1.Id">
             <summary>
@@ -541,6 +587,14 @@
             <param name="receiver">Получатель логов.</param>
             <param name="exception">Описание ошибки.</param>
         </member>
+        <member name="M:StockSharp.Logging.LoggingHelper.AddErrorLog(StockSharp.Logging.ILogReceiver,System.Exception,System.String)">
+            <summary>
+            Записать ошибку в лог.
+            </summary>
+            <param name="receiver">Получатель логов.</param>
+            <param name="exception">Описание ошибки.</param>
+            <param name="message">Текстовое сообщение.</param>
+        </member>
         <member name="M:StockSharp.Logging.LoggingHelper.AddErrorLog(StockSharp.Logging.ILogReceiver,System.String,System.Object[])">
             <summary>
             Записать ошибку в лог.
@@ -551,11 +605,12 @@
             Используются в случае, если message является форматирующей строкой.
             Подробнее, <see cref="M:System.String.Format(System.String,System.Object[])"/>.</param>
         </member>
-        <member name="M:StockSharp.Logging.LoggingHelper.LogError(System.Exception)">
+        <member name="M:StockSharp.Logging.LoggingHelper.LogError(System.Exception,System.String)">
             <summary>
             Записать ошибку в <see cref="P:StockSharp.Logging.LogManager.Application"/>.
             </summary>
             <param name="error">Ошибка.</param>
+            <param name="message">Текстовое сообщение.</param>
         </member>
         <member name="P:StockSharp.Logging.LoggingHelper.Now">
             <summary>
@@ -622,6 +677,18 @@
             <summary>
             Освободить ресурсы.
             </summary>
+        </member>
+        <member name="M:StockSharp.Logging.LogManager.Load(Ecng.Serialization.SettingsStorage)">
+            <summary>
+            Загрузить настройки.
+            </summary>
+            <param name="storage">Хранилище настроек.</param>
+        </member>
+        <member name="M:StockSharp.Logging.LogManager.Save(Ecng.Serialization.SettingsStorage)">
+            <summary>
+            Сохранить настройки.
+            </summary>
+            <param name="storage">Хранилище настроек.</param>
         </member>
         <member name="P:StockSharp.Logging.LogManager.Application">
             <summary>
@@ -741,17 +808,28 @@
             Логгер, проигрывающий музыку при получении сообщения.
             </summary>
         </member>
-        <member name="M:StockSharp.Logging.SoundLogListener.#ctor(System.String)">
+        <member name="M:StockSharp.Logging.SoundLogListener.#ctor">
             <summary>
             Создать <see cref="T:StockSharp.Logging.SoundLogListener"/>.
             </summary>
-            <param name="fileName">Путь к файлу со звуком, которое будет проиграно при получении сообщения.</param>
         </member>
         <member name="M:StockSharp.Logging.SoundLogListener.OnWriteMessages(System.Collections.Generic.IEnumerable{StockSharp.Logging.LogMessage})">
             <summary>
             Записать сообщения.
             </summary>
             <param name="messages">Отладочные сообщения.</param>
+        </member>
+        <member name="M:StockSharp.Logging.SoundLogListener.Load(Ecng.Serialization.SettingsStorage)">
+            <summary>
+            Загрузить настройки.
+            </summary>
+            <param name="storage">Хранилище настроек.</param>
+        </member>
+        <member name="M:StockSharp.Logging.SoundLogListener.Save(Ecng.Serialization.SettingsStorage)">
+            <summary>
+            Сохранить настройки.
+            </summary>
+            <param name="storage">Хранилище настроек.</param>
         </member>
         <member name="P:StockSharp.Logging.SoundLogListener.FileName">
             <summary>
@@ -773,6 +851,18 @@
             Записать сообщения.
             </summary>
             <param name="messages">Отладочные сообщения.</param>
+        </member>
+        <member name="M:StockSharp.Logging.SpeechLogListener.Load(Ecng.Serialization.SettingsStorage)">
+            <summary>
+            Загрузить настройки.
+            </summary>
+            <param name="storage">Хранилище настроек.</param>
+        </member>
+        <member name="M:StockSharp.Logging.SpeechLogListener.Save(Ecng.Serialization.SettingsStorage)">
+            <summary>
+            Сохранить настройки.
+            </summary>
+            <param name="storage">Хранилище настроек.</param>
         </member>
         <member name="P:StockSharp.Logging.SpeechLogListener.Volume">
             <summary>

@@ -908,6 +908,7 @@
       <summary>
             Получить все свечки на период <paramref name="time" />.
             </summary>
+      <typeparam name="TCandle">Тип свечек.</typeparam>
       <param name="series">Серия свечек.</param>
       <param name="time">Период свечки.</param>
       <returns>Свечки.</returns>
@@ -916,6 +917,7 @@
       <summary>
             Получить все свечки.
             </summary>
+      <typeparam name="TCandle">Тип свечек.</typeparam>
       <param name="series">Серия свечек.</param>
       <returns>Свечки.</returns>
     </member>
@@ -923,6 +925,7 @@
       <summary>
             Получить свечки по диапазону дат.
             </summary>
+      <typeparam name="TCandle">Тип свечек.</typeparam>
       <param name="series">Серия свечек.</param>
       <param name="timeRange">Диапазон дат, в которые должны входить свечки. Учитывается значение <see cref="P:StockSharp.Algo.Candles.Candle.OpenTime" />.</param>
       <returns>Найденные свечки.</returns>
@@ -931,6 +934,7 @@
       <summary>
             Получить свечки по общему количеству.
             </summary>
+      <typeparam name="TCandle">Тип свечек.</typeparam>
       <param name="series">Серия свечек.</param>
       <param name="candleCount">Количество свечек, которое необходимо вернуть.</param>
       <returns>Найденные свечки.</returns>
@@ -939,6 +943,7 @@
       <summary>
             Получить свечку по индексу.
             </summary>
+      <typeparam name="TCandle">Тип свечек.</typeparam>
       <param name="series">Серия свечек.</param>
       <param name="candleIndex">Порядковый номер свечки с конца.</param>
       <returns>Найденая свечка. Если свечки не существует, то будет возвращено null.</returns>
@@ -955,6 +960,7 @@
       <summary>
             Получить текущую свечку.
             </summary>
+      <typeparam name="TCandle">Тип свечек.</typeparam>
       <param name="series">Серия свечек.</param>
       <returns>Найденная свечка. Если свечка не существует, то будет возвращено null.</returns>
     </member>
@@ -962,6 +968,7 @@
       <summary>
             Получить серию свечек по заданным параметрам.
             </summary>
+      <typeparam name="TCandle">Тип свечек.</typeparam>
       <param name="manager">Менеджер свечек.</param>
       <param name="security">Инструмент, по которому нужно фильтровать сделки для формирования свечек.</param>
       <param name="arg">Параметр свечки.</param>
@@ -1023,10 +1030,18 @@
       <param name="series">Серия свечек.</param>
       <returns>Свечки.</returns>
     </member>
+    <member name="M:StockSharp.Algo.Candles.CandleHelper.CandlesToTicks(Ecng.Collections.IEnumerableEx{StockSharp.Algo.Candles.Candle})">
+      <summary>
+            Построить тики из свечек.
+            </summary>
+      <param name="candles">Свечки.</param>
+      <returns>Сделки.</returns>
+    </member>
     <member name="M:StockSharp.Algo.Candles.CandleHelper.IsCandlesRegistered``1(StockSharp.Algo.Candles.ICandleManager,StockSharp.BusinessEntities.Security,System.Object)">
       <summary>
             Зарегистрирована ли группировка свечек по определённому признаку.
             </summary>
+      <typeparam name="TCandle">Тип свечек.</typeparam>
       <param name="manager">Менеджер свечек.</param>
       <param name="security">Инструмент, для которого зарегистрирована группировка.</param>
       <param name="arg">Параметр свечки.</param>
@@ -1188,6 +1203,26 @@
       <param name="range">Заданный отрезок времени, для которого нужно получить количество временных интервалов.</param>
       <param name="timeFrame">Размер временного интервала.</param>
       <returns>Полученное количество временных интервалов.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.Candles.CandleHelper.GetValueArea(System.Collections.Generic.IEnumerable{StockSharp.Algo.Candles.Candle})">
+      <summary>
+            Рассчитать <see cref="T:StockSharp.Algo.Candles.VolumePriceStatistics.ValueArea" /> для группы свечек.
+            </summary>
+      <param name="candles">Свечки.</param>
+      <returns>
+        <see cref="T:StockSharp.Algo.Candles.VolumePriceStatistics.ValueArea" />.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.Candles.CandleHelper.StartRealTime``1(``0,Ecng.Collections.CachedSynchronizedSet{StockSharp.Algo.Candles.CandleSeries},System.TimeSpan,System.Action{StockSharp.Algo.Candles.CandleSeries,Ecng.ComponentModel.Range{System.DateTime}},System.TimeSpan)">
+      <summary>
+            Запустить таймер получения из переданного <paramref name="trader" /> свечек реального времени.
+            </summary>
+      <typeparam name="TTrader">Тип шлюза, реализующего <see cref="T:StockSharp.Algo.Candles.IExternalCandleSource" />.</typeparam>
+      <param name="trader">Шлюз, реализующий <see cref="T:StockSharp.Algo.Candles.IExternalCandleSource" />.</param>
+      <param name="registeredSeries">Все зарегистрированные серии свечек.</param>
+      <param name="offset">Временной отступ для нового запроса получение новой свечки. Необходим для того, чтобы сервер успел сформировать данные в своем хранилище свечек.</param>
+      <param name="requestNewCandles">Обработчик, получающий новые свечки.</param>
+      <param name="interval">Периодичность обновления данных.</param>
+      <returns>Созданный таймер.</returns>
     </member>
     <member name="T:StockSharp.Algo.Candles.Compression.ConvertableCandleBuilderSource`1">
       <summary>
@@ -1368,6 +1403,11 @@
     <member name="P:StockSharp.Algo.Candles.Candle.State">
       <summary>
             Состояние.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Algo.Candles.Candle.VolumeProfileInfo">
+      <summary>
+            VolumeProfile инфо.
             </summary>
     </member>
     <member name="T:StockSharp.Algo.Candles.TimeFrameCandle">
@@ -2023,7 +2063,7 @@
     </member>
     <member name="T:StockSharp.Algo.Candles.IExternalCandleSource">
       <summary>
-            Внешний источник свечек (например, шлюз <see cref="T:StockSharp.BusinessEntities.ITrader" />, предоставляющий возможность получения готовых исторических свечек).
+            Внешний источник свечек (например, шлюз <see cref="T:StockSharp.BusinessEntities.ITrader" />, предоставляющий возможность получения готовых свечек).
             </summary>
     </member>
     <member name="M:StockSharp.Algo.Candles.IExternalCandleSource.GetSupportedRanges(StockSharp.Algo.Candles.CandleSeries)">
@@ -2033,23 +2073,23 @@
       <param name="series">Серия свечек.</param>
       <returns>Временные диапазоны.</returns>
     </member>
-    <member name="M:StockSharp.Algo.Candles.IExternalCandleSource.SubscribeHistoricalCandles(StockSharp.Algo.Candles.CandleSeries,System.DateTime,System.DateTime)">
+    <member name="M:StockSharp.Algo.Candles.IExternalCandleSource.SubscribeCandles(StockSharp.Algo.Candles.CandleSeries,System.DateTime,System.DateTime)">
       <summary>
-            Подписаться на получение исторических значения инструмента с заданной периодичностью.
+            Подписаться на получение свечек.
             </summary>
       <param name="series">Серия свечек.</param>
       <param name="from">Начальная дата, с которой необходимо получать данные.</param>
       <param name="to">Конечная дата, до которой необходимо получать данные.</param>
     </member>
-    <member name="M:StockSharp.Algo.Candles.IExternalCandleSource.UnSubscribeHistoricalCandles(StockSharp.Algo.Candles.CandleSeries)">
+    <member name="M:StockSharp.Algo.Candles.IExternalCandleSource.UnSubscribeCandles(StockSharp.Algo.Candles.CandleSeries)">
       <summary>
-            Остановить подписку получения исторических данных, ранее созданную через <see cref="M:StockSharp.Algo.Candles.IExternalCandleSource.SubscribeHistoricalCandles(StockSharp.Algo.Candles.CandleSeries,System.DateTime,System.DateTime)" />.
+            Остановить подписку получения свечек, ранее созданную через <see cref="M:StockSharp.Algo.Candles.IExternalCandleSource.SubscribeCandles(StockSharp.Algo.Candles.CandleSeries,System.DateTime,System.DateTime)" />.
             </summary>
       <param name="series">Серия свечек.</param>
     </member>
-    <member name="E:StockSharp.Algo.Candles.IExternalCandleSource.NewHistoricalCandles">
+    <member name="E:StockSharp.Algo.Candles.IExternalCandleSource.NewCandles">
       <summary>
-            Событие появления новых исторических свечек, полученных после подписки через <see cref="M:StockSharp.Algo.Candles.IExternalCandleSource.SubscribeHistoricalCandles(StockSharp.Algo.Candles.CandleSeries,System.DateTime,System.DateTime)" />.
+            Событие появления новых свечек, полученных после подписки через <see cref="M:StockSharp.Algo.Candles.IExternalCandleSource.SubscribeCandles(StockSharp.Algo.Candles.CandleSeries,System.DateTime,System.DateTime)" />.
             </summary>
     </member>
     <member name="T:StockSharp.Algo.Candles.StorageCandleSource">
@@ -2101,6 +2141,246 @@
     <member name="P:StockSharp.Algo.Candles.StorageCandleSource.Drive">
       <summary>
             Хранилище, которое используется по-умолчанию. По умолчанию используется <see cref="P:StockSharp.Algo.Storages.IStorageRegistry.DefaultDrive" />.
+            </summary>
+    </member>
+    <member name="T:StockSharp.Algo.Candles.VolumePriceStatistics.PriceLevel">
+      <summary>
+            Ценовой уровень.
+            </summary>
+    </member>
+    <member name="M:StockSharp.Algo.Candles.VolumePriceStatistics.PriceLevel.#ctor(System.Decimal)">
+      <summary>
+            Создать <see cref="T:StockSharp.Algo.Candles.VolumePriceStatistics.PriceLevel" />.
+            </summary>
+      <param name="price">Цена.</param>
+    </member>
+    <member name="M:StockSharp.Algo.Candles.VolumePriceStatistics.PriceLevel.#ctor(System.Decimal,System.Collections.Generic.List{System.Decimal},System.Collections.Generic.List{System.Decimal})">
+      <summary>
+            Создать <see cref="T:StockSharp.Algo.Candles.VolumePriceStatistics.PriceLevel" />.
+            </summary>
+      <param name="price">Цена.</param>
+      <param name="buyVolumes">Коллекция объемов на покупку.</param>
+      <param name="sellVolumes">Коллекция объемов на продажу.</param>
+    </member>
+    <member name="M:StockSharp.Algo.Candles.VolumePriceStatistics.PriceLevel.Update(StockSharp.Algo.Candles.Compression.ICandleBuilderSourceValue)">
+      <summary>
+            Обновить ценовой уровень новым значением.
+            </summary>
+      <param name="value">Значение.</param>
+    </member>
+    <member name="P:StockSharp.Algo.Candles.VolumePriceStatistics.PriceLevel.Price">
+      <summary>
+            Цена.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Algo.Candles.VolumePriceStatistics.PriceLevel.BuyVolume">
+      <summary>
+            Объем покупок.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Algo.Candles.VolumePriceStatistics.PriceLevel.SellVolume">
+      <summary>
+            Объем продаж.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Algo.Candles.VolumePriceStatistics.PriceLevel.BuyCount">
+      <summary>
+            Количество покупок.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Algo.Candles.VolumePriceStatistics.PriceLevel.SellCount">
+      <summary>
+            Количество продаж.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Algo.Candles.VolumePriceStatistics.PriceLevel.BuyVolumes">
+      <summary>
+            Коллекция объемов на покупку.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Algo.Candles.VolumePriceStatistics.PriceLevel.SellVolumes">
+      <summary>
+            Коллекция объемов на продажу.
+            </summary>
+    </member>
+    <member name="T:StockSharp.Algo.Candles.VolumePriceStatistics.ValueArea">
+      <summary>
+            Область стоимости.
+            </summary>
+    </member>
+    <member name="M:StockSharp.Algo.Candles.VolumePriceStatistics.ValueArea.#ctor(System.Collections.Generic.IEnumerable{StockSharp.Algo.Candles.VolumePriceStatistics.PriceLevel})">
+      <summary>
+            Создать <see cref="T:StockSharp.Algo.Candles.VolumePriceStatistics.ValueArea" /></summary>
+      <param name="priceLevels">Коллекция <see cref="T:StockSharp.Algo.Candles.VolumePriceStatistics.PriceLevel" /> для которых необходимо рассчитать область стоимости.</param>
+    </member>
+    <member name="M:StockSharp.Algo.Candles.VolumePriceStatistics.ValueArea.Calculate">
+      <summary>
+            Рассчитать область стоимости .
+            </summary>
+    </member>
+    <member name="P:StockSharp.Algo.Candles.VolumePriceStatistics.ValueArea.VolumePercent">
+      <summary>
+            Процент от общего объема(по умолчанию 70%).
+            </summary>
+    </member>
+    <member name="P:StockSharp.Algo.Candles.VolumePriceStatistics.ValueArea.PriceLevels">
+      <summary>
+            Ценовые уровни.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Algo.Candles.VolumePriceStatistics.ValueArea.VAH">
+      <summary>
+            Верхний ценовой уровень.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Algo.Candles.VolumePriceStatistics.ValueArea.VAL">
+      <summary>
+            Нижний ценовой уровень.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Algo.Candles.VolumePriceStatistics.ValueArea.POC">
+      <summary>
+            POC.
+            </summary>
+    </member>
+    <member name="T:StockSharp.Algo.Candles.VolumePriceStatistics.VolumePriceStatisticHelper">
+      <summary>
+            Вспомогательный класс для работы с <see cref="T:StockSharp.Algo.Candles.VolumePriceStatistics.VolumeProfile" />.
+            </summary>
+    </member>
+    <member name="M:StockSharp.Algo.Candles.VolumePriceStatistics.VolumePriceStatisticHelper.TotalBuyVolume(StockSharp.Algo.Candles.VolumePriceStatistics.VolumeProfile)">
+      <summary>
+            Суммарный объем покупок в <see cref="T:StockSharp.Algo.Candles.VolumePriceStatistics.VolumeProfile" />.
+            </summary>
+      <param name="volumeProfile">Профиль объема.</param>
+      <returns>Суммарный объем покупок.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.Candles.VolumePriceStatistics.VolumePriceStatisticHelper.TotalSellVolume(StockSharp.Algo.Candles.VolumePriceStatistics.VolumeProfile)">
+      <summary>
+            Суммарный объем продаж в <see cref="T:StockSharp.Algo.Candles.VolumePriceStatistics.VolumeProfile" />.
+            </summary>
+      <param name="volumeProfile">Профиль объема.</param>
+      <returns>Суммарный объем продаж.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.Candles.VolumePriceStatistics.VolumePriceStatisticHelper.TotalBuyCount(StockSharp.Algo.Candles.VolumePriceStatistics.VolumeProfile)">
+      <summary>
+            Суммарное количество покупок в <see cref="T:StockSharp.Algo.Candles.VolumePriceStatistics.VolumeProfile" />.
+            </summary>
+      <param name="volumeProfile">Профиль объема.</param>
+      <returns>Суммарное количество покупок.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.Candles.VolumePriceStatistics.VolumePriceStatisticHelper.TotalSellCount(StockSharp.Algo.Candles.VolumePriceStatistics.VolumeProfile)">
+      <summary>
+            Суммарное количество продаж в <see cref="T:StockSharp.Algo.Candles.VolumePriceStatistics.VolumeProfile" />.
+            </summary>
+      <param name="volumeProfile">Профиль объема.</param>
+      <returns>Суммарное кол-во продаж.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.Candles.VolumePriceStatistics.VolumePriceStatisticHelper.POC(StockSharp.Algo.Candles.VolumePriceStatistics.VolumeProfile)">
+      <summary>
+            POC (Point Of Control) возвращает <see cref="T:StockSharp.Algo.Candles.VolumePriceStatistics.PriceLevel" />, по которому прошел максимальный объем.
+            </summary>
+      <param name="volumeProfile">Профиль объема.</param>
+      <returns>
+        <see cref="T:StockSharp.Algo.Candles.VolumePriceStatistics.PriceLevel" />, по которому прошел максимальный объем.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.Candles.VolumePriceStatistics.VolumePriceStatisticHelper.BuyVolAbovePOC(StockSharp.Algo.Candles.VolumePriceStatistics.VolumeProfile)">
+      <summary>
+            Суммарный объем покупок, который прошел выше <see cref="M:StockSharp.Algo.Candles.VolumePriceStatistics.VolumePriceStatisticHelper.POC(StockSharp.Algo.Candles.VolumePriceStatistics.VolumeProfile)" />.
+            </summary>
+      <param name="volumeProfile">Профиль объема.</param>
+      <returns>Суммарный объем покупок.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.Candles.VolumePriceStatistics.VolumePriceStatisticHelper.BuyVolBelowPOC(StockSharp.Algo.Candles.VolumePriceStatistics.VolumeProfile)">
+      <summary>
+            Суммарный объем покупок, который прошел ниже <see cref="M:StockSharp.Algo.Candles.VolumePriceStatistics.VolumePriceStatisticHelper.POC(StockSharp.Algo.Candles.VolumePriceStatistics.VolumeProfile)" />.
+            </summary>
+      <param name="volumeProfile">Профиль объема.</param>
+      <returns>Суммарный объем покупок.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.Candles.VolumePriceStatistics.VolumePriceStatisticHelper.SellVolAbovePOC(StockSharp.Algo.Candles.VolumePriceStatistics.VolumeProfile)">
+      <summary>
+            Суммарный объем продаж, который прошел выше <see cref="M:StockSharp.Algo.Candles.VolumePriceStatistics.VolumePriceStatisticHelper.POC(StockSharp.Algo.Candles.VolumePriceStatistics.VolumeProfile)" />.
+            </summary>
+      <param name="volumeProfile">Профиль объема.</param>
+      <returns>Суммарный объем продаж.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.Candles.VolumePriceStatistics.VolumePriceStatisticHelper.SellVolBelowPOC(StockSharp.Algo.Candles.VolumePriceStatistics.VolumeProfile)">
+      <summary>
+            Суммарный объем продаж, который прошел ниже <see cref="M:StockSharp.Algo.Candles.VolumePriceStatistics.VolumePriceStatisticHelper.POC(StockSharp.Algo.Candles.VolumePriceStatistics.VolumeProfile)" />.
+            </summary>
+      <param name="volumeProfile">Профиль объема.</param>
+      <returns>Суммарный объем продаж.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.Candles.VolumePriceStatistics.VolumePriceStatisticHelper.VolumeAbovePOC(StockSharp.Algo.Candles.VolumePriceStatistics.VolumeProfile)">
+      <summary>
+            Суммарный объем, который прошел выше <see cref="M:StockSharp.Algo.Candles.VolumePriceStatistics.VolumePriceStatisticHelper.POC(StockSharp.Algo.Candles.VolumePriceStatistics.VolumeProfile)" />.
+            </summary>
+      <param name="volumeProfile">Профиль объема.</param>
+      <returns>Суммарный объем.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.Candles.VolumePriceStatistics.VolumePriceStatisticHelper.VolumeBelowPOC(StockSharp.Algo.Candles.VolumePriceStatistics.VolumeProfile)">
+      <summary>
+            Суммарный объем, который прошел ниже <see cref="M:StockSharp.Algo.Candles.VolumePriceStatistics.VolumePriceStatisticHelper.POC(StockSharp.Algo.Candles.VolumePriceStatistics.VolumeProfile)" />.
+            </summary>
+      <param name="volumeProfile">Профиль объема.</param>
+      <returns>Суммарный объем.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.Candles.VolumePriceStatistics.VolumePriceStatisticHelper.Delta(StockSharp.Algo.Candles.VolumePriceStatistics.VolumeProfile)">
+      <summary>
+            Разница между <see cref="M:StockSharp.Algo.Candles.VolumePriceStatistics.VolumePriceStatisticHelper.TotalBuyVolume(StockSharp.Algo.Candles.VolumePriceStatistics.VolumeProfile)" /> и <see cref="M:StockSharp.Algo.Candles.VolumePriceStatistics.VolumePriceStatisticHelper.TotalSellVolume(StockSharp.Algo.Candles.VolumePriceStatistics.VolumeProfile)" />.
+            </summary>
+      <param name="volumeProfile">Профиль объема.</param>
+      <returns>Дельта.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.Candles.VolumePriceStatistics.VolumePriceStatisticHelper.PriceLevelOfMaxDelta(StockSharp.Algo.Candles.VolumePriceStatistics.VolumeProfile)">
+      <summary>
+            Возвращает ценовой уровень, по которому прошла максимальная <see cref="M:StockSharp.Algo.Candles.VolumePriceStatistics.VolumePriceStatisticHelper.Delta(StockSharp.Algo.Candles.VolumePriceStatistics.VolumeProfile)" />.
+            </summary>
+      <param name="volumeProfile">Профиль объема.</param>
+      <returns>
+        <see cref="T:StockSharp.Algo.Candles.VolumePriceStatistics.PriceLevel" />.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.Candles.VolumePriceStatistics.VolumePriceStatisticHelper.PriceLevelOfMinDelta(StockSharp.Algo.Candles.VolumePriceStatistics.VolumeProfile)">
+      <summary>
+            Возвращает ценовой уровень, по которому прошла минимальная <see cref="M:StockSharp.Algo.Candles.VolumePriceStatistics.VolumePriceStatisticHelper.Delta(StockSharp.Algo.Candles.VolumePriceStatistics.VolumeProfile)" />.
+            </summary>
+      <param name="volumeProfile">Профиль объема</param>
+      <returns>Ценовой уровень.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.Candles.VolumePriceStatistics.VolumePriceStatisticHelper.DeltaAbovePOC(StockSharp.Algo.Candles.VolumePriceStatistics.VolumeProfile)">
+      <summary>
+            Суммарная Дельта, которая прошла выше <see cref="M:StockSharp.Algo.Candles.VolumePriceStatistics.VolumePriceStatisticHelper.POC(StockSharp.Algo.Candles.VolumePriceStatistics.VolumeProfile)" />.
+            </summary>
+      <param name="volumeProfile">Профиль объема.</param>
+      <returns>Дельта.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.Candles.VolumePriceStatistics.VolumePriceStatisticHelper.DeltaBelowPOC(StockSharp.Algo.Candles.VolumePriceStatistics.VolumeProfile)">
+      <summary>
+            Суммарная Дельта, которая прошла ниже <see cref="M:StockSharp.Algo.Candles.VolumePriceStatistics.VolumePriceStatisticHelper.POC(StockSharp.Algo.Candles.VolumePriceStatistics.VolumeProfile)" />.
+            </summary>
+      <param name="volumeProfile">Профиль объема.</param>
+      <returns>Дельта.</returns>
+    </member>
+    <member name="T:StockSharp.Algo.Candles.VolumePriceStatistics.VolumeProfile">
+      <summary>
+            Профиль объема.
+            </summary>
+    </member>
+    <member name="M:StockSharp.Algo.Candles.VolumePriceStatistics.VolumeProfile.#ctor">
+      <summary>
+            Создать <see cref="T:StockSharp.Algo.Candles.VolumePriceStatistics.VolumeProfile" />.
+            </summary>
+    </member>
+    <member name="M:StockSharp.Algo.Candles.VolumePriceStatistics.VolumeProfile.Update(StockSharp.Algo.Candles.Compression.ICandleBuilderSourceValue)">
+      <summary>
+            Обновить профиль новым значением.
+            </summary>
+      <param name="value">Значение.</param>
+    </member>
+    <member name="P:StockSharp.Algo.Candles.VolumePriceStatistics.VolumeProfile.PriceLevels">
+      <summary>
+            Ценовые уровни.
             </summary>
     </member>
     <member name="T:StockSharp.Algo.Commissions.CommissionManager">
@@ -2887,7 +3167,7 @@
       <param name="type">Тип опциона.</param>
       <returns>Отфильтрованные опционы.</returns>
     </member>
-    <member name="M:StockSharp.Algo.Derivatives.DerivativesHelper.Filter(System.Collections.Generic.IEnumerable{StockSharp.BusinessEntities.Security},StockSharp.BusinessEntities.Security)">
+    <member name="M:StockSharp.Algo.Derivatives.DerivativesHelper.FilterByUnderlying(System.Collections.Generic.IEnumerable{StockSharp.BusinessEntities.Security},StockSharp.BusinessEntities.Security)">
       <summary>
             Отфильтровать инструменты по базовому активу.
             </summary>
@@ -3202,165 +3482,51 @@
       <param name="password">Пароль.</param>
       <returns>Допустимые действия.</returns>
     </member>
-    <member name="T:StockSharp.Algo.History.IQFeed.IQFeedAddresses">
+    <member name="T:StockSharp.Algo.ISecurityProvider">
       <summary>
-            Адреса IQ Connect.
+            Интерфейс для доступа к поставщику информации об инструментах.
             </summary>
     </member>
-    <member name="F:StockSharp.Algo.History.IQFeed.IQFeedAddresses.DefaultAdminAddress">
+    <member name="M:StockSharp.Algo.ISecurityProvider.LoadBy(System.String,System.Object)">
       <summary>
-            Адрес по-умолчанию для получения служебных данных.
+            Получить инструмент по значению его поля.
+            </summary>
+      <param name="fieldName">Название поля инструмента.</param>
+      <param name="fieldValue">Значение поля инструмента.</param>
+      <returns>Полученный инструмент. Если инструмент по данным критериям отсутствует, то будет возвращено null.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.ISecurityProvider.Lookup(StockSharp.BusinessEntities.Security)">
+      <summary>
+            Найти инструменты, соответствующие фильтру <paramref name="criteria" />.
+            </summary>
+      <param name="criteria">Инструмент, поля которого будут использоваться в качестве фильтра.</param>
+      <returns>Найденные инструменты.</returns>
+    </member>
+    <member name="T:StockSharp.Algo.TraderSecurityProvider">
+      <summary>
+            Поставщик информации об инструментах, получающих данные из <see cref="T:StockSharp.BusinessEntities.ITrader" />.
             </summary>
     </member>
-    <member name="F:StockSharp.Algo.History.IQFeed.IQFeedAddresses.DefaultLookupAddress">
+    <member name="M:StockSharp.Algo.TraderSecurityProvider.#ctor(StockSharp.BusinessEntities.ITrader)">
       <summary>
-            Адрес по-умолчанию для получения исторических данных.
+            Создать <see cref="T:StockSharp.Algo.TraderSecurityProvider" />.
             </summary>
+      <param name="trader">Шлюз к торговой системе.</param>
     </member>
-    <member name="F:StockSharp.Algo.History.IQFeed.IQFeedAddresses.DefaultLevel2Address">
+    <member name="M:StockSharp.Algo.TraderSecurityProvider.LoadBy(System.String,System.Object)">
       <summary>
-            Адрес по-умолчанию для получения данных по Level2.
+            Получить инструмент по значению его поля.
             </summary>
+      <param name="fieldName">Название поля инструмента.</param>
+      <param name="fieldValue">Значение поля инструмента.</param>
+      <returns>Полученный инструмент. Если инструмент по данным критериям отсутствует, то будет возвращено null.</returns>
     </member>
-    <member name="F:StockSharp.Algo.History.IQFeed.IQFeedAddresses.DefaultLevel1Address">
+    <member name="M:StockSharp.Algo.TraderSecurityProvider.Lookup(StockSharp.BusinessEntities.Security)">
       <summary>
-            Адрес по-умолчанию для получения данных по Level1.
+            Найти инструменты, соответствующие фильтру <paramref name="criteria" />.
             </summary>
-    </member>
-    <member name="T:StockSharp.Algo.History.IQFeed.IQFeedHistorySource">
-      <summary>
-            Источник для скачивания исторических сделок через IQFeed API.
-            </summary>
-    </member>
-    <member name="T:StockSharp.Algo.History.BaseHistorySource">
-      <summary>
-            Базовый класс лоадеров данных.
-            </summary>
-    </member>
-    <member name="M:StockSharp.Algo.History.BaseHistorySource.#ctor(StockSharp.Algo.History.ISecurityStorage)">
-      <summary>
-            Инициализировать <see cref="T:StockSharp.Algo.History.BaseHistorySource" />.
-            </summary>
-      <param name="securityStorage">Интерфейс для доступа к хранилищу информации об инструментах.</param>
-    </member>
-    <member name="P:StockSharp.Algo.History.BaseHistorySource.SecurityIdGenerator">
-      <summary>
-            Генератор идентификаторов инструментов.
-            </summary>
-    </member>
-    <member name="P:StockSharp.Algo.History.BaseHistorySource.SecurityStorage">
-      <summary>
-            Интерфейс для доступа к хранилищу информации об инструментах.
-            </summary>
-    </member>
-    <member name="P:StockSharp.Algo.History.BaseHistorySource.DumpFolder">
-      <summary>
-            Путь к директории, куда будут сохранятся скаченные файлы.
-            </summary>
-      <remarks>
-            Если значение равно пустой строке, то данные не сохраняются локально.
-            </remarks>
-    </member>
-    <member name="M:StockSharp.Algo.History.IQFeed.IQFeedHistorySource.#ctor(StockSharp.Algo.History.ISecurityStorage,StockSharp.Algo.Storages.IEntityRegistry)">
-      <summary>
-            Создать <see cref="T:StockSharp.Algo.History.IQFeed.IQFeedHistorySource" />.
-            </summary>
-      <param name="securityStorage">Хранилище информации об инструментах.</param>
-      <param name="registry">Хранилище торговых объектов.</param>
-    </member>
-    <member name="M:StockSharp.Algo.History.IQFeed.IQFeedHistorySource.GetNewSecurities(StockSharp.BusinessEntities.SecurityTypes[])">
-      <summary>
-            Получить новые инструменты.
-            </summary>
-      <param name="types">Типы инструментов, по которым необходимо получить данные. Если передано null, то данные будут получены по всем типам инструментов.</param>
-      <returns>Новые инструменты.</returns>
-    </member>
-    <member name="M:StockSharp.Algo.History.IQFeed.IQFeedHistorySource.GetTrades(StockSharp.BusinessEntities.Security,System.DateTime)">
-      <summary>
-            Получить исторические сделки.
-            </summary>
-      <param name="security">Инструмент, для которого необходимо получить все сделки.</param>
-      <param name="time">Дата торговой сессии, для которой необходимо получить сделки.</param>
-      <returns>Исторические сделки.</returns>
-    </member>
-    <member name="M:StockSharp.Algo.History.IQFeed.IQFeedHistorySource.RegisterTrades(StockSharp.BusinessEntities.Security)">
-      <summary>
-            Начать получение сделок для инструмента.
-            </summary>
-      <param name="security">Инструмент.</param>
-    </member>
-    <member name="M:StockSharp.Algo.History.IQFeed.IQFeedHistorySource.UnRegisterTrades(StockSharp.BusinessEntities.Security)">
-      <summary>
-            Остановить получение сделок для инструмента.
-            </summary>
-      <param name="security">Инструмент.</param>
-    </member>
-    <member name="M:StockSharp.Algo.History.IQFeed.IQFeedHistorySource.RegisterMarketDepth(StockSharp.BusinessEntities.Security)">
-      <summary>
-            Начать получение стаканов для инструмента.
-            </summary>
-      <param name="security">Инструмент.</param>
-    </member>
-    <member name="M:StockSharp.Algo.History.IQFeed.IQFeedHistorySource.UnRegisterMarketDepth(StockSharp.BusinessEntities.Security)">
-      <summary>
-            Остановить получение стаканов для инструмента.
-            </summary>
-      <param name="security">Инструмент.</param>
-    </member>
-    <member name="P:StockSharp.Algo.History.IQFeed.IQFeedHistorySource.Level1Address">
-      <summary>
-            Адрес для получения данных по Level1.
-            </summary>
-    </member>
-    <member name="P:StockSharp.Algo.History.IQFeed.IQFeedHistorySource.Level2Address">
-      <summary>
-            Адрес для получения данных по Level2.
-            </summary>
-    </member>
-    <member name="P:StockSharp.Algo.History.IQFeed.IQFeedHistorySource.LookupAddress">
-      <summary>
-            Адрес для получения исторических данных.
-            </summary>
-    </member>
-    <member name="P:StockSharp.Algo.History.IQFeed.IQFeedHistorySource.AdminAddress">
-      <summary>
-            Адрес для получения служебных данных.
-            </summary>
-    </member>
-    <member name="P:StockSharp.Algo.History.IQFeed.IQFeedHistorySource.IsDownloadSecurityFromApi">
-      <summary>
-            Скачивать ли инструменты с помощью IQFeed API, или загружать их из архива с сайта IQFeed. По-умолчанию скачивание с помощью IQFeed API выключено.
-            </summary>
-    </member>
-    <member name="P:StockSharp.Algo.History.IQFeed.IQFeedHistorySource.Registry">
-      <summary>
-            Хранилище торговых объектов.
-            </summary>
-    </member>
-    <member name="P:StockSharp.Algo.History.IQFeed.IQFeedHistorySource.RegisteredTrades">
-      <summary>
-            Список всех инструментов, зарегистрированных через <see cref="M:StockSharp.Algo.History.IQFeed.IQFeedHistorySource.RegisterTrades(StockSharp.BusinessEntities.Security)" />.
-            </summary>
-    </member>
-    <member name="P:StockSharp.Algo.History.IQFeed.IQFeedHistorySource.RegisteredMarketDepths">
-      <summary>
-            Список всех инструментов, зарегистрированных через <see cref="M:StockSharp.Algo.History.IQFeed.IQFeedHistorySource.RegisterMarketDepth(StockSharp.BusinessEntities.Security)" />.
-            </summary>
-    </member>
-    <member name="E:StockSharp.Algo.History.IQFeed.IQFeedHistorySource.NewTrades">
-      <summary>
-            Событие появления всех новых сделок.
-            </summary>
-    </member>
-    <member name="E:StockSharp.Algo.History.IQFeed.IQFeedHistorySource.MarketDepthsChanged">
-      <summary>
-            Событие изменения стаканов с котировками.
-            </summary>
-    </member>
-    <member name="E:StockSharp.Algo.History.IQFeed.IQFeedHistorySource.Error">
-      <summary>
-            Событие нового сообщения об ошибке.
-            </summary>
+      <param name="criteria">Инструмент, поля которого будут использоваться в качестве фильтра.</param>
+      <returns>Найденные инструменты.</returns>
     </member>
     <member name="T:StockSharp.Algo.Indicators.Misc.ChaikinVolatility">
       <summary>
@@ -6313,6 +6479,33 @@
             Сформирован ли индикатор.
             </summary>
     </member>
+    <member name="T:StockSharp.Algo.PnL.IPnLManager">
+      <summary>
+            Интерфейс менеджера расчета прибыли-убытка.
+            </summary>
+    </member>
+    <member name="M:StockSharp.Algo.PnL.IPnLManager.Reset">
+      <summary>
+            Обнулить <see cref="P:StockSharp.Algo.PnL.IPnLManager.PnL" />.
+            </summary>
+    </member>
+    <member name="M:StockSharp.Algo.PnL.IPnLManager.ProcessMyTrade(StockSharp.BusinessEntities.MyTrade)">
+      <summary>
+            Рассчитать прибыльность сделки. Если сделка уже ранее была обработана, то возвращается предыдущая информация.
+            </summary>
+      <param name="trade">Сделка.</param>
+      <returns>Информация о новой сделке.</returns>
+    </member>
+    <member name="P:StockSharp.Algo.PnL.IPnLManager.PnL">
+      <summary>
+            Суммарное значение прибыли-убытка.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Algo.PnL.IPnLManager.RealizedPnL">
+      <summary>
+            Реализованное значение прибыли-убытка.
+            </summary>
+    </member>
     <member name="T:StockSharp.Algo.Storages.ExchangeList">
       <summary>
             Класс для представления в виде списка бирж, хранящихся во внешнем хранилище.
@@ -6370,8 +6563,7 @@
       <summary>
             Вызывается при получении количества элементов в хранилище.
             </summary>
-      <returns>
-      </returns>
+      <returns>Количество элементов в хранилище.</returns>
     </member>
     <member name="M:StockSharp.Algo.Storages.BaseStorageEntityList`1.OnGetGroup(System.Int64,System.Int64,Ecng.Serialization.Field,System.Web.UI.WebControls.SortDirection)">
       <summary>
@@ -6387,15 +6579,13 @@
       <summary>
             Вызывается при удалении элемента из хранилища.
             </summary>
-      <param name="entity">
-      </param>
+      <param name="entity">Элемент.</param>
     </member>
     <member name="M:StockSharp.Algo.Storages.BaseStorageEntityList`1.OnUpdate(`0)">
       <summary>
             Вызывается при обновлении элемента в хранилище.
             </summary>
-      <param name="entity">
-      </param>
+      <param name="entity">Элемент.</param>
     </member>
     <member name="P:StockSharp.Algo.Storages.BaseStorageEntityList`1.SyncRoot">
       <summary>
@@ -6538,6 +6728,12 @@
       <param name="password">Пароль.</param>
       <returns>Допустимые действия.</returns>
     </member>
+    <member name="M:StockSharp.Algo.History.Hydra.RemoteStorage.AddDataType(System.Type)">
+      <summary>
+            Добавить тип данных, который сможет передавать <see cref="T:StockSharp.Algo.History.Hydra.RemoteStorage" />.
+            </summary>
+      <param name="dataType">Тип данных.</param>
+    </member>
     <member name="M:StockSharp.Algo.History.Hydra.RemoteStorage.GetDrives">
       <summary>
             Получить список доступных хранилищ маркет-данных.
@@ -6617,14 +6813,9 @@
             Освободить занятые ресурсы.
             </summary>
     </member>
-    <member name="P:StockSharp.Algo.History.Hydra.RemoteStorageClient.Login">
+    <member name="P:StockSharp.Algo.History.Hydra.RemoteStorageClient.Credentials">
       <summary>
-            Логин.
-            </summary>
-    </member>
-    <member name="P:StockSharp.Algo.History.Hydra.RemoteStorageClient.Password">
-      <summary>
-            Пароль.
+            Информация о логине и пароле для доступа к удаленному хранилищу.
             </summary>
     </member>
     <member name="P:StockSharp.Algo.History.Hydra.RemoteStorageClient.SessionId">
@@ -6685,6 +6876,35 @@
       <summary>
             Класс для получения данных к итогам конкурса ЛЧИ.
             </summary>
+    </member>
+    <member name="T:StockSharp.Algo.History.BaseHistorySource">
+      <summary>
+            Базовый класс лоадеров данных.
+            </summary>
+    </member>
+    <member name="M:StockSharp.Algo.History.BaseHistorySource.#ctor(StockSharp.Algo.History.ISecurityStorage)">
+      <summary>
+            Инициализировать <see cref="T:StockSharp.Algo.History.BaseHistorySource" />.
+            </summary>
+      <param name="securityStorage">Интерфейс для доступа к хранилищу информации об инструментах.</param>
+    </member>
+    <member name="P:StockSharp.Algo.History.BaseHistorySource.SecurityIdGenerator">
+      <summary>
+            Генератор идентификаторов инструментов.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Algo.History.BaseHistorySource.SecurityStorage">
+      <summary>
+            Интерфейс для доступа к хранилищу информации об инструментах.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Algo.History.BaseHistorySource.DumpFolder">
+      <summary>
+            Путь к директории, куда будут сохранятся скаченные файлы.
+            </summary>
+      <remarks>
+            Если значение равно пустой строке, то данные не сохраняются локально.
+            </remarks>
     </member>
     <member name="M:StockSharp.Algo.History.Rts.Competition.#ctor(StockSharp.Algo.History.ISecurityStorage)">
       <summary>
@@ -6884,14 +7104,6 @@
             Интерфейс для доступа к хранилищу информации об инструментах.
             </summary>
     </member>
-    <member name="M:StockSharp.Algo.History.ISecurityStorage.LoadBy(System.String,System.Object)">
-      <summary>
-            Загрузить инструмент по значению его поля.
-            </summary>
-      <param name="fieldName">Название поля инструмента.</param>
-      <param name="fieldValue">Значение поля инструмента.</param>
-      <returns>Загруженный инструмент. Если инструмент по данным критериям отсутствует, то будет возвращено null.</returns>
-    </member>
     <member name="M:StockSharp.Algo.History.ISecurityStorage.Save(StockSharp.BusinessEntities.Security)">
       <summary>
             Сохранить инструмент.
@@ -6911,6 +7123,13 @@
       <param name="fieldName">Название поля, по которому необходимо загрузить информацию об инструменте.</param>
       <param name="fieldValue">Значение поля <paramref name="fieldName" />.</param>
       <returns>Информация об инструменте.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.History.SecurityStorage.Lookup(StockSharp.BusinessEntities.Security)">
+      <summary>
+            Найти инструменты, соответствующие фильтру <paramref name="criteria" />.
+            </summary>
+      <param name="criteria">Инструмент, поля которого будут использоваться в качестве фильтра.</param>
+      <returns>Найденные инструменты.</returns>
     </member>
     <member name="M:StockSharp.Algo.History.SecurityStorage.Save(StockSharp.BusinessEntities.Security)">
       <summary>
@@ -7026,6 +7245,12 @@
             </summary>
       <param name="prices">Цены составных инструментов корзины <see cref="P:StockSharp.BusinessEntities.BasketSecurity.InnerSecurities" />.</param>
       <returns>Значение корзины.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.WeightedIndexSecurity.Clone">
+      <summary>
+            Создать копию объекта <see cref="T:StockSharp.BusinessEntities.Security" />.
+            </summary>
+      <returns>Копия объекта.</returns>
     </member>
     <member name="P:StockSharp.Algo.WeightedIndexSecurity.Weights">
       <summary>
@@ -7462,7 +7687,12 @@
     </member>
     <member name="P:StockSharp.Algo.Licensing.License.IssuedTo">
       <summary>
-            Получатель лицензии (ФИО частного лица или название компании).
+            Получатель лицензии (ФИО частного лица или сотрудника компании <see cref="P:StockSharp.Algo.Licensing.License.Company" />).
+            </summary>
+    </member>
+    <member name="P:StockSharp.Algo.Licensing.License.Company">
+      <summary>
+            Название компании, для которой выдана лицензия. Значение равно null, если лицензия выдана частному лицу.
             </summary>
     </member>
     <member name="P:StockSharp.Algo.Licensing.License.IssuedDate">
@@ -7564,6 +7794,19 @@
             Вспомагательный класс для работы с лицензиями.
             </summary>
     </member>
+    <member name="F:StockSharp.Algo.Licensing.LicenseHelper.RenewOffset">
+      <summary>
+            Временной отступ до срока окончания действия текущей лицензии, когда можно будет ее продлевать.
+            Равен 2-ум дням.
+            </summary>
+    </member>
+    <member name="M:StockSharp.Algo.Licensing.LicenseHelper.CanRenew(StockSharp.Algo.Licensing.License)">
+      <summary>
+            Можно ли обновлять лицензию (до окончания времени действия лицензии осталось менее <see cref="F:StockSharp.Algo.Licensing.LicenseHelper.RenewOffset" />).
+            </summary>
+      <param name="license">Лицензия.</param>
+      <returns>True, если лицензию можно обновлять. Иначе, false.</returns>
+    </member>
     <member name="M:StockSharp.Algo.Licensing.LicenseHelper.GetEstimatedTime(StockSharp.Algo.Licensing.License)">
       <summary>
             Получить оставшееся время действия лицензии.
@@ -7592,26 +7835,16 @@
       <param name="featureName">Название функциональности.</param>
       <returns>True, если функциональность поддерживается, иначе, false.</returns>
     </member>
-    <member name="M:StockSharp.Algo.Licensing.LicenseHelper.StartValidation(StockSharp.Algo.Strategies.Strategy)">
-      <summary>
-            Запустить проверку лицензии для стратегии.
-            </summary>
-      <param name="strategy">Стратегия, для котрого необходимо сделать проверку лицензии.</param>
-      <returns>Описание ошибки проверки лицении.</returns>
-    </member>
-    <member name="M:StockSharp.Algo.Licensing.LicenseHelper.StartValidation(System.Object,System.Action)">
-      <summary>
-            Запустить проверку лицензии для функциональности.
-            </summary>
-      <param name="feature">Функциональность (может быть шлюзом, стратегий и т.д.).</param>
-      <param name="failedAction">Действие, которое будет вызвано через 10 минут после ошибки проверки лицении и повторяться каждую минуту.</param>
-      <returns>Описание ошибки проверки лицении.</returns>
-    </member>
     <member name="M:StockSharp.Algo.Licensing.LicenseHelper.Save(StockSharp.Algo.Licensing.License)">
       <summary>
             Сохранить лицензию на диске.
             </summary>
       <param name="license">Лицензия.</param>
+    </member>
+    <member name="E:StockSharp.Algo.Licensing.LicenseHelper.LicenseChanged">
+      <summary>
+            Событие измения <see cref="P:StockSharp.Algo.Licensing.LicenseHelper.CurrentLicense" />.
+            </summary>
     </member>
     <member name="P:StockSharp.Algo.Licensing.LicenseHelper.CurrentLicense">
       <summary>
@@ -7721,7 +7954,7 @@
     <member name="M:StockSharp.Algo.BaseTrader.LookupSecurities(StockSharp.BusinessEntities.Security)">
       <summary>
             Найти инструменты, соответствующие фильтру <paramref name="criteria" />.
-            Найденные инструменты будут переданы через событие <see cref="E:StockSharp.BusinessEntities.ITrader.NewSecurities" />.
+            Найденные инструменты будут переданы через событие <see cref="E:StockSharp.BusinessEntities.ITrader.LookupResult" />.
             </summary>
       <param name="criteria">Инструмент, поля которого будут использоваться в качестве фильтра.</param>
     </member>
@@ -7816,14 +8049,14 @@
             </summary>
       <param name="order">Заявка, которую нужно отменять.</param>
     </member>
-    <member name="M:StockSharp.Algo.BaseTrader.CancelOrders(System.Nullable{System.Boolean},StockSharp.BusinessEntities.Portfolio,System.Nullable{StockSharp.BusinessEntities.OrderDirections},System.String,StockSharp.BusinessEntities.Security)">
+    <member name="M:StockSharp.Algo.BaseTrader.CancelOrders(System.Nullable{System.Boolean},StockSharp.BusinessEntities.Portfolio,System.Nullable{StockSharp.BusinessEntities.OrderDirections},StockSharp.BusinessEntities.ExchangeBoard,StockSharp.BusinessEntities.Security)">
       <summary>
             Отменить группу заявок на бирже по фильтру.
             </summary>
       <param name="isStopOrder">True, если нужно отменить только стоп-заявки, false - если только обычный и null - если оба типа.</param>
       <param name="portfolio">Портфель. Если значение равно null, то портфель не попадает в фильтр снятия заявок.</param>
       <param name="direction">Направление заявки. Если значение равно null, то направление не попадает в фильтр снятия заявок.</param>
-      <param name="classCode">Код класса. Если переданная строка пустая, то код не попадает в фильтр снятия заявок.</param>
+      <param name="board">Торговая площадка. Если значение равно null, то площадка не попадает в фильтр снятия заявок.</param>
       <param name="security">Инструмент. Если значение равно null, то инструмент не попадает в фильтр снятия заявок.</param>
     </member>
     <member name="M:StockSharp.Algo.BaseTrader.RegisterSecurity(StockSharp.BusinessEntities.Security)">
@@ -7949,6 +8182,26 @@
             Остановить получение лога заявок для инструмента.
             </summary>
       <param name="security">Инструмент, по которому необходимо остановить получение лога заявок.</param>
+    </member>
+    <member name="M:StockSharp.Algo.BaseTrader.RegisterNews">
+      <summary>
+            Начать получать новости.
+            </summary>
+    </member>
+    <member name="M:StockSharp.Algo.BaseTrader.OnRegisterNews">
+      <summary>
+            Начать получать новости.
+            </summary>
+    </member>
+    <member name="M:StockSharp.Algo.BaseTrader.UnRegisterNews">
+      <summary>
+            Остановить получение новостей.
+            </summary>
+    </member>
+    <member name="M:StockSharp.Algo.BaseTrader.OnUnRegisterNews">
+      <summary>
+            Остановить получение новостей.
+            </summary>
     </member>
     <member name="M:StockSharp.Algo.BaseTrader.IsSupport(StockSharp.BusinessEntities.Security)">
       <summary>
@@ -8118,6 +8371,12 @@
             </summary>
       <param name="marketDepth">Стакан, который нужно передать в событие.</param>
     </member>
+    <member name="M:StockSharp.Algo.BaseTrader.RaiseNewNews(StockSharp.BusinessEntities.News)">
+      <summary>
+            Вызвать событие <see cref="E:StockSharp.Algo.BaseTrader.NewNews" />.
+            </summary>
+      <param name="news">Новость.</param>
+    </member>
     <member name="M:StockSharp.Algo.BaseTrader.RaiseNewOrderLogItem(StockSharp.BusinessEntities.OrderLogItem)">
       <summary>
             Вызвать событие <see cref="E:StockSharp.Algo.BaseTrader.NewOrderLogItems" />.
@@ -8178,6 +8437,12 @@
             Вызвать событие <see cref="E:StockSharp.Algo.BaseTrader.MarketTimeChanged" />.
             </summary>
       <param name="diff">Разница во времени, прошедшее с последнего вызова события. Первый раз событие передает значение <see cref="F:System.TimeSpan.Zero" />.</param>
+    </member>
+    <member name="M:StockSharp.Algo.BaseTrader.RaiseLookupResult(System.Collections.Generic.IEnumerable{StockSharp.BusinessEntities.Security})">
+      <summary>
+            Вызвать событие <see cref="E:StockSharp.Algo.BaseTrader.LookupResult" />.
+            </summary>
+      <param name="securities">Найденные инструменты.</param>
     </member>
     <member name="M:StockSharp.Algo.BaseTrader.GetSecurity(System.String,System.Func{StockSharp.BusinessEntities.Security,System.Boolean})">
       <summary>
@@ -8333,7 +8598,7 @@
             Получить описание инструмента по классу из <see cref="P:StockSharp.Algo.BaseTrader.SecurityClassInfo" />.
             </summary>
       <param name="secClass">Класс инструмента.</param>
-      <returns>Описание инструмента. Если класс не найден в <see cref="P:StockSharp.Algo.BaseTrader.SecurityClassInfo" />, то будет возвращено значение <see cref="P:StockSharp.Algo.BaseTrader.DefaultSecurityClassInfo" />.</returns>
+      <returns>Описание инструмента. Если класс не найден в <see cref="P:StockSharp.Algo.BaseTrader.SecurityClassInfo" />, то будет возвращено значение <see cref="F:StockSharp.BusinessEntities.SecurityTypes.Stock" />.</returns>
     </member>
     <member name="M:StockSharp.Algo.BaseTrader.ProcessSecurityAction(System.String,System.Object,System.Action{StockSharp.BusinessEntities.Security},System.Boolean)">
       <summary>
@@ -8346,6 +8611,14 @@
       <param name="action">Действие.</param>
       <param name="ignoreIfNotExist">Не обрабатывать действие, если инструмент не найден.
             True, если обработка не требуется в случае отсутствия инструмента, иначе, false, и действие будет вызвано при появлении инструмента.</param>
+    </member>
+    <member name="M:StockSharp.Algo.BaseTrader.GetNews(System.Int64,System.Func{StockSharp.BusinessEntities.News,System.Boolean})">
+      <summary>
+            Получить новость по номеру.
+            </summary>
+      <param name="id">Номер новости.</param>
+      <param name="changeNews">Обработчик, изменяющий новость.</param>
+      <returns>Новость.</returns>
     </member>
     <member name="M:StockSharp.Algo.BaseTrader.StartMarketTimeExport">
       <summary>
@@ -8370,11 +8643,6 @@
     <member name="M:StockSharp.Algo.BaseTrader.ReStartExport">
       <summary>
             Перезапустить экспорт данных из торговой системы через методы <see cref="M:StockSharp.BusinessEntities.ITrader.StopExport" /> и <see cref="M:StockSharp.BusinessEntities.ITrader.StartExport" />.
-            </summary>
-    </member>
-    <member name="M:StockSharp.Algo.BaseTrader.ClearPositions">
-      <summary>
-            Очистить позиции <see cref="P:StockSharp.Algo.BaseTrader.Positions" />.
             </summary>
     </member>
     <member name="M:StockSharp.Algo.BaseTrader.DisposeManaged">
@@ -8529,6 +8797,11 @@
             Передается разница во времени, прошедшее с последнего вызова события. Первый раз событие передает значение <see cref="F:System.TimeSpan.Zero" />.
             </summary>
     </member>
+    <member name="E:StockSharp.Algo.BaseTrader.NewNews">
+      <summary>
+            Событие появления новости.
+            </summary>
+    </member>
     <member name="E:StockSharp.Algo.BaseTrader.Connected">
       <summary>
             Событие успешного подключения.
@@ -8554,6 +8827,11 @@
             Событие, сигнализирующее об ошибке при получении или обработке новых данных с сервера.
             </summary>
     </member>
+    <member name="E:StockSharp.Algo.BaseTrader.LookupResult">
+      <summary>
+            Событие, передающее результат поиска, запущенного через метод <see cref="M:StockSharp.BusinessEntities.ITrader.LookupSecurities(StockSharp.BusinessEntities.Security)" />.
+            </summary>
+    </member>
     <member name="P:StockSharp.Algo.BaseTrader.TransactionIdGenerator">
       <summary>
             Генератор идентификаторов транзакций.
@@ -8564,15 +8842,9 @@
             Генератор идентификаторов инструментов <see cref="P:StockSharp.BusinessEntities.Security.Id" />.
             </summary>
     </member>
-    <member name="P:StockSharp.Algo.BaseTrader.DefaultSecurityClassInfo">
-      <summary>
-            Описания класса инструмента по умолчанию.
-            </summary>
-    </member>
     <member name="P:StockSharp.Algo.BaseTrader.SecurityClassInfo">
       <summary>
             Описание классов инструментов, в зависимости от которых будут проставляться параметры в <see cref="P:StockSharp.BusinessEntities.Security.Type" /> и <see cref="P:StockSharp.BusinessEntities.Security.ExchangeBoard" />.
-            Если информация по классу отсутствует, то будет поставлены значения <see cref="F:StockSharp.BusinessEntities.SecurityTypes.Stock" /> и <see cref="P:StockSharp.BusinessEntities.ExchangeBoard.Micex" /> соответственно.
             </summary>
     </member>
     <member name="P:StockSharp.Algo.BaseTrader.ExchangeBoards">
@@ -8624,6 +8896,11 @@
     <member name="P:StockSharp.Algo.BaseTrader.Positions">
       <summary>
             Получить все позиции.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Algo.BaseTrader.News">
+      <summary>
+            Все новости.
             </summary>
     </member>
     <member name="P:StockSharp.Algo.BaseTrader.IsConnected">
@@ -8880,6 +9157,11 @@
     <member name="P:StockSharp.Algo.Storages.DataFeedTrader.StorageRegistry">
       <summary>
             Хранилище данных.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Algo.Storages.DataFeedTrader.EntityRegistry">
+      <summary>
+            Хранилище торговых сущностей.
             </summary>
     </member>
     <member name="P:StockSharp.Algo.Storages.DataFeedTrader.Drive">
@@ -10001,12 +10283,12 @@
     </member>
     <member name="P:StockSharp.Algo.History.Rts.RtsHistorySource.SaveRtsStdTrades">
       <summary>
-            Сохранять сделки для инструментов РТС Стандарт.
+            Сохранять сделки для инструментов РТС Стандарт. По-умолчанию выключено.
             </summary>
     </member>
     <member name="P:StockSharp.Algo.History.Rts.RtsHistorySource.SaveRtsStdCombinedOnly">
       <summary>
-            Склеивать сделки для инструментов РТС Стандарт (сделки для T+N не разбиваются по папкам).
+            Склеивать сделки для инструментов РТС Стандарт (сделки для T+N не разбиваются по папкам). По-умолчанию выключено.
             </summary>
     </member>
     <member name="P:StockSharp.Algo.History.Rts.RtsHistorySource.IsSystemOnly">
@@ -10577,22 +10859,21 @@
             Создать <see cref="T:StockSharp.Algo.SecurityIdGenerator" />.
             </summary>
     </member>
-    <member name="M:StockSharp.Algo.SecurityIdGenerator.GenerateId(System.String,System.String,StockSharp.BusinessEntities.ExchangeBoard)">
+    <member name="M:StockSharp.Algo.SecurityIdGenerator.GenerateId(System.String,StockSharp.BusinessEntities.ExchangeBoard)">
       <summary>
             Сгенерировать <see cref="P:StockSharp.BusinessEntities.Security.Id" /> инструмента.
             </summary>
       <param name="secCode">Код инструмента.</param>
-      <param name="secClass">Класс инструмента.</param>
       <param name="board">Площадка инструмента.</param>
       <returns>
         <see cref="P:StockSharp.BusinessEntities.Security.Id" /> инструмента.</returns>
     </member>
     <member name="M:StockSharp.Algo.SecurityIdGenerator.GetInfo(System.String)">
       <summary>
-            Получить код, класс и информацию о бижре для инструмента по его идентификатору.
+            Получить код и информацию о бижре для инструмента по его идентификатору.
             </summary>
       <param name="securityId">Идентификатор инструмента <see cref="P:StockSharp.BusinessEntities.Security.Id" />.</param>
-      <returns>Код инструмента <see cref="P:StockSharp.BusinessEntities.Security.Code" />, его класс <see cref="P:StockSharp.BusinessEntities.Security.Class" /> и информация о бирже <see cref="P:StockSharp.BusinessEntities.Security.ExchangeBoard" />.</returns>
+      <returns>Код инструмента <see cref="P:StockSharp.BusinessEntities.Security.Code" /> и информация о бирже <see cref="P:StockSharp.BusinessEntities.Security.ExchangeBoard" />.</returns>
     </member>
     <member name="P:StockSharp.Algo.SecurityIdGenerator.Delimiter">
       <summary>
@@ -10787,9 +11068,14 @@
             Количество данных.
             </summary>
     </member>
-    <member name="P:StockSharp.Algo.Storages.IMarketDataStorageDayMetaInfo.MinStepSize">
+    <member name="P:StockSharp.Algo.Storages.IMarketDataStorageDayMetaInfo.PriceStep">
       <summary>
             Значение <see cref="P:StockSharp.BusinessEntities.Security.MinStepSize" /> в день <see cref="P:StockSharp.Algo.Storages.IMarketDataStorageDayMetaInfo.Date" />.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Algo.Storages.IMarketDataStorageDayMetaInfo.VolumeStep">
+      <summary>
+            Значение <see cref="P:StockSharp.BusinessEntities.Security.MinLotSize" /> в день <see cref="P:StockSharp.Algo.Storages.IMarketDataStorageDayMetaInfo.Date" />.
             </summary>
     </member>
     <member name="P:StockSharp.Algo.Storages.IMarketDataStorageDayMetaInfo.Version">
@@ -11244,9 +11530,14 @@
         <see cref="P:StockSharp.BusinessEntities.Security.MarginSell" />.
             </summary>
     </member>
-    <member name="F:StockSharp.Algo.Storages.SecurityChangeTypes.MinStepSize">
+    <member name="F:StockSharp.Algo.Storages.SecurityChangeTypes.PriceStep">
       <summary>
         <see cref="P:StockSharp.BusinessEntities.Security.MinStepSize" />.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Algo.Storages.SecurityChangeTypes.VolumeStep">
+      <summary>
+        <see cref="P:StockSharp.BusinessEntities.Security.MinLotSize" />.
             </summary>
     </member>
     <member name="T:StockSharp.Algo.Storages.SecurityChange">
@@ -14447,33 +14738,6 @@
             Менеджер прибыли-убытка.
             </summary>
     </member>
-    <member name="T:StockSharp.Algo.PnL.IPnLManager">
-      <summary>
-            Интерфейс менеджера расчета прибыли-убытка.
-            </summary>
-    </member>
-    <member name="M:StockSharp.Algo.PnL.IPnLManager.Reset">
-      <summary>
-            Обнулить <see cref="P:StockSharp.Algo.PnL.IPnLManager.PnL" />.
-            </summary>
-    </member>
-    <member name="M:StockSharp.Algo.PnL.IPnLManager.ProcessMyTrade(StockSharp.BusinessEntities.MyTrade)">
-      <summary>
-            Рассчитать прибыльность сделки. Если сделка уже ранее была обработана, то возвращается предыдущая информация.
-            </summary>
-      <param name="trade">Сделка.</param>
-      <returns>Информация о новой сделке.</returns>
-    </member>
-    <member name="P:StockSharp.Algo.PnL.IPnLManager.PnL">
-      <summary>
-            Суммарное значение прибыли-убытка.
-            </summary>
-    </member>
-    <member name="P:StockSharp.Algo.PnL.IPnLManager.RealizedPnL">
-      <summary>
-            Реализованное значение прибыли-убытка.
-            </summary>
-    </member>
     <member name="M:StockSharp.Algo.PnL.PnLManager.#ctor">
       <summary>
             Создать <see cref="T:StockSharp.Algo.PnL.PnLManager" />.
@@ -14732,7 +14996,7 @@
     <member name="M:StockSharp.Algo.BasketTrader.LookupSecurities(StockSharp.BusinessEntities.Security)">
       <summary>
             Найти инструменты, соответствующие фильтру <paramref name="criteria" />.
-            Найденные инструменты будут переданы через событие <see cref="E:StockSharp.BusinessEntities.ITrader.NewSecurities" />.
+            Найденные инструменты будут переданы через событие <see cref="E:StockSharp.BusinessEntities.ITrader.LookupResult" />.
             </summary>
       <param name="criteria">Инструмент, поля которого будут использоваться в качестве фильтра.</param>
     </member>
@@ -14781,14 +15045,14 @@
             </summary>
       <param name="order">Заявка, которую нужно отменить.</param>
     </member>
-    <member name="M:StockSharp.Algo.BasketTrader.CancelOrders(System.Nullable{System.Boolean},StockSharp.BusinessEntities.Portfolio,System.Nullable{StockSharp.BusinessEntities.OrderDirections},System.String,StockSharp.BusinessEntities.Security)">
+    <member name="M:StockSharp.Algo.BasketTrader.CancelOrders(System.Nullable{System.Boolean},StockSharp.BusinessEntities.Portfolio,System.Nullable{StockSharp.BusinessEntities.OrderDirections},StockSharp.BusinessEntities.ExchangeBoard,StockSharp.BusinessEntities.Security)">
       <summary>
             Отменить группу заявок на бирже по фильтру.
             </summary>
       <param name="isStopOrder">True, если нужно отменить только стоп-заявки, false - если только обычный и null - если оба типа.</param>
       <param name="portfolio">Портфель. Если значение равно null, то портфель не попадает в фильтр снятия заявок.</param>
       <param name="direction">Направление заявки. Если значение равно null, то направление не попадает в фильтр снятия заявок.</param>
-      <param name="classCode">Код класса. Если переданная строка пустая, то код не попадает в фильтр снятия заявок.</param>
+      <param name="board">Торговая площадка. Если значение равно null, то площадка не попадает в фильтр снятия заявок.</param>
       <param name="security">Инструмент. Если значение равно null, то инструмент не попадает в фильтр снятия заявок.</param>
     </member>
     <member name="M:StockSharp.Algo.BasketTrader.RegisterMarketDepth(StockSharp.BusinessEntities.Security)">
@@ -14840,6 +15104,16 @@
             Остановить получение новой информации по портфелю.
             </summary>
       <param name="portfolio">Портфель, по которому необходимо остановить получение новой информации.</param>
+    </member>
+    <member name="M:StockSharp.Algo.BasketTrader.RegisterNews">
+      <summary>
+            Начать получать новости.
+            </summary>
+    </member>
+    <member name="M:StockSharp.Algo.BasketTrader.UnRegisterNews">
+      <summary>
+            Остановить получение новостей.
+            </summary>
     </member>
     <member name="M:StockSharp.Algo.BasketTrader.RegisterOrderLog(StockSharp.BusinessEntities.Security)">
       <summary>
@@ -15044,12 +15318,26 @@
             </summary>
       <param name="innerTrader">Вложенный шлюз.</param>
     </member>
+    <member name="M:StockSharp.Algo.BasketTrader.OnInnerTraderNewNews(StockSharp.BusinessEntities.ITrader,StockSharp.BusinessEntities.News)">
+      <summary>
+            Обработчик события <see cref="E:StockSharp.BusinessEntities.ITrader.NewNews" /> вложенного шлюза.
+            </summary>
+      <param name="innerTrader">Вложенный шлюз.</param>
+      <param name="news">Новость.</param>
+    </member>
     <member name="M:StockSharp.Algo.BasketTrader.OnInnerTraderMarketTimeChanged(StockSharp.BusinessEntities.ITrader,System.TimeSpan)">
       <summary>
             Обработчик события <see cref="E:StockSharp.BusinessEntities.ITrader.MarketTimeChanged" /> вложенного шлюза.
             </summary>
       <param name="innerTrader">Вложенный шлюз.</param>
       <param name="diff">Разница во времени, прошедшее с последнего вызова события. Первый раз событие передает значение <see cref="F:System.TimeSpan.Zero" />.</param>
+    </member>
+    <member name="M:StockSharp.Algo.BasketTrader.OnInnerTraderLookupResult(StockSharp.BusinessEntities.ITrader,System.Collections.Generic.IEnumerable{StockSharp.BusinessEntities.Security})">
+      <summary>
+            Обработчик события <see cref="E:StockSharp.BusinessEntities.ITrader.LookupResult" /> вложенного шлюза.
+            </summary>
+      <param name="innerTrader">Вложенный шлюз.</param>
+      <param name="securities">Найденные инструменты.</param>
     </member>
     <member name="M:StockSharp.Algo.BasketTrader.DisposeManaged">
       <summary>
@@ -15123,6 +15411,11 @@
     <member name="P:StockSharp.Algo.BasketTrader.Positions">
       <summary>
             Получить все позиции.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Algo.BasketTrader.News">
+      <summary>
+            Все новости.
             </summary>
     </member>
     <member name="P:StockSharp.Algo.BasketTrader.IsConnected">
@@ -15266,6 +15559,11 @@
             Событие появления новых записей в логе заявок.
             </summary>
     </member>
+    <member name="E:StockSharp.Algo.BasketTrader.NewNews">
+      <summary>
+            Событие появления новости.
+            </summary>
+    </member>
     <member name="E:StockSharp.Algo.BasketTrader.Connected">
       <summary>
             Событие успешного подключения.
@@ -15295,6 +15593,11 @@
       <summary>
             Событие, сигнализирующее об изменении текущего времени на биржевых площадках <see cref="P:StockSharp.BusinessEntities.ITrader.ExchangeBoards" />.
             Передается разница во времени, прошедшее с последнего вызова события. Первый раз событие передает значение <see cref="F:System.TimeSpan.Zero" />.
+            </summary>
+    </member>
+    <member name="E:StockSharp.Algo.BasketTrader.LookupResult">
+      <summary>
+            Событие, передающее результат поиска, запущенного через метод <see cref="M:StockSharp.BusinessEntities.ITrader.LookupSecurities(StockSharp.BusinessEntities.Security)" />.
             </summary>
     </member>
     <member name="T:StockSharp.Algo.BasketTrader.IInnerTraderList">
@@ -16157,6 +16460,16 @@
             Текстовое описание шлюза.
             </summary>
     </member>
+    <member name="P:StockSharp.Algo.Testing.EmulationTrader.Portfolios">
+      <summary>
+            Получить все портфели.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Algo.Testing.EmulationTrader.Positions">
+      <summary>
+            Получить все позиции.
+            </summary>
+    </member>
     <member name="P:StockSharp.Algo.Testing.EmulationTrader.CurrentTime">
       <summary>
             Текущее время, которое будет передано в <see cref="P:StockSharp.Logging.LogMessage.Time" />.
@@ -16306,25 +16619,6 @@
       <param name="oldOrder">Старая заявка.</param>
       <param name="newOrder">Новая заявка.</param>
     </member>
-    <member name="M:StockSharp.Algo.Testing.IMarketEmulator.UpdateQuotes(StockSharp.BusinessEntities.MarketDepth,StockSharp.BusinessEntities.MarketDepth)">
-      <summary>
-            Обновить эмулятор новыми данными о стаканах.
-            </summary>
-      <param name="marketDepth">Новый стакан.</param>
-      <param name="delta">Приращение от старого стакана к новому. Если значение null, прарещение будет вычислено автоматически.</param>
-    </member>
-    <member name="M:StockSharp.Algo.Testing.IMarketEmulator.UpdateTrades(System.Collections.Generic.IEnumerable{StockSharp.BusinessEntities.Trade})">
-      <summary>
-            Обновить эмулятор новыми данными о сделках.
-            </summary>
-      <param name="newTrades">Новые сделки.</param>
-    </member>
-    <member name="M:StockSharp.Algo.Testing.IMarketEmulator.UpdateOrderLog(System.Collections.Generic.IEnumerable{StockSharp.BusinessEntities.OrderLogItem})">
-      <summary>
-            Обновить эмулятор новыми данными об ордерлоге.
-            </summary>
-      <param name="newItems">Новые сделки.</param>
-    </member>
     <member name="M:StockSharp.Algo.Testing.IMarketEmulator.Emulate(StockSharp.Algo.Testing.Message)">
       <summary>
             Добавить сообщение в очередь и провести его эмуляцию (и более ранних сообщений).
@@ -16379,6 +16673,16 @@
             Получить все собственные сделки.
             </summary>
     </member>
+    <member name="P:StockSharp.Algo.Testing.IMarketEmulator.Portfolios">
+      <summary>
+            Получить все портфели.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Algo.Testing.IMarketEmulator.Positions">
+      <summary>
+            Получить все позиции.
+            </summary>
+    </member>
     <member name="E:StockSharp.Algo.Testing.IMarketEmulator.NewMyTrades">
       <summary>
             Событие появления собственных новых сделок.
@@ -16417,6 +16721,26 @@
     <member name="E:StockSharp.Algo.Testing.IMarketEmulator.NewOrderLogItems">
       <summary>
             Событие появления новых записей в логе заявок.
+            </summary>
+    </member>
+    <member name="E:StockSharp.Algo.Testing.IMarketEmulator.NewPortfolios">
+      <summary>
+            Событие появления новых портфелей.
+            </summary>
+    </member>
+    <member name="E:StockSharp.Algo.Testing.IMarketEmulator.PortfoliosChanged">
+      <summary>
+            Событие изменения параметров портфелей.
+            </summary>
+    </member>
+    <member name="E:StockSharp.Algo.Testing.IMarketEmulator.NewPositions">
+      <summary>
+            Событие появления новых позиций.
+            </summary>
+    </member>
+    <member name="E:StockSharp.Algo.Testing.IMarketEmulator.PositionsChanged">
+      <summary>
+            Событие изменения параметров позиций.
             </summary>
     </member>
     <member name="E:StockSharp.Algo.Testing.IMarketEmulator.MarketTimeChanged">
@@ -16733,41 +17057,17 @@
       <param name="order">Старая заявка.</param>
       <param name="newOrder">Новая заявка.</param>
     </member>
-    <member name="M:StockSharp.Algo.Testing.MarketEmulator.EnqueueMessage(StockSharp.Algo.Testing.Message)">
-      <summary>
-            Дбавить входное сообщение в очередь.
-            </summary>
-      <param name="message">Входное сообщение.</param>
-    </member>
     <member name="M:StockSharp.Algo.Testing.MarketEmulator.CancelOrder(StockSharp.BusinessEntities.Order)">
       <summary>
             Отменить заявку в эмуляторе.
             </summary>
       <param name="order">Заявка, которую нужно отменить.</param>
     </member>
-    <member name="M:StockSharp.Algo.Testing.MarketEmulator.UpdateQuotes(StockSharp.BusinessEntities.MarketDepth,StockSharp.BusinessEntities.MarketDepth)">
-      <summary>
-            Обновить эмулятор новыми данными о стаканах.
-            </summary>
-      <param name="marketDepth">Новый стакан.</param>
-      <param name="delta">Приращение от старого стакана к новому. Если значение null, прарещение будет вычислено автоматически.</param>
-    </member>
-    <member name="M:StockSharp.Algo.Testing.MarketEmulator.UpdateTrades(System.Collections.Generic.IEnumerable{StockSharp.BusinessEntities.Trade})">
-      <summary>
-            Обновить эмулятор новыми данными о сделках.
-            </summary>
-      <param name="newTrades">Новые сделки.</param>
-    </member>
-    <member name="M:StockSharp.Algo.Testing.MarketEmulator.UpdateOrderLog(System.Collections.Generic.IEnumerable{StockSharp.BusinessEntities.OrderLogItem})">
-      <summary>
-            Обновить эмулятор новыми данными об ордерлоге.
-            </summary>
-      <param name="newItems">Новые сделки.</param>
-    </member>
     <member name="M:StockSharp.Algo.Testing.MarketEmulator.Reset(System.DateTime)">
       <summary>
             Сброосить состояние эмулятора на первоначальное.
             </summary>
+      <param name="time">Новое текущее время для <see cref="P:StockSharp.Algo.Testing.MarketEmulator.CurrentTime" />.</param>
     </member>
     <member name="M:StockSharp.Algo.Testing.MarketEmulator.Start">
       <summary>
@@ -16820,6 +17120,16 @@
             Получить все собственные сделки.
             </summary>
     </member>
+    <member name="P:StockSharp.Algo.Testing.MarketEmulator.Portfolios">
+      <summary>
+            Получить все портфели.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Algo.Testing.MarketEmulator.Positions">
+      <summary>
+            Получить все позиции.
+            </summary>
+    </member>
     <member name="E:StockSharp.Algo.Testing.MarketEmulator.MarketTimeChanged">
       <summary>
             Изменилось время в эмуляторе (<see cref="P:StockSharp.Algo.Testing.MarketEmulator.CurrentTime" />).
@@ -16853,6 +17163,26 @@
     <member name="E:StockSharp.Algo.Testing.MarketEmulator.NewOrderLogItems">
       <summary>
             Событие появления новых записей в логе заявок.
+            </summary>
+    </member>
+    <member name="E:StockSharp.Algo.Testing.MarketEmulator.NewPortfolios">
+      <summary>
+            Событие появления новых портфелей.
+            </summary>
+    </member>
+    <member name="E:StockSharp.Algo.Testing.MarketEmulator.PortfoliosChanged">
+      <summary>
+            Событие изменения параметров портфелей.
+            </summary>
+    </member>
+    <member name="E:StockSharp.Algo.Testing.MarketEmulator.NewPositions">
+      <summary>
+            Событие появления новых позиций.
+            </summary>
+    </member>
+    <member name="E:StockSharp.Algo.Testing.MarketEmulator.PositionsChanged">
+      <summary>
+            Событие изменения параметров позиций.
             </summary>
     </member>
     <member name="E:StockSharp.Algo.Testing.MarketEmulator.NewTrades">
@@ -16901,6 +17231,34 @@
             </summary>
       <param name="storage">Специальный интерфейс для прямого доступа к хранилищу.</param>
     </member>
+    <member name="M:StockSharp.Algo.Storages.MyTradeList.GetOverridedAddSource(StockSharp.BusinessEntities.MyTrade)">
+      <summary>
+            Получить данных из сущности для создания.
+            </summary>
+      <param name="entity">Сущность.</param>
+      <returns>Данные для создания.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.Storages.MyTradeList.GetOverridedRemoveSource(StockSharp.BusinessEntities.MyTrade)">
+      <summary>
+            Получить данных из сущности для удаления.
+            </summary>
+      <param name="entity">Сущность.</param>
+      <returns>Данные для удаления.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.Storages.MyTradeList.ReadByOrderAndTrade(StockSharp.BusinessEntities.Order,StockSharp.BusinessEntities.Trade)">
+      <summary>
+            Загрузить собственную сделку.
+            </summary>
+      <param name="order">Заявка.</param>
+      <param name="trade">Тиковая сделка.</param>
+      <returns>Собственная сделка.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.Storages.MyTradeList.Save(StockSharp.BusinessEntities.MyTrade)">
+      <summary>
+            Сохранить торговый объект.
+            </summary>
+      <param name="entity">Торговый объект.</param>
+    </member>
     <member name="T:StockSharp.Algo.Storages.OrderList">
       <summary>
             Класс для представления в виде списка заявок, хранящихся во внешнем хранилище.
@@ -16933,6 +17291,34 @@
             Создать <see cref="T:StockSharp.Algo.Storages.PositionList" />.
             </summary>
       <param name="storage">Специальный интерфейс для прямого доступа к хранилищу.</param>
+    </member>
+    <member name="M:StockSharp.Algo.Storages.PositionList.GetOverridedAddSource(StockSharp.BusinessEntities.Position)">
+      <summary>
+            Получить данных из сущности для создания.
+            </summary>
+      <param name="entity">Сущность.</param>
+      <returns>Данные для создания.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.Storages.PositionList.GetOverridedRemoveSource(StockSharp.BusinessEntities.Position)">
+      <summary>
+            Получить данных из сущности для удаления.
+            </summary>
+      <param name="entity">Сущность.</param>
+      <returns>Данные для удаления.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.Storages.PositionList.ReadBySecurityAndPortfolio(StockSharp.BusinessEntities.Security,StockSharp.BusinessEntities.Portfolio)">
+      <summary>
+            Загрузить позицию.
+            </summary>
+      <param name="security">Инструмент.</param>
+      <param name="portfolio">Портфель.</param>
+      <returns>Позиция.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.Storages.PositionList.Save(StockSharp.BusinessEntities.Position)">
+      <summary>
+            Сохранить торговый объект.
+            </summary>
+      <param name="entity">Торговый объект.</param>
     </member>
     <member name="T:StockSharp.Algo.Storages.SecurityList">
       <summary>
@@ -17098,7 +17484,7 @@
     <member name="M:StockSharp.Algo.Testing.RealTimeEmulationTrader`1.LookupSecurities(StockSharp.BusinessEntities.Security)">
       <summary>
             Найти инструменты, соответствующие фильтру <paramref name="criteria" />.
-            Найденные инструменты будут переданы через событие <see cref="E:StockSharp.BusinessEntities.ITrader.NewSecurities" />.
+            Найденные инструменты будут переданы через событие <see cref="E:StockSharp.BusinessEntities.ITrader.LookupResult" />.
             </summary>
       <param name="criteria">Инструмент, поля которого будут использоваться в качестве фильтра.</param>
     </member>
@@ -17137,6 +17523,16 @@
             Остановить получение новой информации по портфелю.
             </summary>
       <param name="portfolio">Портфель, по которому необходимо остановить получение новой информации.</param>
+    </member>
+    <member name="M:StockSharp.Algo.Testing.RealTimeEmulationTrader`1.RegisterNews">
+      <summary>
+            Начать получать новости.
+            </summary>
+    </member>
+    <member name="M:StockSharp.Algo.Testing.RealTimeEmulationTrader`1.UnRegisterNews">
+      <summary>
+            Остановить получение новостей.
+            </summary>
     </member>
     <member name="M:StockSharp.Algo.Testing.RealTimeEmulationTrader`1.RegisterOrderLog(StockSharp.BusinessEntities.Security)">
       <summary>
@@ -17190,14 +17586,14 @@
             </summary>
       <param name="order">Заявка, которую нужно отменять.</param>
     </member>
-    <member name="M:StockSharp.Algo.Testing.RealTimeEmulationTrader`1.CancelOrders(System.Nullable{System.Boolean},StockSharp.BusinessEntities.Portfolio,System.Nullable{StockSharp.BusinessEntities.OrderDirections},System.String,StockSharp.BusinessEntities.Security)">
+    <member name="M:StockSharp.Algo.Testing.RealTimeEmulationTrader`1.CancelOrders(System.Nullable{System.Boolean},StockSharp.BusinessEntities.Portfolio,System.Nullable{StockSharp.BusinessEntities.OrderDirections},StockSharp.BusinessEntities.ExchangeBoard,StockSharp.BusinessEntities.Security)">
       <summary>
             Отменить группу заявок на бирже по фильтру.
             </summary>
       <param name="isStopOrder">True, если нужно отменить только стоп-заявки, false - если только обычный и null - если оба типа.</param>
       <param name="portfolio">Портфель. Если значение равно null, то портфель не попадает в фильтр снятия заявок.</param>
       <param name="direction">Направление заявки. Если значение равно null, то направление не попадает в фильтр снятия заявок.</param>
-      <param name="classCode">Код класса. Если переданная строка пустая, то код не попадает в фильтр снятия заявок.</param>
+      <param name="board">Торговая площадка. Если значение равно null, то площадка не попадает в фильтр снятия заявок.</param>
       <param name="security">Инструмент. Если значение равно null, то инструмент не попадает в фильтр снятия заявок.</param>
     </member>
     <member name="M:StockSharp.Algo.Testing.RealTimeEmulationTrader`1.RegisterMarketDepth(StockSharp.BusinessEntities.Security)">
@@ -17367,6 +17763,11 @@
             Событие появления новых записей в логе заявок.
             </summary>
     </member>
+    <member name="E:StockSharp.Algo.Testing.RealTimeEmulationTrader`1.NewNews">
+      <summary>
+            Событие появления новости.
+            </summary>
+    </member>
     <member name="E:StockSharp.Algo.Testing.RealTimeEmulationTrader`1.Connected">
       <summary>
             Событие успешного подключения.
@@ -17396,6 +17797,11 @@
       <summary>
             Событие, сигнализирующее об изменении текущего времени на биржевых площадках <see cref="P:StockSharp.BusinessEntities.ITrader.ExchangeBoards" />.
             Передается разница во времени, прошедшее с последнего вызова события. Первый раз событие передает значение <see cref="F:System.TimeSpan.Zero" />.
+            </summary>
+    </member>
+    <member name="E:StockSharp.Algo.Testing.RealTimeEmulationTrader`1.LookupResult">
+      <summary>
+            Событие, передающее результат поиска, запущенного через метод <see cref="M:StockSharp.BusinessEntities.ITrader.LookupSecurities(StockSharp.BusinessEntities.Security)" />.
             </summary>
     </member>
     <member name="P:StockSharp.Algo.Testing.RealTimeEmulationTrader`1.DisplayName">
@@ -17444,6 +17850,11 @@
             Получить все собственные сделки.
             </summary>
     </member>
+    <member name="P:StockSharp.Algo.Testing.RealTimeEmulationTrader`1.CustomPortfolios">
+      <summary>
+            Список эмуляционных портфелей.
+            </summary>
+    </member>
     <member name="P:StockSharp.Algo.Testing.RealTimeEmulationTrader`1.Portfolios">
       <summary>
             Получить все портфели.
@@ -17452,6 +17863,11 @@
     <member name="P:StockSharp.Algo.Testing.RealTimeEmulationTrader`1.Positions">
       <summary>
             Получить все позиции.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Algo.Testing.RealTimeEmulationTrader`1.News">
+      <summary>
+            Все новости.
             </summary>
     </member>
     <member name="P:StockSharp.Algo.Testing.RealTimeEmulationTrader`1.IsConnected">
@@ -17493,6 +17909,13 @@
     <member name="P:StockSharp.Algo.Testing.RealTimeEmulationTrader`1.RegisteredPortfolios">
       <summary>
             Список всех портфелей, зарегистрированных через <see cref="M:StockSharp.BusinessEntities.ITrader.RegisterPortfolio(StockSharp.BusinessEntities.Portfolio)" />.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Algo.Testing.RealTimeEmulationTrader`1.LagTimeout">
+      <summary>
+            Интервал ожидания данных. В течении данного интервала поступающие данные из шлюза <see cref="P:StockSharp.Algo.Testing.RealTimeEmulationTrader`1.UnderlyingTrader" /> накапливаются,
+            и отправляются в <see cref="P:StockSharp.Algo.Testing.RealTimeEmulationTrader`1.MarketEmulator" /> в отсортированном по времени порядке.
+            По-умолчанию равно 5 секунд.
             </summary>
     </member>
     <member name="T:StockSharp.Algo.Testing.RealTimeEmulationTrader">
@@ -17877,14 +18300,6 @@
       <param name="checkHolidays">Проверять ли переданную дату на день недели (суббота и воскресенье являются выходными и для них будет возвращено false).</param>
       <returns>True, если торгуемая дата, иначе, неторгуемая.</returns>
     </member>
-    <member name="M:StockSharp.Algo.TraderHelper.ApplyDefaultHolidays(StockSharp.BusinessEntities.ExchangeBoard,System.DateTime,System.DateTime)">
-      <summary>
-            Заполнить <see cref="P:StockSharp.BusinessEntities.WorkingTime.SpecialHolidays" /> праздниками по-умолчанию.
-            </summary>
-      <param name="board">Площадка.</param>
-      <param name="startYear">Начальный год.</param>
-      <param name="endYear">Конечный год.</param>
-    </member>
     <member name="M:StockSharp.Algo.TraderHelper.GetMarketTime(StockSharp.BusinessEntities.Security)">
       <summary>
             Получить биржевое время.
@@ -18179,7 +18594,7 @@
       <param name="position">Значение позиции.</param>
       <returns>Направление заявки.</returns>
     </member>
-    <member name="M:StockSharp.Algo.TraderHelper.CancelOrders(StockSharp.BusinessEntities.ITrader,System.Collections.Generic.IEnumerable{StockSharp.BusinessEntities.Order},System.Nullable{System.Boolean},StockSharp.BusinessEntities.Portfolio,System.Nullable{StockSharp.BusinessEntities.OrderDirections},System.String,StockSharp.BusinessEntities.Security)">
+    <member name="M:StockSharp.Algo.TraderHelper.CancelOrders(StockSharp.BusinessEntities.ITrader,System.Collections.Generic.IEnumerable{StockSharp.BusinessEntities.Order},System.Nullable{System.Boolean},StockSharp.BusinessEntities.Portfolio,System.Nullable{StockSharp.BusinessEntities.OrderDirections},StockSharp.BusinessEntities.ExchangeBoard,StockSharp.BusinessEntities.Security)">
       <summary>
             Отменить группу заявок на бирже по фильтру.
             </summary>
@@ -18188,7 +18603,7 @@
       <param name="isStopOrder">True, если нужно отменить только стоп-заявки, false - если только обычный и null - если оба типа.</param>
       <param name="portfolio">Портфель. Если значение равно null, то портфель не попадает в фильтр снятия заявок.</param>
       <param name="direction">Направление заявки. Если значение равно null, то направление не попадает в фильтр снятия заявок.</param>
-      <param name="classCode">Код класса. Если переданная строка пустая, то код не попадает в фильтр снятия заявок.</param>
+      <param name="board">Торговая площадка. Если значение равно null, то площадка не попадает в фильтр снятия заявок.</param>
       <param name="security">Инструмент. Если значение равно null, то инструмент не попадает в фильтр снятия заявок.</param>
     </member>
     <member name="M:StockSharp.Algo.TraderHelper.Filter(System.Collections.Generic.IEnumerable{StockSharp.BusinessEntities.Order},StockSharp.BusinessEntities.Security)">
@@ -18279,6 +18694,14 @@
       <param name="myTrades">Все собственные сделки, в которых необходимо искать требуемые.</param>
       <param name="order">Заявка, для которой нужно отфильтровать сделки.</param>
       <returns>Отфильтрованные заявки.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.TraderHelper.Filter(System.Collections.Generic.IEnumerable{StockSharp.BusinessEntities.Security},StockSharp.BusinessEntities.Security)">
+      <summary>
+            Отфильтровать инструменты по заданному критерию.
+            </summary>
+      <param name="securities">Инструменты.</param>
+      <param name="criteria">Инструмент, поля которого будут использоваться в качестве фильтра.</param>
+      <returns>Отфильтрованные инструменты.</returns>
     </member>
     <member name="M:StockSharp.Algo.TraderHelper.IsFullEmpty(StockSharp.BusinessEntities.MarketDepth)">
       <summary>
@@ -18447,9 +18870,9 @@
     </member>
     <member name="M:StockSharp.Algo.TransactionIdGenerator.GetNextId">
       <summary>
-            Получить следующий номер идентификатора транзакции.
+            Получить следующий идентификатор транзакции.
             </summary>
-      <returns>Следующий номер идентификатора транзакции.</returns>
+      <returns>Следующий идентификатор транзакции.</returns>
     </member>
     <member name="T:StockSharp.Algo.IncrementTransactionIdGenerator">
       <summary>
@@ -18463,9 +18886,9 @@
     </member>
     <member name="M:StockSharp.Algo.IncrementTransactionIdGenerator.GetNextId">
       <summary>
-            Получить следующий номер идентификатора транзакции.
+            Получить следующий идентификатор транзакции.
             </summary>
-      <returns>Следующий номер идентификатора транзакции.</returns>
+      <returns>Следующий идентификатор транзакции.</returns>
     </member>
     <member name="P:StockSharp.Algo.IncrementTransactionIdGenerator.CurrentTransactionId">
       <summary>
@@ -18485,9 +18908,9 @@
     </member>
     <member name="M:StockSharp.Algo.MillisecondTransactionIdGenerator.GetNextId">
       <summary>
-            Получить следующий номер идентификатора транзакции.
+            Получить следующий идентификатор транзакции.
             </summary>
-      <returns>Следующий номер идентификатора транзакции.</returns>
+      <returns>Следующий идентификатор транзакции.</returns>
     </member>
     <member name="T:StockSharp.Algo.Reporting.XmlStrategyReport">
       <summary>

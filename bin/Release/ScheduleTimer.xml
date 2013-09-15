@@ -1,0 +1,334 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ScheduleTimer</name>
+    </assembly>
+    <members>
+        <member name="T:Schedule.NullEventStorage">
+            <summary>
+            Null event strorage disables error recovery by returning now for the last time an event fired.
+            </summary>
+        </member>
+        <member name="T:Schedule.IEventStorage">
+            <summary>
+            IEventStorage is used to provide persistance of schedule during service shutdowns.
+            </summary>
+        </member>
+        <member name="T:Schedule.LocalEventStorage">
+            <summary>
+            Local event strorage keeps the last time in memory so that skipped events are not recovered.
+            </summary>
+        </member>
+        <member name="T:Schedule.FileEventStorage">
+            <summary>
+            FileEventStorage saves the last time in an XmlDocument so that recovery will include periods that the 
+            process is shutdown.
+            </summary>
+        </member>
+        <member name="T:Schedule.IScheduledItem">
+            <summary>
+            IScheduledItem represents a scheduled event.  You can query it for the number of events that occur
+            in a time interval and for the remaining interval before the next event.
+            </summary>
+        </member>
+        <member name="M:Schedule.IScheduledItem.AddEventsInInterval(System.DateTime,System.DateTime,System.Collections.ArrayList)">
+            <summary>
+            Returns the times of the events that occur in the given time interval.  The interval is closed
+            at the start and open at the end so that intervals can be stacked without overlapping.
+            </summary>
+            <param name="Begin">The beginning of the interval</param>
+            <param name="End">The end of the interval</param>
+            <returns>All events >= Begin and &lt; End </returns>
+        </member>
+        <member name="M:Schedule.IScheduledItem.NextRunTime(System.DateTime,System.Boolean)">
+            <summary>
+            Returns the next run time of the scheduled item.  Optionally excludes the starting time.
+            </summary>
+            <param name="time">The starting time of the interval</param>
+            <param name="IncludeStartTime">if true then the starting time is included in the query false, it is excluded.</param>
+            <returns>The next execution time either on or after the starting time.</returns>
+        </member>
+        <member name="T:Schedule.IParameterSetter">
+            <summary>
+            IParameterSetter represents a serialized parameter list.  This is used to provide a partial specialized
+            method call.  This is useful for remote invocation of method calls.  For example if you have a method with
+            3 parameters.  The first 2 might represent static data such as a report and a storage location.  The third
+            might be the time that the report is invoked, which is only known when the method is invoked.  Using this,
+            you just pass the method and the first 2 parameters to a timer object, which supplies the 3rd parameter.
+            Without these objects, you would have to generate a custom object type for each method you wished to 
+            execute in this manner and store the static parameters as instance variables.  
+            </summary>
+        </member>
+        <member name="M:Schedule.IParameterSetter.reset">
+            <summary>
+            This resets the setter to the beginning.  It is used for setters that rely on positional state
+            information.  It is called prior to setting any method values.
+            </summary>
+        </member>
+        <member name="M:Schedule.IParameterSetter.GetParameterValue(System.Reflection.ParameterInfo,System.Int32,System.Object@)">
+            <summary>
+            This method is used to both query support for setting a parameter and actually set the value.
+            True is returned if the parameter passed in is updated.
+            </summary>
+            <param name="pi">The reflection information about this parameter.</param>
+            <param name="ParameterLoc">The location of the prameter in the parameter list.</param>
+            <param name="parameter">The parameter object</param>
+            <returns>true if the parameter is matched and false otherwise</returns>
+        </member>
+        <member name="T:Schedule.OrderParameterSetter">
+            <summary>
+            This setter object takes a simple object array full of parameter data.  It applys the objects in order
+            to the method parameter list.
+            </summary>
+        </member>
+        <member name="T:Schedule.NamedParameterSetter">
+            <summary>
+            This setter object stores the parameter data in a Hashtable and uses the hashtable keys to match 
+            the parameter names of the method to the parameter data.  This allows methods to be called like 
+            stored procedures, with the parameters being passed in independent of order.
+            </summary>
+        </member>
+        <member name="T:Schedule.ParameterSetterList">
+            <summary>
+            ParameterSetterList maintains a collection of IParameterSetter objects and applies them in order to each
+            parameter of the method.  Each time a match occurs the next parameter is tried starting with the first 
+            setter object until it is matched.
+            </summary>
+        </member>
+        <member name="T:Schedule.IMethodCall">
+            <summary>
+            IMethodCall represents a partially specified parameter data list and a method.  This allows methods to be 
+            dynamically late invoked for things like timers and other event driven frameworks.
+            </summary>
+        </member>
+        <member name="T:Schedule.DelegateMethodCall">
+            <summary>
+            Method call captures the data required to do a defered method call.
+            </summary>
+        </member>
+        <member name="T:Schedule.MethodCallBase">
+            <summary>
+            This is a base class that handles the Parameter list management for the 2 dynamic method call methods.
+            </summary>
+        </member>
+        <member name="T:Schedule.ReportTimer">
+            <summary>
+            Summary description for ReportTimer.
+            </summary>
+        </member>
+        <member name="T:Schedule.ScheduleTimerBase">
+            <summary>
+            ScheduleTimer represents a timer that fires on a more human friendly schedule.  For example it is easy to 
+            set it to fire every day at 6:00PM.  It is useful for batch jobs or alarms that might be difficult to 
+            schedule with the native .net timers.
+            It is similar to the .net timer that it is based on with the start and stop methods functioning similarly.
+            The main difference is the event uses a different delegate and arguement since the .net timer argument 
+            class is not creatable.
+            </summary>
+        </member>
+        <member name="M:Schedule.ScheduleTimerBase.AddJob(Schedule.IScheduledItem,System.Delegate,System.Object[])">
+            <summary>
+            Adds a job to the timer.  This method passes in a delegate and the parameters similar to the Invoke method of windows forms.
+            </summary>
+            <param name="Schedule">The schedule that this delegate is to be run on.</param>
+            <param name="f">The delegate to run</param>
+            <param name="Params">The method parameters to pass if you leave any DateTime parameters unbound, then they will be set with the scheduled run time of the 
+            method.  Any unbound object parameters will get this Job object passed in.</param>
+        </member>
+        <member name="M:Schedule.ScheduleTimerBase.AddAsyncJob(Schedule.IScheduledItem,System.Delegate,System.Object[])">
+            <summary>
+            Adds a job to the timer to operate asyncronously.
+            </summary>
+            <param name="Schedule">The schedule that this delegate is to be run on.</param>
+            <param name="f">The delegate to run</param>
+            <param name="Params">The method parameters to pass if you leave any DateTime parameters unbound, then they will be set with the scheduled run time of the 
+            method.  Any unbound object parameters will get this Job object passed in.</param>
+        </member>
+        <member name="M:Schedule.ScheduleTimerBase.AddJob(Schedule.TimerJob)">
+            <summary>
+            Adds a job to the timer.  
+            </summary>
+            <param name="Event"></param>
+        </member>
+        <member name="M:Schedule.ScheduleTimerBase.ClearJobs">
+            <summary>
+            Clears out all scheduled jobs.
+            </summary>
+        </member>
+        <member name="M:Schedule.ScheduleTimerBase.Start">
+            <summary>
+            Begins executing all assigned jobs at the scheduled times
+            </summary>
+        </member>
+        <member name="M:Schedule.ScheduleTimerBase.Stop">
+            <summary>
+            Halts executing all jobs.  When the timer is restarted all jobs that would have run while the timer was stopped are re-tried.
+            </summary>
+        </member>
+        <member name="F:Schedule.ScheduleTimerBase.EventStorage">
+            <summary>
+            EventStorage determines the method used to store the last event fire time.  It defaults to keeping it in memory.
+            </summary>
+        </member>
+        <member name="F:Schedule.ScheduleTimerBase.MAX_INTERVAL">
+            <summary>
+            This is here to enhance accuracy.  Even if nothing is scheduled the timer sleeps for a maximum of 1 minute.
+            </summary>
+        </member>
+        <member name="T:Schedule.BlockWrapper">
+            <summary>
+            This class will be used to implement a filter that enables a window of activity.  For cases where you want to 
+            run every 15 minutes between 6:00 AM and 5:00 PM.  Or just on weekdays or weekends.
+            </summary>
+        </member>
+        <member name="T:Schedule.EventInstance">
+            <summary>
+            There have been quite a few requests to allow scheduling of multiple delegates and method parameter data
+            from the same timer.  This class allows you to match the event with the time that it fired.  I want to keep
+            the same simple implementation of the EventQueue and interval classes since they can be reused elsewhere.
+            The timer should be responsible for matching this data up.
+            </summary>
+        </member>
+        <member name="T:Schedule.EventQueue">
+            <summary>
+            The event queue is a collection of scheduled items that represents the union of all child scheduled items.
+            This is useful for events that occur every 10 minutes or at multiple intervals not covered by the simple
+            scheduled items.
+            </summary>
+        </member>
+        <member name="M:Schedule.EventQueue.Add(Schedule.IScheduledItem)">
+            <summary>
+            Adds a ScheduledTime to the queue.
+            </summary>
+            <param name="time">The scheduled time to add</param>
+        </member>
+        <member name="M:Schedule.EventQueue.Clear">
+            <summary>
+            Clears the list of scheduled times.
+            </summary>
+        </member>
+        <member name="M:Schedule.EventQueue.AddEventsInInterval(System.DateTime,System.DateTime,System.Collections.ArrayList)">
+            <summary>
+            Adds the running time for all events in the list.
+            </summary>
+            <param name="Begin">The beginning time of the interval</param>
+            <param name="End">The end time of the interval</param>
+            <param name="List">The list to add times to.</param>
+        </member>
+        <member name="M:Schedule.EventQueue.NextRunTime(System.DateTime,System.Boolean)">
+            <summary>
+            Returns the first time after the starting time for all events in the list.
+            </summary>
+            <param name="time">The starting time.</param>
+            <param name="AllowExact">If this is true then it allows the return time to match the time parameter, false forces the return time to be greater then the time parameter</param>
+            <returns>Either the next event after the input time or greater or equal to depending on the AllowExact parameter.</returns>
+        </member>
+        <member name="T:Schedule.ScheduledTime">
+            <summary>
+            This class represents a simple schedule.  It can represent a repeating event that occurs anywhere from every
+            second to once a month.  It consists of an enumeration to mark the interval and an offset from that interval.
+            For example new ScheduledTime(Hourly, new TimeSpan(0, 15, 0)) would represent an event that fired 15 minutes
+            after the hour every hour.
+            </summary>
+        </member>
+        <member name="M:Schedule.ScheduledTime.#ctor(System.String,System.String)">
+            <summary>
+            intializes a simple scheduled time element from a pair of strings.  
+            Here are the supported formats
+            
+            BySecond - single integer representing the offset in ms
+            ByMinute - A comma seperate list of integers representing the number of seconds and ms
+            Hourly - A comma seperated list of integers representing the number of minutes, seconds and ms
+            Daily - A time in hh:mm:ss AM/PM format
+            Weekly - n, time where n represents an integer and time is a time in the Daily format
+            Monthly - the same format as weekly.
+            
+            </summary>
+            <param name="StrBase">A string representing the base enumeration for the scheduled time</param>
+            <param name="StrOffset">A string representing the offset for the time.</param>
+        </member>
+        <member name="T:Schedule.SimpleInterval">
+            <summary>
+            The simple interval represents the simple scheduling that .net supports natively.  It consists of a start
+            absolute time and an interval that is counted off from the start time.
+            </summary>
+        </member>
+        <member name="T:Schedule.SingleEvent">
+            <summary>Single event represents an event which only fires once.</summary>
+        </member>
+        <member name="T:Schedule.Filter">
+            <summary>
+            This is an empty filter that does not filter any of the events.
+            </summary>
+        </member>
+        <member name="T:Schedule.IResultFilter">
+            <summary>
+            The IResultFilter interface represents filters that either sort the events for an interval or
+            remove duplicate events either selecting the first or the last event.
+            </summary>
+        </member>
+        <member name="T:Schedule.FirstEventFilter">
+            <summary>
+            This causes only the first event of the interval to be counted.
+            </summary>
+        </member>
+        <member name="T:Schedule.LastEventFilter">
+            <summary>
+            This causes only the last event of the interval to be counted.
+            </summary>
+        </member>
+        <member name="M:Schedule.ScheduleTimer.AddEvent(Schedule.IScheduledItem)">
+            <summary>
+            Add event is used in conjunction with the Elaspsed event handler.  Set the Elapsed handler, add your schedule and call start.
+            </summary>
+            <param name="Schedule">The schedule to fire the event at.  Adding additional schedules will cause the event to fire whenever either schedule calls for it.</param>
+        </member>
+        <member name="E:Schedule.ScheduleTimer.Elapsed">
+            <summary>
+            The event to fire when you only need to fire one event.
+            </summary>
+        </member>
+        <member name="T:Schedule.ExceptionEventArgs">
+            <summary>
+            ExceptionEventArgs allows exceptions to be captured and sent to the OnError event of the timer.
+            </summary>
+        </member>
+        <member name="T:Schedule.ExceptionEventHandler">
+            <summary>
+            ExceptionEventHandler is the method type used by the OnError event for the timer.
+            </summary>
+        </member>
+        <member name="T:Schedule.TimerJob">
+            <summary>
+            Timer job groups a schedule, syncronization data, a result filter, method information and an enabled state so that multiple jobs
+            can be managed by the same timer.  Each one operating independently of the others with different syncronization and recovery settings.
+            </summary>
+        </member>
+        <member name="T:Schedule.TimerJobList">
+            <summary>
+            Timer job manages a group of timer jobs.
+            </summary>
+        </member>
+        <member name="M:Schedule.TimerJobList.NextRunTime(System.DateTime)">
+            <summary>
+            Gets the next time any of the jobs in the list will run.  Allows matching the exact start time.  If no matches are found the return
+            is DateTime.MaxValue;
+            </summary>
+            <param name="time">The starting time for the interval being queried.  This time is included in the interval</param>
+            <returns>The first absolute date one of the jobs will execute on.  If none of the jobs needs to run DateTime.MaxValue is returned.</returns>
+        </member>
+        <member name="T:Schedule.TimerParameterSetter">
+            <summary>
+            The timer job allows delegates to be specified with unbound parameters.  This ParameterSetter assigns all unbound datetime parameters
+            with the specified time and all unbound object parameters with the calling object.
+            </summary>
+        </member>
+        <member name="M:Schedule.TimerParameterSetter.#ctor(System.DateTime,System.Object)">
+            <summary>
+            Initalize the ParameterSetter with the time to pass to unbound time parameters and object to pass to unbound object parameters.
+            </summary>
+            <param name="time">The time to pass to the unbound DateTime parameters</param>
+            <param name="sender">The object to pass to the unbound object parameters</param>
+        </member>
+    </members>
+</doc>

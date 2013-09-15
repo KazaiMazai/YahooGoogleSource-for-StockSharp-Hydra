@@ -16,9 +16,9 @@ namespace StockSharp.Hydra.Yahoo
     class YahooGoogleSecurityStorage : ISecurityStorage
     {
         private readonly ISecurityStorage _underlyingStorage;
-        private readonly SynchronizedDictionary<string, Security> _cacheByYahooId = new SynchronizedDictionary<string, Security>();
+        private readonly SynchronizedDictionary<string, Security> _cacheById = new SynchronizedDictionary<string, Security>();
 
-        public IEnumerable<Security> YahooSecurities { get { return _cacheByYahooId.Values; } }
+        public IEnumerable<Security> YahooSecurities { get { return _cacheById.Values; } }
 
         public YahooGoogleSecurityStorage(ISecurityStorage underlyingStorage, HydraEntityRegistry entityRegistry)
         {
@@ -38,7 +38,7 @@ namespace StockSharp.Hydra.Yahoo
             if (fieldName.CompareIgnoreCase("Id"))
                 return _underlyingStorage.LoadBy(fieldName, fieldValue);
 
-            return _cacheByYahooId.TryGetValue((string)fieldValue);
+            return _cacheById.TryGetValue((string)fieldValue);
         }
 
         public IEnumerable<Security> Lookup(Security criteria)
@@ -58,10 +58,8 @@ namespace StockSharp.Hydra.Yahoo
             if (security == null)
                 throw new ArgumentNullException("security");
 
-            var yahooId = security.ExtensionInfo.TryGetValue(YahooGoogelHistorySource.YahooSecurityIdField);
-
-            if (yahooId != null)
-                _cacheByYahooId.SafeAdd((string)yahooId, key => security);
+            _cacheById.SafeAdd(security.Id, key => security);
+            
         }
 
         
