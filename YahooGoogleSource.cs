@@ -4,7 +4,7 @@ using StockSharp.Hydra.Yahoo;
 using StockSharp.Logging;
 using Yahoo;
 
-namespace StockSharp.Hydra
+namespace StockSharp.Hydra.YahooGoogle
 {
     using System;
     using System.Collections.Generic;

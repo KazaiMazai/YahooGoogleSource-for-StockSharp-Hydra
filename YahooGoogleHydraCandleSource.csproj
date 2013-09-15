@@ -60,21 +60,21 @@
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="StockSharp.Algo, Version=4.1.12.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="StockSharp.Algo, Version=4.1.15.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>F:\проекты\S#\StockSharp_4.1.15_Sources\References\StockSharp.Algo.dll</HintPath>
+      <HintPath>F:\проекты\S#\StockSharpEnterprise_4.1.19.1_Sources\References\StockSharp.Algo.dll</HintPath>
     </Reference>
-    <Reference Include="StockSharp.BusinessEntities, Version=4.1.12.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="StockSharp.BusinessEntities, Version=4.1.15.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>F:\проекты\S#\StockSharp_4.1.15_Sources\References\StockSharp.BusinessEntities.dll</HintPath>
+      <HintPath>F:\проекты\S#\StockSharpEnterprise_4.1.19.1_Sources\References\StockSharp.BusinessEntities.dll</HintPath>
     </Reference>
-    <Reference Include="StockSharp.Hydra.Core, Version=4.1.5.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="StockSharp.Hydra.Core, Version=4.1.16.1, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>F:\проекты\S#\Hydra 4.1.16.1\StockSharp.Hydra.Core.dll</HintPath>
+      <HintPath>F:\проекты\S#\Hydra\StockSharp.Hydra.Core.dll</HintPath>
     </Reference>
-    <Reference Include="StockSharp.Logging, Version=4.1.12.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="StockSharp.Logging, Version=4.1.15.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>F:\проекты\S#\StockSharp_4.1.15_Sources\References\StockSharp.Logging.dll</HintPath>
+      <HintPath>F:\проекты\S#\StockSharpEnterprise_4.1.19.1_Sources\References\StockSharp.Logging.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -85,7 +85,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="YahooGoogelHistorySource.cs" />
     <Compile Include="YahooGoogleSecurityStorage.cs" />
-    <Compile Include="YahooGoogleSource.cs" />
+    <Compile Include="YahooGoogleTask.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="yahoo.png" />

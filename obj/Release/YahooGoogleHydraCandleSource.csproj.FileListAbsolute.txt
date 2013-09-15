@@ -25,7 +25,6 @@ C:\Users\1 000 000 usd\Documents\YahooGoogleSource-for-StockSharp-Hydra\bin\Rele
 C:\Users\1 000 000 usd\Documents\YahooGoogleSource-for-StockSharp-Hydra\bin\Release\Ecng.Net.dll
 C:\Users\1 000 000 usd\Documents\YahooGoogleSource-for-StockSharp-Hydra\bin\Release\Ionic.Zip.dll
 C:\Users\1 000 000 usd\Documents\YahooGoogleSource-for-StockSharp-Hydra\bin\Release\Ecng.Serialization.FieldFactories.dll
-C:\Users\1 000 000 usd\Documents\YahooGoogleSource-for-StockSharp-Hydra\bin\Release\ScheduleTimer.dll
 C:\Users\1 000 000 usd\Documents\YahooGoogleSource-for-StockSharp-Hydra\bin\Release\log4net.dll
 C:\Users\1 000 000 usd\Documents\YahooGoogleSource-for-StockSharp-Hydra\bin\Release\Google.GData.Calendar.dll
 C:\Users\1 000 000 usd\Documents\YahooGoogleSource-for-StockSharp-Hydra\bin\Release\Google.GData.Client.dll
@@ -51,7 +50,6 @@ C:\Users\1 000 000 usd\Documents\YahooGoogleSource-for-StockSharp-Hydra\bin\Rele
 C:\Users\1 000 000 usd\Documents\YahooGoogleSource-for-StockSharp-Hydra\bin\Release\LumiSoft.Net.xml
 C:\Users\1 000 000 usd\Documents\YahooGoogleSource-for-StockSharp-Hydra\bin\Release\DotNetDBF.xml
 C:\Users\1 000 000 usd\Documents\YahooGoogleSource-for-StockSharp-Hydra\bin\Release\Microsoft.Practices.EnterpriseLibrary.Security.Cryptography.xml
-C:\Users\1 000 000 usd\Documents\YahooGoogleSource-for-StockSharp-Hydra\bin\Release\ScheduleTimer.xml
 C:\Users\1 000 000 usd\Documents\YahooGoogleSource-for-StockSharp-Hydra\bin\Release\log4net.xml
 C:\Users\1 000 000 usd\Documents\YahooGoogleSource-for-StockSharp-Hydra\bin\Release\Microsoft.Practices.Unity.xml
 C:\Users\1 000 000 usd\Documents\YahooGoogleSource-for-StockSharp-Hydra\bin\Release\Microsoft.Practices.ServiceLocation.xml
@@ -62,3 +60,16 @@ C:\Users\1 000 000 usd\Documents\YahooGoogleSource-for-StockSharp-Hydra\bin\Rele
 C:\Users\1 000 000 usd\Documents\YahooGoogleSource-for-StockSharp-Hydra\bin\Release\Microsoft.Practices.Unity.Interception.xml
 C:\Users\1 000 000 usd\Documents\YahooGoogleSource-for-StockSharp-Hydra\obj\Release\StockSharp.Hydra.YahooGoogle.dll
 C:\Users\1 000 000 usd\Documents\YahooGoogleSource-for-StockSharp-Hydra\obj\Release\StockSharp.Hydra.YahooGoogle.pdb
+C:\Users\1 000 000 usd\Documents\YahooGoogleSource-for-StockSharp-Hydra\bin\Release\SevenZipSharp.dll
+C:\Users\1 000 000 usd\Documents\YahooGoogleSource-for-StockSharp-Hydra\bin\Release\Ookii.Dialogs.Wpf.dll
+C:\Users\1 000 000 usd\Documents\YahooGoogleSource-for-StockSharp-Hydra\bin\Release\StockSharp.Xaml.dll
+C:\Users\1 000 000 usd\Documents\YahooGoogleSource-for-StockSharp-Hydra\bin\Release\Abt.Controls.SciChart.Wpf.dll
+C:\Users\1 000 000 usd\Documents\YahooGoogleSource-for-StockSharp-Hydra\bin\Release\Hardcodet.Wpf.GenericTreeView.dll
+C:\Users\1 000 000 usd\Documents\YahooGoogleSource-for-StockSharp-Hydra\bin\Release\ActiproSoftware.Shared.Wpf.dll
+C:\Users\1 000 000 usd\Documents\YahooGoogleSource-for-StockSharp-Hydra\bin\Release\ActiproSoftware.Editors.Wpf.dll
+C:\Users\1 000 000 usd\Documents\YahooGoogleSource-for-StockSharp-Hydra\bin\Release\Ookii.Dialogs.Wpf.xml
+C:\Users\1 000 000 usd\Documents\YahooGoogleSource-for-StockSharp-Hydra\bin\Release\StockSharp.Xaml.xml
+C:\Users\1 000 000 usd\Documents\YahooGoogleSource-for-StockSharp-Hydra\bin\Release\Abt.Controls.SciChart.Wpf.xml
+C:\Users\1 000 000 usd\Documents\YahooGoogleSource-for-StockSharp-Hydra\bin\Release\Hardcodet.Wpf.GenericTreeView.xml
+C:\Users\1 000 000 usd\Documents\YahooGoogleSource-for-StockSharp-Hydra\bin\Release\ActiproSoftware.Shared.Wpf.xml
+C:\Users\1 000 000 usd\Documents\YahooGoogleSource-for-StockSharp-Hydra\bin\Release\ActiproSoftware.Editors.Wpf.xml
