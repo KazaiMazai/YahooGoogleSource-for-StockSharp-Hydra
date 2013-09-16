@@ -11,7 +11,7 @@ using StockSharp.Algo.Storages;
 using StockSharp.BusinessEntities;
 using StockSharp.Hydra.Core;
 using StockSharp.Logging;
-using YStockSharp.Hydra.YahooGoogle;
+ 
 
 namespace StockSharp.Hydra.YahooGoogle
 {
@@ -195,14 +195,19 @@ namespace StockSharp.Hydra.YahooGoogle
         }
 
 
-        private static bool Eb_1(KeyValuePair<Type, object> a)
-        {
-            return a.Key == typeof (TimeFrameCandle);
-        }
-
+       
         protected override TimeSpan OnProcess()
         {
-            DateTime dateTime1 = _settings.StartFrom;
+            DateTime dateTime1;
+
+            if (!_settings.ReDownLoad)
+            {
+                dateTime1 = DateTime.Today - TimeSpan.FromDays(_settings.YahooOffset);
+            }
+            else
+            {
+                dateTime1 = _settings.StartFrom;
+            }
             DateTime dateTime2 = DateTime.Today;
             var list = new List<DateTime>();
             for (; dateTime1 <= dateTime2; dateTime1 = dateTime1.AddDays(1.0))
@@ -255,8 +260,13 @@ namespace StockSharp.Hydra.YahooGoogle
                                                         SaveCandles(security, tf, candles, true);
                                                         hashSet.Remove(dateTime3);
                                                     }
-                                                    File.Delete(GetTempCandlesFilePath(security, dateTime3, dateTime3,
-                                                                                       tf));
+                                                    var path = GetTempCandlesFilePath(security, dateTime3, dateTime3,
+                                                                                      tf);
+                                                    var info = new FileInfo(path);
+                                                    if (info.Exists)
+                                                    {
+                                                        File.Delete(path);
+                                                    }
                                                 }
                                                 else
                                                     break;

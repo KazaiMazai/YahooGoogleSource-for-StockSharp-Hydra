@@ -17,7 +17,7 @@ using StockSharp.Hydra;
 using StockSharp.Hydra.Core;
 using StockSharp.Logging;
 
-namespace YStockSharp.Hydra.YahooGoogle
+namespace StockSharp.Hydra.YahooGoogle
 {
       class YahooGoogelHistorySource : BaseHistorySource
       {

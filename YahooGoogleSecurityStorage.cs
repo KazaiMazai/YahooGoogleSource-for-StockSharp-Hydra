@@ -1,6 +1,6 @@
 ﻿using StockSharp.Algo;
 using StockSharp.Algo.Storages;
- 
+
 
 namespace StockSharp.Hydra.YahooGoogle
 {
