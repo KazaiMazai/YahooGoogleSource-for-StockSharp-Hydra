@@ -2797,6 +2797,13 @@
             </summary>
       <returns>Время, оставшееся до экспирации.</returns>
     </member>
+    <member name="M:StockSharp.Algo.Derivatives.BlackScholes.TryRound(System.Decimal)">
+      <summary>
+            Округлить до <see cref="P:StockSharp.Algo.Derivatives.BlackScholes.RoundDecimals" />.
+            </summary>
+      <param name="value">Исходное значение.</param>
+      <returns>Округленное значение.</returns>
+    </member>
     <member name="M:StockSharp.Algo.Derivatives.BlackScholes.Premium">
       <summary>
             Рассчитать премию опциона.
@@ -2808,6 +2815,14 @@
             Рассчитать премию опциона.
             </summary>
       <param name="deviation">Стандартное отклонение.</param>
+      <returns>Премия опциона.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.Derivatives.BlackScholes.Premium(System.Decimal,System.Double)">
+      <summary>
+            Рассчитать премию опциона.
+            </summary>
+      <param name="deviation">Стандартное отклонение.</param>
+      <param name="timeToExp">Период опциона до экспирации.</param>
       <returns>Премия опциона.</returns>
     </member>
     <member name="M:StockSharp.Algo.Derivatives.BlackScholes.Delta">
@@ -2823,6 +2838,14 @@
       <param name="deviation">Стандартное отклонение.</param>
       <returns>Дельта опциона.</returns>
     </member>
+    <member name="M:StockSharp.Algo.Derivatives.BlackScholes.Delta(System.Decimal,System.Double)">
+      <summary>
+            Рассчитать дельту опциона.
+            </summary>
+      <param name="deviation">Стандартное отклонение.</param>
+      <param name="timeToExp">Период опциона до экспирации.</param>
+      <returns>Дельта опциона.</returns>
+    </member>
     <member name="M:StockSharp.Algo.Derivatives.BlackScholes.Gamma">
       <summary>
             Рассчитать гамму опциона.
@@ -2834,6 +2857,14 @@
             Рассчитать гамму опциона.
             </summary>
       <param name="deviation">Стандартное отклонение.</param>
+      <returns>Гамма опциона.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.Derivatives.BlackScholes.Gamma(System.Decimal,System.Double)">
+      <summary>
+            Рассчитать гамму опциона.
+            </summary>
+      <param name="deviation">Стандартное отклонение.</param>
+      <param name="timeToExp">Период опциона до экспирации.</param>
       <returns>Гамма опциона.</returns>
     </member>
     <member name="M:StockSharp.Algo.Derivatives.BlackScholes.Vega">
@@ -2849,6 +2880,14 @@
       <param name="deviation">Стандартное отклонение.</param>
       <returns>Вега опциона.</returns>
     </member>
+    <member name="M:StockSharp.Algo.Derivatives.BlackScholes.Vega(System.Decimal,System.Double)">
+      <summary>
+            Рассчитать вегу опциона.
+            </summary>
+      <param name="deviation">Стандартное отклонение.</param>
+      <param name="timeToExp">Период опциона до экспирации.</param>
+      <returns>Вега опциона.</returns>
+    </member>
     <member name="M:StockSharp.Algo.Derivatives.BlackScholes.Theta">
       <summary>
             Рассчитать тету опциона.
@@ -2860,6 +2899,14 @@
             Рассчитать тету опциона.
             </summary>
       <param name="deviation">Стандартное отклонение.</param>
+      <returns>Тета опциона.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.Derivatives.BlackScholes.Theta(System.Decimal,System.Double)">
+      <summary>
+            Рассчитать тету опциона.
+            </summary>
+      <param name="deviation">Стандартное отклонение.</param>
+      <param name="timeToExp">Период опциона до экспирации.</param>
       <returns>Тета опциона.</returns>
     </member>
     <member name="M:StockSharp.Algo.Derivatives.BlackScholes.Rho">
@@ -2875,12 +2922,29 @@
       <param name="deviation">Стандартное отклонение.</param>
       <returns>Ро опциона.</returns>
     </member>
+    <member name="M:StockSharp.Algo.Derivatives.BlackScholes.Rho(System.Decimal,System.Double)">
+      <summary>
+            Рассчитать ро опциона.
+            </summary>
+      <param name="deviation">Стандартное отклонение.</param>
+      <param name="timeToExp">Период опциона до экспирации.</param>
+      <returns>Ро опциона.</returns>
+    </member>
     <member name="M:StockSharp.Algo.Derivatives.BlackScholes.IV(System.Decimal)">
       <summary>
             Рассчитать подразумеваемую волатильность (Implied  Volatility).
             </summary>
       <param name="premium">Премия по опциону.</param>
       <returns>Подразумеваевая волатильность.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.Derivatives.BlackScholes.D1(System.Decimal,System.Double)">
+      <summary>
+            Рассчитать параметр d1 определения вероятности исполнения опциона.
+            </summary>
+      <param name="deviation">Стандартное отклонение.</param>
+      <param name="timeToExp">Период опциона до экспирации.</param>
+      <returns>
+      </returns>
     </member>
     <member name="M:StockSharp.Algo.Derivatives.BlackScholes.IV">
       <summary>
@@ -2916,6 +2980,16 @@
     <member name="P:StockSharp.Algo.Derivatives.BlackScholes.UnderlyingAsset">
       <summary>
             Базовый актив.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Algo.Derivatives.BlackScholes.AssetPrice">
+      <summary>
+            Цена базового актива.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Algo.Derivatives.BlackScholes.OptionType">
+      <summary>
+            Тип опциона.
             </summary>
     </member>
     <member name="M:StockSharp.Algo.Derivatives.BasketBlackScholes.#ctor">
@@ -3138,6 +3212,79 @@
             </summary>
       <param name="allStrikes">Все страйки.</param>
       <returns>Отфильтрованные страйки.</returns>
+    </member>
+    <member name="T:StockSharp.Algo.Derivatives.Black">
+      <summary>
+            Модель расчета значений "греков" по формуле Блэка.
+            </summary>
+    </member>
+    <member name="M:StockSharp.Algo.Derivatives.Black.#ctor(StockSharp.BusinessEntities.Security)">
+      <summary>
+            Создать <see cref="T:StockSharp.Algo.Derivatives.Black" />.
+            </summary>
+      <param name="option">Опцион.</param>
+    </member>
+    <member name="M:StockSharp.Algo.Derivatives.Black.Premium(System.Decimal,System.Double)">
+      <summary>
+            Рассчитать премию опциона.
+            </summary>
+      <param name="deviation">Стандартное отклонение.</param>
+      <param name="timeToExp">Период опциона до экспирации.</param>
+      <returns>Премия опциона.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.Derivatives.Black.Delta(System.Decimal,System.Double)">
+      <summary>
+            Рассчитать дельту опциона.
+            </summary>
+      <param name="deviation">Стандартное отклонение.</param>
+      <param name="timeToExp">Период опциона до экспирации.</param>
+      <returns>Дельта опциона.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.Derivatives.Black.Gamma(System.Decimal,System.Double)">
+      <summary>
+            Рассчитать гамму опциона.
+            </summary>
+      <param name="deviation">Стандартное отклонение.</param>
+      <param name="timeToExp">Период опциона до экспирации.</param>
+      <returns>Гамма опциона.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.Derivatives.Black.Vega(System.Decimal,System.Double)">
+      <summary>
+            Рассчитать вегу опциона.
+            </summary>
+      <param name="deviation">Стандартное отклонение.</param>
+      <param name="timeToExp">Период опциона до экспирации.</param>
+      <returns>Вега опциона.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.Derivatives.Black.Theta(System.Decimal,System.Double)">
+      <summary>
+            Рассчитать тету опциона.
+            </summary>
+      <param name="deviation">Стандартное отклонение.</param>
+      <param name="timeToExp">Период опциона до экспирации.</param>
+      <returns>Тета опциона.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.Derivatives.Black.Rho(System.Decimal,System.Double)">
+      <summary>
+            Рассчитать ро опциона.
+            </summary>
+      <param name="deviation">Стандартное отклонение.</param>
+      <param name="timeToExp">Период опциона до экспирации.</param>
+      <returns>Ро опциона.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.Derivatives.Black.D1(System.Decimal,System.Double)">
+      <summary>
+            Рассчитать параметр d1 определения вероятности исполнения опциона.
+            </summary>
+      <param name="deviation">Стандартное отклонение.</param>
+      <param name="timeToExp">Период опциона до экспирации.</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="P:StockSharp.Algo.Derivatives.Black.Dividend">
+      <summary>
+            Размер дивиденда по акциям.
+            </summary>
     </member>
     <member name="T:StockSharp.Algo.Derivatives.DerivativesHelper">
       <summary>
@@ -3364,6 +3511,129 @@
       <param name="model">Модель расчета значений "греков" по формуле Блэка-Шоулза.</param>
       <returns>Стакан волатильности.</returns>
     </member>
+    <member name="M:StockSharp.Algo.Derivatives.DerivativesHelper.GetExpirationTimeLine(System.DateTime,System.DateTime)">
+      <summary>
+            Получить период опциона до экспирации.
+            </summary>
+      <param name="expirationTime">Время экспирации опциона.</param>
+      <param name="currentTime">Текущее время.</param>
+      <returns>Период опциона до экспирации.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.Derivatives.DerivativesHelper.GetExpirationTimeLine(System.DateTime,System.DateTime,System.TimeSpan)">
+      <summary>
+            Получить период опциона до экспирации.
+            </summary>
+      <param name="expirationTime">Время экспирации опциона.</param>
+      <param name="currentTime">Текущее время.</param>
+      <param name="timeLine">Длина общего периода.</param>
+      <returns>Период опциона до экспирации.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.Derivatives.DerivativesHelper.ExpRate(System.Decimal,System.Double)">
+      <summary>
+            Рассчитать временную экспоненту.
+            </summary>
+      <param name="riskFree">Безрисковая процентная ставка.</param>
+      <param name="timeToExp">Период опциона до экспирации.</param>
+      <returns>Временная экспонента.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.Derivatives.DerivativesHelper.D1(System.Decimal,System.Decimal,System.Decimal,System.Decimal,System.Decimal,System.Double)">
+      <summary>
+            Рассчитать параметр d1 определения вероятности исполнения опциона.
+            </summary>
+      <param name="assetPrice">Цена базового актива.</param>
+      <param name="strike">Цена страйка.</param>
+      <param name="riskFree">Безрисковая процентная ставка.</param>
+      <param name="dividend">Размер дивиденда по акциям.</param>
+      <param name="deviation">Стандартное отклонение.</param>
+      <param name="timeToExp">Период опциона до экспирации.</param>
+      <returns>Параметр d1 определения вероятности исполнения опциона.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.Derivatives.DerivativesHelper.D2(System.Double,System.Decimal,System.Double)">
+      <summary>
+            Рассчитать параметр d2 определения вероятности исполнения опциона.
+            </summary>
+      <param name="d1">Параметр d1 определения вероятности исполнения опциона.</param>
+      <param name="deviation">Стандартное отклонение.</param>
+      <param name="timeToExp">Период опциона до экспирации.</param>
+      <returns>Параметр d2 определения вероятности исполнения опциона.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.Derivatives.DerivativesHelper.Premium(StockSharp.BusinessEntities.OptionTypes,System.Decimal,System.Decimal,System.Decimal,System.Decimal,System.Decimal,System.Double,System.Double)">
+      <summary>
+            Рассчитать премию опциона.
+            </summary>
+      <param name="optionType">Тип опциона.</param>
+      <param name="strike">Цена страйка.</param>
+      <param name="assetPrice">Цена базового актива.</param>
+      <param name="riskFree">Безрисковая процентная ставка.</param>
+      <param name="dividend">Размер дивиденда по акциям.</param>
+      <param name="deviation">Стандартное отклонение.</param>
+      <param name="timeToExp">Период опциона до экспирации.</param>
+      <param name="d1">Параметр d1 определения вероятности исполнения опциона.</param>
+      <returns>Премия опциона.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.Derivatives.DerivativesHelper.Delta(StockSharp.BusinessEntities.OptionTypes,System.Decimal,System.Double)">
+      <summary>
+            Рассчитать дельту опциона.
+            </summary>
+      <param name="optionType">Тип опциона.</param>
+      <param name="assetPrice">Цена базового актива.</param>
+      <param name="d1">Параметр d1 определения вероятности исполнения опциона.</param>
+      <returns>Дельта опциона.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.Derivatives.DerivativesHelper.Gamma(System.Decimal,System.Decimal,System.Double,System.Double)">
+      <summary>
+            Рассчитать гамму опциона.
+            </summary>
+      <param name="assetPrice">Цена базового актива.</param>
+      <param name="deviation">Стандартное отклонение.</param>
+      <param name="timeToExp">Период опциона до экспирации.</param>
+      <param name="d1">Параметр d1 определения вероятности исполнения опциона.</param>
+      <returns>Гамма опциона.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.Derivatives.DerivativesHelper.Vega(System.Decimal,System.Double,System.Double)">
+      <summary>
+            Рассчитать вегу опциона.
+            </summary>
+      <param name="assetPrice">Цена базового актива.</param>
+      <param name="timeToExp">Период опциона до экспирации.</param>
+      <param name="d1">Параметр d1 определения вероятности исполнения опциона.</param>
+      <returns>Вега опциона.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.Derivatives.DerivativesHelper.Theta(StockSharp.BusinessEntities.OptionTypes,System.Decimal,System.Decimal,System.Decimal,System.Decimal,System.Double,System.Double,System.Decimal)">
+      <summary>
+            Рассчитать тету опциона.
+            </summary>
+      <param name="optionType">Тип опциона.</param>
+      <param name="strike">Цена страйка.</param>
+      <param name="assetPrice">Цена базового актива.</param>
+      <param name="riskFree">Безрисковая процентная ставка.</param>
+      <param name="deviation">Стандартное отклонение.</param>
+      <param name="timeToExp">Период опциона до экспирации.</param>
+      <param name="d1">Параметр d1 определения вероятности исполнения опциона.</param>
+      <param name="daysInYear">Дней в году.</param>
+      <returns>Тета опциона.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.Derivatives.DerivativesHelper.Rho(StockSharp.BusinessEntities.OptionTypes,System.Decimal,System.Decimal,System.Decimal,System.Decimal,System.Double,System.Double)">
+      <summary>
+            Рассчитать ро опциона.
+            </summary>
+      <param name="optionType">Тип опциона.</param>
+      <param name="strike">Цена страйка.</param>
+      <param name="assetPrice">Цена базового актива.</param>
+      <param name="riskFree">Безрисковая процентная ставка.</param>
+      <param name="deviation">Стандартное отклонение.</param>
+      <param name="timeToExp">Период опциона до экспирации.</param>
+      <param name="d1">Параметр d1 определения вероятности исполнения опциона.</param>
+      <returns>Ро опциона.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.Derivatives.DerivativesHelper.IV(System.Decimal,System.Func{System.Decimal,System.Decimal})">
+      <summary>
+            Рассчитать подразумеваемую волатильность (Implied  Volatility).
+            </summary>
+      <param name="premium">Премия по опциону.</param>
+      <param name="getPremium">Рассчитать премию по волатильности.</param>
+      <returns>Подразумеваевая волатильность.</returns>
+    </member>
     <member name="T:StockSharp.Algo.Derivatives.Synthetic">
       <summary>
             Построитель синтетических позиций.
@@ -3433,6 +3703,158 @@
       <param name="direction">Направление основной позиции.</param>
       <returns>Опционная позиция.</returns>
     </member>
+    <member name="T:StockSharp.Algo.History.Forex.DukasCopySource">
+      <summary>
+            Источник для скачивания исторических данных с DukasCopy.
+            </summary>
+    </member>
+    <member name="M:StockSharp.Algo.History.Forex.DukasCopySource.#ctor">
+      <summary>
+            Создать <see cref="T:StockSharp.Algo.History.Forex.DukasCopySource" />.
+            </summary>
+    </member>
+    <member name="M:StockSharp.Algo.History.Forex.DukasCopySource.LoadTicks(StockSharp.BusinessEntities.Security,System.DateTime)">
+      <summary>
+            Скачать исторические тиковые данные.
+            </summary>
+      <param name="security">Инструмент.</param>
+      <param name="date">Дата.</param>
+      <returns>Исторические тиковые данные.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.History.Forex.DukasCopySource.LoadCandles(StockSharp.BusinessEntities.Security,System.TimeSpan,System.DateTime,StockSharp.BusinessEntities.OrderDirections)">
+      <summary>
+            Скачать исторические тайм-фрейм свечки.
+            </summary>
+      <param name="security">Инструмент.</param>
+      <param name="timeFrame">Тайм-фрейм.</param>
+      <param name="date">Дата.</param>
+      <param name="direction">Тип котировки (бид или оффер).</param>
+      <returns>Исторические тайм-фрейм свечки.</returns>
+    </member>
+    <member name="P:StockSharp.Algo.History.Forex.DukasCopySource.TimeFrames">
+      <summary>
+            Доступные тайм-фреймы исторических данных.
+            </summary>
+    </member>
+    <member name="T:StockSharp.Algo.History.Forex.GainCapitalSource">
+      <summary>
+            Источник для скачивания исторических данных с Gain Capital.
+            </summary>
+    </member>
+    <member name="T:StockSharp.Algo.History.BaseHistorySource">
+      <summary>
+            Базовый класс лоадеров данных.
+            </summary>
+    </member>
+    <member name="M:StockSharp.Algo.History.BaseHistorySource.#ctor(StockSharp.Algo.History.ISecurityStorage)">
+      <summary>
+            Инициализировать <see cref="T:StockSharp.Algo.History.BaseHistorySource" />.
+            </summary>
+      <param name="securityStorage">Хранилище информации об инструментах.</param>
+    </member>
+    <member name="P:StockSharp.Algo.History.BaseHistorySource.SecurityIdGenerator">
+      <summary>
+            Генератор идентификаторов инструментов.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Algo.History.BaseHistorySource.SecurityStorage">
+      <summary>
+            Интерфейс для доступа к хранилищу информации об инструментах.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Algo.History.BaseHistorySource.DumpFolder">
+      <summary>
+            Путь к директории, куда будут сохранятся скаченные файлы.
+            </summary>
+      <remarks>
+            Если значение равно пустой строке, то данные не сохраняются локально.
+            </remarks>
+    </member>
+    <member name="M:StockSharp.Algo.History.Forex.GainCapitalSource.#ctor(StockSharp.Algo.History.ISecurityStorage)">
+      <summary>
+            Создать <see cref="T:StockSharp.Algo.History.Forex.GainCapitalSource" />.
+            </summary>
+      <param name="securityStorage">Хранилище информации об инструментах.</param>
+    </member>
+    <member name="M:StockSharp.Algo.History.Forex.GainCapitalSource.GetNewSecurities">
+      <summary>
+            Получить новые инструменты.
+            </summary>
+      <returns>Новые инструменты.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.History.Forex.GainCapitalSource.LoadTicks(StockSharp.BusinessEntities.Security,System.DateTime)">
+      <summary>
+            Скачать исторические котировки.
+            </summary>
+      <param name="security">Инструмент.</param>
+      <param name="date">Дата.</param>
+      <returns>Исторические котировки.</returns>
+    </member>
+    <member name="T:StockSharp.Algo.History.Forex.MBTradingSource">
+      <summary>
+            Источник для скачивания исторических данных с MBTrading.
+            </summary>
+    </member>
+    <member name="M:StockSharp.Algo.History.Forex.MBTradingSource.#ctor">
+      <summary>
+            Создать <see cref="T:StockSharp.Algo.History.Forex.MBTradingSource" />.
+            </summary>
+    </member>
+    <member name="M:StockSharp.Algo.History.Forex.MBTradingSource.LoadTicks(StockSharp.BusinessEntities.Security,System.DateTime,System.DateTime)">
+      <summary>
+            Загрузить исторические тиковые данные.
+            </summary>
+      <param name="security">Инструмент.</param>
+      <param name="from">Скачивать с даты.</param>
+      <param name="to">Скачивать до даты.</param>
+      <returns>Исторические тиковые данные.</returns>
+    </member>
+    <member name="P:StockSharp.Algo.History.Forex.MBTradingSource.Login">
+      <summary>
+            Логин.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Algo.History.Forex.MBTradingSource.Password">
+      <summary>
+            Пароль.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Algo.History.Forex.MBTradingSource.Pin">
+      <summary>
+            Пин.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Algo.History.Forex.MBTradingSource.TimeOut">
+      <summary>
+            Время ожидания скачивания файла. По-умолчанию равно 10 минутам.
+            </summary>
+    </member>
+    <member name="T:StockSharp.Algo.History.Forex.TrueFXSource">
+      <summary>
+            Источник для скачивания исторических данных с TrueFX.
+            </summary>
+    </member>
+    <member name="M:StockSharp.Algo.History.Forex.TrueFXSource.#ctor">
+      <summary>
+            Создать <see cref="T:StockSharp.Algo.History.Forex.TrueFXSource" />.
+            </summary>
+    </member>
+    <member name="M:StockSharp.Algo.History.Forex.TrueFXSource.LoadTicks(StockSharp.BusinessEntities.Security,System.DateTime)">
+      <summary>
+            Загрузить исторические тиковые данные.
+            </summary>
+      <param name="security">Инструмент.</param>
+      <param name="date">Дата.</param>
+      <returns>Исторические тиковые данные.</returns>
+    </member>
+    <member name="P:StockSharp.Algo.History.Forex.TrueFXSource.DumpFolder">
+      <summary>
+            Путь к директории, куда будут сохранятся скаченные файлы.
+            </summary>
+      <remarks>
+            Если значение равно пустой строке, то данные сохраняются в текущую директорию.
+            </remarks>
+    </member>
     <member name="T:StockSharp.Algo.History.Hydra.IRemoteStorageAuthorization">
       <summary>
             Интерфейс, описывающий модуль проверки доступа соединения с <see cref="T:StockSharp.Algo.History.Hydra.RemoteStorage" />.
@@ -3444,7 +3866,18 @@
             </summary>
       <param name="login">Логин.</param>
       <param name="password">Пароль.</param>
-      <returns>Допустимые действия.</returns>
+      <returns>Идентификатор сессии.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.History.Hydra.IRemoteStorageAuthorization.GetPermissions(System.Guid,System.String,System.String,System.Object,System.DateTime)">
+      <summary>
+            Получить набор разрешений для запроса.
+            </summary>
+      <param name="sessionId">Идентификатор сессии.</param>
+      <param name="securityId">Идентификатор инструмента.</param>
+      <param name="dataType">Тип маркет-данных.</param>
+      <param name="arg">Параметр, ассоциированный с типом <paramref name="dataType" />. Например, <see cref="P:StockSharp.Algo.Candles.Candle.Arg" />.</param>
+      <param name="date">Дата.</param>
+      <returns>Допустимые разрешения.</returns>
     </member>
     <member name="T:StockSharp.Algo.History.Hydra.AnonymousRemoteStorageAuthorization">
       <summary>
@@ -3462,7 +3895,18 @@
             </summary>
       <param name="login">Логин.</param>
       <param name="password">Пароль.</param>
-      <returns>Допустимые действия.</returns>
+      <returns>Идентификатор сессии.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.History.Hydra.AnonymousRemoteStorageAuthorization.GetPermissions(System.Guid,System.String,System.String,System.Object,System.DateTime)">
+      <summary>
+            Получить набор разрешений для запроса.
+            </summary>
+      <param name="sessionId">Идентификатор сессии.</param>
+      <param name="securityId">Идентификатор инструмента.</param>
+      <param name="dataType">Тип маркет-данных.</param>
+      <param name="arg">Параметр, ассоциированный с типом <paramref name="dataType" />. Например, <see cref="P:StockSharp.Algo.Candles.Candle.Arg" />.</param>
+      <param name="date">Дата.</param>
+      <returns>Допустимые разрешения.</returns>
     </member>
     <member name="T:StockSharp.Algo.History.Hydra.WindowsRemoteStorageAuthorization">
       <summary>
@@ -3480,7 +3924,355 @@
             </summary>
       <param name="login">Логин.</param>
       <param name="password">Пароль.</param>
-      <returns>Допустимые действия.</returns>
+      <returns>Идентификатор сессии.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.History.Hydra.WindowsRemoteStorageAuthorization.GetPermissions(System.Guid,System.String,System.String,System.Object,System.DateTime)">
+      <summary>
+            Получить набор разрешений для запроса.
+            </summary>
+      <param name="sessionId">Идентификатор сессии.</param>
+      <param name="securityId">Идентификатор инструмента.</param>
+      <param name="dataType">Тип маркет-данных.</param>
+      <param name="arg">Параметр, ассоциированный с типом <paramref name="dataType" />. Например, <see cref="P:StockSharp.Algo.Candles.Candle.Arg" />.</param>
+      <param name="date">Дата.</param>
+      <returns>Допустимые разрешения.</returns>
+    </member>
+    <member name="T:StockSharp.Algo.History.Russian.Finam.FinamHistorySource">
+      <summary>
+            Источник для скачивания исторических сделок с Finam.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Algo.History.Russian.Finam.FinamHistorySource.FinamMarketIdField">
+      <summary>
+            Ключ, по которому в <see cref="P:StockSharp.BusinessEntities.Security.ExtensionInfo" /> будет присутствовать номер финамовского идентификатора рынка.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Algo.History.Russian.Finam.FinamHistorySource.FinamSecurityIdField">
+      <summary>
+            Ключ, по которому в <see cref="P:StockSharp.BusinessEntities.Security.ExtensionInfo" /> будет присутствовать номер финамовского идентификатора инструмента.
+            </summary>
+    </member>
+    <member name="M:StockSharp.Algo.History.Russian.Finam.FinamHistorySource.#ctor(StockSharp.Algo.History.ISecurityStorage)">
+      <summary>
+            Создать <see cref="T:StockSharp.Algo.History.Russian.Finam.FinamHistorySource" />.
+            </summary>
+      <param name="securityStorage">Хранилище информации об инструментах.</param>
+    </member>
+    <member name="M:StockSharp.Algo.History.Russian.Finam.FinamHistorySource.GetTrades(StockSharp.BusinessEntities.Security,System.DateTime)">
+      <summary>
+            Получить исторические сделки.
+            </summary>
+      <param name="security">Инструмент, для которого необходимо получить все сделки. Если значение равно null, то возвращаются сделки по всем инструментам.</param>
+      <param name="time">Время торговой сессии, для которой необходимо получить сделки.</param>
+      <returns>Исторические сделки.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.History.Russian.Finam.FinamHistorySource.DownloadSecurityInfo">
+      <summary>
+            Загрузить информацию об инструментах.
+            </summary>
+      <returns>Информация об инструментах.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.History.Russian.Finam.FinamHistorySource.GetCandles(StockSharp.BusinessEntities.Security,System.DateTime,System.DateTime,System.TimeSpan)">
+      <summary>
+            Загрузить свечи.
+            </summary>
+      <param name="security">Инструмент, для которого необходимо получить свечки.</param>
+      <param name="beginDate">Дата начала данных.</param>
+      <param name="endDate">Дата конца данных.</param>
+      <param name="tf">Тайм-фрейм (1min, 5min, 10min, 15min, 30min, 1hour, 1day).</param>
+      <returns>Загруженные свечки.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.History.Russian.Finam.FinamHistorySource.GetNewSecurities">
+      <summary>
+            Получить новые инструменты.
+            </summary>
+      <returns>Новые инструменты.</returns>
+    </member>
+    <member name="T:StockSharp.Algo.History.Russian.Finam.FinamSecurityInfo">
+      <summary>
+            Информация об инструменте, загруженная через <see cref="T:StockSharp.Algo.History.Russian.Finam.FinamHistorySource" />.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Algo.History.Russian.Finam.FinamSecurityInfo.FinamSecurityId">
+      <summary>
+            Идентификатор инструмента на сайте Finam.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Algo.History.Russian.Finam.FinamSecurityInfo.FinamMarketId">
+      <summary>
+            Идентификатор рынка на сайте Finam.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Algo.History.Russian.Finam.FinamSecurityInfo.Code">
+      <summary>
+            Код инструмента.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Algo.History.Russian.Finam.FinamSecurityInfo.Name">
+      <summary>
+            Имя инструмента.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Algo.History.Russian.Finam.FinamSecurityInfo.Decimals">
+      <summary>
+            Количество знаков после запятой.
+            </summary>
+    </member>
+    <member name="T:StockSharp.Algo.History.Russian.Rts.Competition">
+      <summary>
+            Класс для получения данных к итогам конкурса ЛЧИ.
+            </summary>
+    </member>
+    <member name="M:StockSharp.Algo.History.Russian.Rts.Competition.#ctor(StockSharp.Algo.History.ISecurityStorage)">
+      <summary>
+            Создать <see cref="T:StockSharp.Algo.History.Russian.Rts.Competition" />.
+            </summary>
+      <param name="securityStorage">Интерфейс для доступа к хранилищу информации об инструментах.</param>
+    </member>
+    <member name="M:StockSharp.Algo.History.Russian.Rts.Competition.Get(System.DateTime)">
+      <summary>
+            Получить итоги за определенный год.
+            </summary>
+      <param name="year">Год конкурса.</param>
+      <returns>Итоги.</returns>
+    </member>
+    <member name="P:StockSharp.Algo.History.Russian.Rts.Competition.AllYears">
+      <summary>
+            Все года, когда проводился конкурс.
+            </summary>
+    </member>
+    <member name="T:StockSharp.Algo.History.Russian.Rts.Competition.CompetitionYear">
+      <summary>
+            Итог конкурса ЛЧИ за определенный год.
+            </summary>
+    </member>
+    <member name="M:StockSharp.Algo.History.Russian.Rts.Competition.CompetitionYear.GetTrades(System.String,System.DateTime)">
+      <summary>
+            Получить сделки участника за определенную дату.
+            </summary>
+      <param name="member">Участник.</param>
+      <param name="date">Дата соревнования.</param>
+      <returns>Сделки участника.</returns>
+    </member>
+    <member name="P:StockSharp.Algo.History.Russian.Rts.Competition.CompetitionYear.Year">
+      <summary>
+            Год проведения ЛЧИ.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Algo.History.Russian.Rts.Competition.CompetitionYear.Members">
+      <summary>
+            Участники соревнования.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Algo.History.Russian.Rts.Competition.CompetitionYear.Days">
+      <summary>
+            Даты, для которых есть информация о сделках.
+            </summary>
+    </member>
+    <member name="T:StockSharp.Algo.History.Russian.Rts.SecurityDailyData">
+      <summary>
+            Дневаная информация по инструменту.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Algo.History.Russian.Rts.SecurityDailyData.Date">
+      <summary>
+            Дата.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Algo.History.Russian.Rts.SecurityDailyData.AveragePrice">
+      <summary>
+            Средняя цена.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Algo.History.Russian.Rts.SecurityDailyData.CalculatedPrice">
+      <summary>
+            Расчетная цена.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Algo.History.Russian.Rts.SecurityDailyData.Open">
+      <summary>
+            Цена открытия.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Algo.History.Russian.Rts.SecurityDailyData.High">
+      <summary>
+            Максимум дня.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Algo.History.Russian.Rts.SecurityDailyData.Low">
+      <summary>
+            Минимум дня.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Algo.History.Russian.Rts.SecurityDailyData.Close">
+      <summary>
+            Цена закрытия.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Algo.History.Russian.Rts.SecurityDailyData.VolumeInTrades">
+      <summary>
+            Количество сделок за день.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Algo.History.Russian.Rts.SecurityDailyData.VolumeInRubles">
+      <summary>
+            Объем в рублях.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Algo.History.Russian.Rts.SecurityDailyData.Volume">
+      <summary>
+            Объем в контрактах.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Algo.History.Russian.Rts.SecurityDailyData.OpenInterestInRubles">
+      <summary>
+            Открытый интерес в рублях.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Algo.History.Russian.Rts.SecurityDailyData.OpenInterest">
+      <summary>
+            Открытый интерес.
+            </summary>
+    </member>
+    <member name="T:StockSharp.Algo.History.Russian.Rts.FortsDailyData">
+      <summary>
+            Класс для доступа с историческим дневным данный рынка FORTS.
+            </summary>
+    </member>
+    <member name="M:StockSharp.Algo.History.Russian.Rts.FortsDailyData.GetSecurityData(StockSharp.BusinessEntities.Security,System.DateTime,System.DateTime)">
+      <summary>
+            Возвращает список исторических данных по выбранному инструменту за выбранный период.
+            </summary>
+      <remarks>
+            Отсутствующие значения (например, если не было сделок) замещаются нулями.
+            </remarks>
+      <param name="security">Инструмент.</param>
+      <param name="fromDate">Дата начала периода.</param>
+      <param name="toDate">Дата конца периода.</param>
+      <returns>Исторические данные.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.History.Russian.Rts.FortsDailyData.GetYesterdaySecurityData(StockSharp.BusinessEntities.Security)">
+      <summary>
+            Возвращает вчерашние данные по выбранному инструменту.
+            </summary>
+      <remarks>
+            Дата определяется на основе системного времени.
+            </remarks>
+      <param name="security">Инструмент.</param>
+      <returns>Вчерашние данные.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.History.Russian.Rts.FortsDailyData.GetUsdRate(System.DateTime)">
+      <summary>
+            Получить индикативный курс доллара США к российскому рублю, начиная с <see cref="P:StockSharp.Algo.History.Russian.Rts.FortsDailyData.UsdRateMinAvailableTime" />.
+            </summary>
+      <param name="toDate">Дата окончания периода.</param>
+      <returns>Индикативный курс доллара США к российскому рублю.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.History.Russian.Rts.FortsDailyData.GetUsdRate(System.DateTime,System.DateTime)">
+      <summary>
+            Получить индикативный курс доллара США к российскому рублю.
+            </summary>
+      <param name="fromDate">Дата начала периода.</param>
+      <param name="toDate">Дата окончания периода.</param>
+      <returns>Индикативный курс доллара США к российскому рублю.</returns>
+    </member>
+    <member name="P:StockSharp.Algo.History.Russian.Rts.FortsDailyData.UsdRateMinAvailableTime">
+      <summary>
+            Минимальная дата, для которой есть индикативный курс доллара США к российскому рублю. Равен 2 ноября 2009 года.
+            </summary>
+    </member>
+    <member name="T:StockSharp.Algo.History.Russian.Rts.RtsHistorySource">
+      <summary>
+            Источник для скачивания исторических сделок с RTS.
+            </summary>
+    </member>
+    <member name="M:StockSharp.Algo.History.Russian.Rts.RtsHistorySource.#ctor(StockSharp.Algo.History.ISecurityStorage)">
+      <summary>
+            Создать <see cref="T:StockSharp.Algo.History.Russian.Rts.RtsHistorySource" />.
+            </summary>
+      <param name="securityStorage">Хранилище информации об инструментах.</param>
+    </member>
+    <member name="M:StockSharp.Algo.History.Russian.Rts.RtsHistorySource.LoadTrades(System.DateTime,System.Collections.Generic.IDictionary{StockSharp.BusinessEntities.Security,System.Collections.Generic.IList{StockSharp.BusinessEntities.Trade}})">
+      <summary>
+            Загрузить исторические сделки.
+            </summary>
+      <param name="date">Дата торговой сессии, для которой необходимо получить сделки.</param>
+      <param name="trades">Контейнер для загруженных сделок.</param>
+      <returns>Исторические сделки.</returns>
+    </member>
+    <member name="P:StockSharp.Algo.History.Russian.Rts.RtsHistorySource.Host">
+      <summary>
+            Адрес ftp RTS сервера.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Algo.History.Russian.Rts.RtsHistorySource.Port">
+      <summary>
+            Порт ftp RTS сервера.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Algo.History.Russian.Rts.RtsHistorySource.UserName">
+      <summary>
+            Логин к ftp.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Algo.History.Russian.Rts.RtsHistorySource.Password">
+      <summary>
+            Пароль к ftp.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Algo.History.Russian.Rts.RtsHistorySource.ExchangeBoard">
+      <summary>
+            Информация о площадке.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Algo.History.Russian.Rts.RtsHistorySource.MinAvaliableTime">
+      <summary>
+            Минимальная дата, для которой есть исторические данные.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Algo.History.Russian.Rts.RtsHistorySource.DbfDirectory">
+      <summary>
+            Путь к папке с историческими данными в формате DBF.
+            </summary>
+      <remarks>
+            Если значение равно пустой строке, то данные в формате DBF не обрабатываются.
+            </remarks>
+    </member>
+    <member name="P:StockSharp.Algo.History.Russian.Rts.RtsHistorySource.TxtDirectory">
+      <summary>
+            Путь к папке с историческими данными в формате CSV и Excel.
+            </summary>
+      <remarks>
+            Если значение равно пустой строке, то данные в формате CSV и Excel не обрабатываются.
+            </remarks>
+    </member>
+    <member name="P:StockSharp.Algo.History.Russian.Rts.RtsHistorySource.DumpFolder">
+      <summary>
+            Путь к директории, куда будут сохранятся скаченные файлы.
+            </summary>
+      <remarks>
+            Если значение равно пустой строке, то данные сохраняются в текущую директорию.
+            </remarks>
+    </member>
+    <member name="P:StockSharp.Algo.History.Russian.Rts.RtsHistorySource.SaveRtsStdTrades">
+      <summary>
+            Сохранять сделки для инструментов РТС Стандарт. По-умолчанию выключено.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Algo.History.Russian.Rts.RtsHistorySource.SaveRtsStdCombinedOnly">
+      <summary>
+            Склеивать сделки для инструментов РТС Стандарт (сделки для T+N не разбиваются по папкам). По-умолчанию выключено.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Algo.History.Russian.Rts.RtsHistorySource.IsSystemOnly">
+      <summary>
+            Сохранять только системные сделки. По-умолчанию включено.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Algo.History.Russian.Rts.RtsHistorySource.LoadEveningSession">
+      <summary>
+            Скачивать данные вечерней сессии.
+            </summary>
     </member>
     <member name="T:StockSharp.Algo.ISecurityProvider">
       <summary>
@@ -3501,6 +4293,11 @@
             </summary>
       <param name="criteria">Инструмент, поля которого будут использоваться в качестве фильтра.</param>
       <returns>Найденные инструменты.</returns>
+    </member>
+    <member name="P:StockSharp.Algo.ISecurityProvider.Securities">
+      <summary>
+            Все инструменты.
+            </summary>
     </member>
     <member name="T:StockSharp.Algo.TraderSecurityProvider">
       <summary>
@@ -3527,6 +4324,11 @@
             </summary>
       <param name="criteria">Инструмент, поля которого будут использоваться в качестве фильтра.</param>
       <returns>Найденные инструменты.</returns>
+    </member>
+    <member name="P:StockSharp.Algo.TraderSecurityProvider.Securities">
+      <summary>
+            Все инструменты.
+            </summary>
     </member>
     <member name="T:StockSharp.Algo.Indicators.Misc.ChaikinVolatility">
       <summary>
@@ -4615,6 +5417,20 @@
       <typeparam name="T">Тип данных, которым оперирует индикатор.</typeparam>
       <param name="value">Значение.</param>
       <returns>Измененная копия входного значения.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.Indicators.ComplexIndicatorValue.CompareTo(StockSharp.Algo.Indicators.IIndicatorValue)">
+      <summary>
+            Сравнить с другим значением индикатора.
+            </summary>
+      <param name="other">Другое значение, с которым необходимо сравнивать.</param>
+      <returns>Код сравнения.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.Indicators.ComplexIndicatorValue.CompareTo(System.Object)">
+      <summary>
+            Сравнить с другим значением индикатора.
+            </summary>
+      <param name="other">Другое значение, с которым необходимо сравнивать.</param>
+      <returns>Код сравнения.</returns>
     </member>
     <member name="P:StockSharp.Algo.Indicators.ComplexIndicatorValue.IsEmpty">
       <summary>
@@ -6536,6 +7352,11 @@
             </summary>
       <param name="entity">Торговый объект.</param>
     </member>
+    <member name="P:StockSharp.Algo.Storages.IStorageEntityList`1.DelayAction">
+      <summary>
+            Отложенное действие.
+            </summary>
+    </member>
     <member name="M:StockSharp.Algo.Storages.BaseStorageEntityList`1.#ctor(Ecng.Serialization.IStorage)">
       <summary>
             Инициализировать <see cref="T:StockSharp.Algo.Storages.BaseStorageEntityList`1" />.
@@ -6704,29 +7525,12 @@
       <param name="date">Дата, для которой необходимо загрузить маркет-данные.</param>
       <returns>Маркет-данные в формате хранилища StockSharp. Если данных не существует, то будет возвращено <see cref="F:System.IO.Stream.Null" />.</returns>
     </member>
-    <member name="M:StockSharp.Algo.History.Hydra.IRemoteStorage.ClearDatesCache(System.Guid,System.String,System.String,System.Object)">
-      <summary>
-            Удалить кэш-файлы, хранящие в себе информацию о доступных диапазонах времени.
-            </summary>
-      <param name="sessionId">Идентификатор сессии.</param>
-      <param name="securityId">Идентификатор инструмента.</param>
-      <param name="dataType">Тип маркет-данных.</param>
-      <param name="arg">Параметр, ассоциированный с типом <paramref name="dataType" />. Например, <see cref="P:StockSharp.Algo.Candles.Candle.Arg" />.</param>
-    </member>
     <member name="M:StockSharp.Algo.History.Hydra.RemoteStorage.#ctor(StockSharp.Algo.Storages.IStorageRegistry,StockSharp.Algo.Storages.IEntityRegistry)">
       <summary>
             Инициализировать <see cref="T:StockSharp.Algo.History.Hydra.RemoteStorage" />.
             </summary>
       <param name="storageRegistry">Хранилище маркет-данных.</param>
       <param name="entityRegistry">Хранилище торговых сущностей.</param>
-    </member>
-    <member name="M:StockSharp.Algo.History.Hydra.RemoteStorage.ValidateCredentials(System.String,System.String)">
-      <summary>
-            Проверить логин и пароль на правильность.
-            </summary>
-      <param name="login">Логин.</param>
-      <param name="password">Пароль.</param>
-      <returns>Допустимые действия.</returns>
     </member>
     <member name="M:StockSharp.Algo.History.Hydra.RemoteStorage.AddDataType(System.Type)">
       <summary>
@@ -6778,18 +7582,20 @@
             </summary>
       <returns>WCF канал.</returns>
     </member>
-    <member name="M:StockSharp.Algo.History.Hydra.RemoteStorageClient.GetAllSecurities(StockSharp.Algo.History.ISecurityStorage)">
+    <member name="M:StockSharp.Algo.History.Hydra.RemoteStorageClient.GetAllSecurities(StockSharp.Algo.Storages.IEntityRegistry,System.Collections.Generic.IEnumerable{System.String})">
       <summary>
             Получить все инструменты.
             </summary>
-      <param name="securityStorage">Интерфейс для доступа к хранилищу информации об инструментах.</param>
+      <param name="entityRegistry">Хранилище торговых объектов.</param>
+      <param name="keysToRemove">Ключи в <see cref="P:StockSharp.BusinessEntities.Security.ExtensionInfo" />, значения которых необходимо удалить.</param>
       <returns>Все инструменты.</returns>
     </member>
-    <member name="M:StockSharp.Algo.History.Hydra.RemoteStorageClient.GetNewSecurities(StockSharp.Algo.History.ISecurityStorage)">
+    <member name="M:StockSharp.Algo.History.Hydra.RemoteStorageClient.GetNewSecurities(StockSharp.Algo.Storages.IEntityRegistry,System.Collections.Generic.IEnumerable{System.String})">
       <summary>
             Получить новые инструменты.
             </summary>
-      <param name="securityStorage">Интерфейс для доступа к хранилищу информации об инструментах.</param>
+      <param name="entityRegistry">Хранилище торговых объектов.</param>
+      <param name="keysToRemove">Ключи в <see cref="P:StockSharp.BusinessEntities.Security.ExtensionInfo" />, значения которых необходимо удалить.</param>
       <returns>Новые инструменты.</returns>
     </member>
     <member name="M:StockSharp.Algo.History.Hydra.RemoteStorageClient.GetRemoteStorage(StockSharp.BusinessEntities.Security,System.Type,System.Object)">
@@ -6870,282 +7676,6 @@
     <member name="P:StockSharp.Algo.Storages.IMarketDataStorageDrive.Dates">
       <summary>
             Получить все даты, для которых записаны маркет-данные.
-            </summary>
-    </member>
-    <member name="T:StockSharp.Algo.History.Rts.Competition">
-      <summary>
-            Класс для получения данных к итогам конкурса ЛЧИ.
-            </summary>
-    </member>
-    <member name="T:StockSharp.Algo.History.BaseHistorySource">
-      <summary>
-            Базовый класс лоадеров данных.
-            </summary>
-    </member>
-    <member name="M:StockSharp.Algo.History.BaseHistorySource.#ctor(StockSharp.Algo.History.ISecurityStorage)">
-      <summary>
-            Инициализировать <see cref="T:StockSharp.Algo.History.BaseHistorySource" />.
-            </summary>
-      <param name="securityStorage">Интерфейс для доступа к хранилищу информации об инструментах.</param>
-    </member>
-    <member name="P:StockSharp.Algo.History.BaseHistorySource.SecurityIdGenerator">
-      <summary>
-            Генератор идентификаторов инструментов.
-            </summary>
-    </member>
-    <member name="P:StockSharp.Algo.History.BaseHistorySource.SecurityStorage">
-      <summary>
-            Интерфейс для доступа к хранилищу информации об инструментах.
-            </summary>
-    </member>
-    <member name="P:StockSharp.Algo.History.BaseHistorySource.DumpFolder">
-      <summary>
-            Путь к директории, куда будут сохранятся скаченные файлы.
-            </summary>
-      <remarks>
-            Если значение равно пустой строке, то данные не сохраняются локально.
-            </remarks>
-    </member>
-    <member name="M:StockSharp.Algo.History.Rts.Competition.#ctor(StockSharp.Algo.History.ISecurityStorage)">
-      <summary>
-            Создать <see cref="T:StockSharp.Algo.History.Rts.Competition" />.
-            </summary>
-      <param name="securityStorage">Интерфейс для доступа к хранилищу информации об инструментах.</param>
-    </member>
-    <member name="M:StockSharp.Algo.History.Rts.Competition.Get(System.DateTime)">
-      <summary>
-            Получить итоги за определенный год.
-            </summary>
-      <param name="year">Год конкурса.</param>
-      <returns>Итоги.</returns>
-    </member>
-    <member name="P:StockSharp.Algo.History.Rts.Competition.AllYears">
-      <summary>
-            Все года, когда проводился конкурс.
-            </summary>
-    </member>
-    <member name="T:StockSharp.Algo.History.Rts.Competition.CompetitionYear">
-      <summary>
-            Итог конкурса ЛЧИ за определенный год.
-            </summary>
-    </member>
-    <member name="M:StockSharp.Algo.History.Rts.Competition.CompetitionYear.GetTrades(System.String,System.DateTime)">
-      <summary>
-            Получить сделки участника за определенную дату.
-            </summary>
-      <param name="member">Участник.</param>
-      <param name="date">Дата соревнования.</param>
-      <returns>Сделки участника.</returns>
-    </member>
-    <member name="P:StockSharp.Algo.History.Rts.Competition.CompetitionYear.Year">
-      <summary>
-            Год проведения ЛЧИ.
-            </summary>
-    </member>
-    <member name="P:StockSharp.Algo.History.Rts.Competition.CompetitionYear.Members">
-      <summary>
-            Участники соревнования.
-            </summary>
-    </member>
-    <member name="P:StockSharp.Algo.History.Rts.Competition.CompetitionYear.Days">
-      <summary>
-            Даты, для которых есть информация о сделках.
-            </summary>
-    </member>
-    <member name="T:StockSharp.Algo.History.Rts.SecurityDailyData">
-      <summary>
-            Дневаная информация по инструменту.
-            </summary>
-    </member>
-    <member name="P:StockSharp.Algo.History.Rts.SecurityDailyData.Date">
-      <summary>
-            Дата.
-            </summary>
-    </member>
-    <member name="P:StockSharp.Algo.History.Rts.SecurityDailyData.AveragePrice">
-      <summary>
-            Средняя цена.
-            </summary>
-    </member>
-    <member name="P:StockSharp.Algo.History.Rts.SecurityDailyData.CalculatedPrice">
-      <summary>
-            Расчетная цена.
-            </summary>
-    </member>
-    <member name="P:StockSharp.Algo.History.Rts.SecurityDailyData.Open">
-      <summary>
-            Цена открытия.
-            </summary>
-    </member>
-    <member name="P:StockSharp.Algo.History.Rts.SecurityDailyData.High">
-      <summary>
-            Максимум дня.
-            </summary>
-    </member>
-    <member name="P:StockSharp.Algo.History.Rts.SecurityDailyData.Low">
-      <summary>
-            Минимум дня.
-            </summary>
-    </member>
-    <member name="P:StockSharp.Algo.History.Rts.SecurityDailyData.Close">
-      <summary>
-            Цена закрытия.
-            </summary>
-    </member>
-    <member name="P:StockSharp.Algo.History.Rts.SecurityDailyData.VolumeInTrades">
-      <summary>
-            Количество сделок за день.
-            </summary>
-    </member>
-    <member name="P:StockSharp.Algo.History.Rts.SecurityDailyData.VolumeInRubles">
-      <summary>
-            Объем в рублях.
-            </summary>
-    </member>
-    <member name="P:StockSharp.Algo.History.Rts.SecurityDailyData.Volume">
-      <summary>
-            Объем в контрактах.
-            </summary>
-    </member>
-    <member name="P:StockSharp.Algo.History.Rts.SecurityDailyData.OpenInterestInRubles">
-      <summary>
-            Открытый интерес в рублях.
-            </summary>
-    </member>
-    <member name="P:StockSharp.Algo.History.Rts.SecurityDailyData.OpenInterest">
-      <summary>
-            Открытый интерес.
-            </summary>
-    </member>
-    <member name="T:StockSharp.Algo.History.Rts.FortsDailyData">
-      <summary>
-            Класс для доступа с историческим дневным данный рынка FORTS.
-            </summary>
-    </member>
-    <member name="M:StockSharp.Algo.History.Rts.FortsDailyData.GetSecurityData(StockSharp.BusinessEntities.Security,System.DateTime,System.DateTime)">
-      <summary>
-            Возвращает список исторических данных по выбранному инструменту за выбранный период.
-            </summary>
-      <remarks>
-            Отсутствующие значения (например, если не было сделок) замещаются нулями.
-            </remarks>
-      <param name="security">Инструмент.</param>
-      <param name="fromDate">Дата начала периода.</param>
-      <param name="toDate">Дата конца периода.</param>
-      <returns>Исторические данные.</returns>
-    </member>
-    <member name="M:StockSharp.Algo.History.Rts.FortsDailyData.GetYesterdaySecurityData(StockSharp.BusinessEntities.Security)">
-      <summary>
-            Возвращает вчерашние данные по выбранному инструменту.
-            </summary>
-      <remarks>
-            Дата определяется на основе системного времени.
-            </remarks>
-      <param name="security">Инструмент.</param>
-      <returns>Вчерашние данные.</returns>
-    </member>
-    <member name="M:StockSharp.Algo.History.Rts.FortsDailyData.GetUsdRate(System.DateTime)">
-      <summary>
-            Получить индикативный курс доллара США к российскому рублю, начиная с <see cref="P:StockSharp.Algo.History.Rts.FortsDailyData.UsdRateMinAvailableTime" />.
-            </summary>
-      <param name="toDate">Дата окончания периода.</param>
-      <returns>Индикативный курс доллара США к российскому рублю.</returns>
-    </member>
-    <member name="M:StockSharp.Algo.History.Rts.FortsDailyData.GetUsdRate(System.DateTime,System.DateTime)">
-      <summary>
-            Получить индикативный курс доллара США к российскому рублю.
-            </summary>
-      <param name="fromDate">Дата начала периода.</param>
-      <param name="toDate">Дата окончания периода.</param>
-      <returns>Индикативный курс доллара США к российскому рублю.</returns>
-    </member>
-    <member name="P:StockSharp.Algo.History.Rts.FortsDailyData.UsdRateMinAvailableTime">
-      <summary>
-            Минимальная дата, для которой есть индикативный курс доллара США к российскому рублю. Равен 2 ноября 2009 года.
-            </summary>
-    </member>
-    <member name="T:StockSharp.Algo.History.Finam.FinamSecurityInfo">
-      <summary>
-            Информация об инструменте, загруженная через <see cref="T:StockSharp.Algo.History.Finam.FinamHistorySource" />.
-            </summary>
-    </member>
-    <member name="P:StockSharp.Algo.History.Finam.FinamSecurityInfo.FinamSecurityId">
-      <summary>
-            Идентификатор инструмента на сайте Finam.
-            </summary>
-    </member>
-    <member name="P:StockSharp.Algo.History.Finam.FinamSecurityInfo.FinamMarketId">
-      <summary>
-            Идентификатор рынка на сайте Finam.
-            </summary>
-    </member>
-    <member name="P:StockSharp.Algo.History.Finam.FinamSecurityInfo.Code">
-      <summary>
-            Код инструмента.
-            </summary>
-    </member>
-    <member name="P:StockSharp.Algo.History.Finam.FinamSecurityInfo.Name">
-      <summary>
-            Имя инструмента.
-            </summary>
-    </member>
-    <member name="P:StockSharp.Algo.History.Finam.FinamSecurityInfo.Decimals">
-      <summary>
-            Количество знаков после запятой.
-            </summary>
-    </member>
-    <member name="T:StockSharp.Algo.History.SecurityStorage">
-      <summary>
-            Хранилище информации об инструментах.
-            </summary>
-    </member>
-    <member name="T:StockSharp.Algo.History.ISecurityStorage">
-      <summary>
-            Интерфейс для доступа к хранилищу информации об инструментах.
-            </summary>
-    </member>
-    <member name="M:StockSharp.Algo.History.ISecurityStorage.Save(StockSharp.BusinessEntities.Security)">
-      <summary>
-            Сохранить инструмент.
-            </summary>
-      <param name="security">Инструмент.</param>
-    </member>
-    <member name="M:StockSharp.Algo.History.SecurityStorage.#ctor(StockSharp.Algo.Storages.IEntityRegistry)">
-      <summary>
-            Создать <see cref="T:StockSharp.Algo.History.SecurityStorage" />.
-            </summary>
-      <param name="entityRegistry">Хранилище торговых объектов.</param>
-    </member>
-    <member name="M:StockSharp.Algo.History.SecurityStorage.LoadBy(System.String,System.Object)">
-      <summary>
-            Загрузить информацию об инструменте из хранилища по полю и его значению.
-            </summary>
-      <param name="fieldName">Название поля, по которому необходимо загрузить информацию об инструменте.</param>
-      <param name="fieldValue">Значение поля <paramref name="fieldName" />.</param>
-      <returns>Информация об инструменте.</returns>
-    </member>
-    <member name="M:StockSharp.Algo.History.SecurityStorage.Lookup(StockSharp.BusinessEntities.Security)">
-      <summary>
-            Найти инструменты, соответствующие фильтру <paramref name="criteria" />.
-            </summary>
-      <param name="criteria">Инструмент, поля которого будут использоваться в качестве фильтра.</param>
-      <returns>Найденные инструменты.</returns>
-    </member>
-    <member name="M:StockSharp.Algo.History.SecurityStorage.Save(StockSharp.BusinessEntities.Security)">
-      <summary>
-            Сохранить информацию об инструменте в хранилище.
-            </summary>
-      <param name="security">Информация об инструменте.</param>
-    </member>
-    <member name="M:StockSharp.Algo.History.SecurityStorage.GetNonSavedSecurities">
-      <summary>
-            Получить несохраненные инструменты.
-            </summary>
-      <returns>Несохраненные инструменты.</returns>
-    </member>
-    <member name="P:StockSharp.Algo.History.SecurityStorage.CachedSecurities">
-      <summary>
-            Список инструментов.
             </summary>
     </member>
     <member name="T:StockSharp.Algo.IMarketRuleContainer">
@@ -7350,6 +7880,20 @@
       <typeparam name="T">Тип данных, которым оперирует индикатор.</typeparam>
       <param name="value">Значение.</param>
       <returns>Новый объект, содержащий входное значение.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.Indicators.SingleIndicatorValue`1.CompareTo(StockSharp.Algo.Indicators.IIndicatorValue)">
+      <summary>
+            Сравнить с другим значением индикатора.
+            </summary>
+      <param name="other">Другое значение, с которым необходимо сравнивать.</param>
+      <returns>Код сравнения.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.Indicators.SingleIndicatorValue`1.CompareTo(System.Object)">
+      <summary>
+            Сравнить с другим значением индикатора.
+            </summary>
+      <param name="other">Другое значение, с которым необходимо сравнивать.</param>
+      <returns>Код сравнения.</returns>
     </member>
     <member name="M:StockSharp.Algo.Indicators.SingleIndicatorValue`1.ToString">
       <summary>
@@ -7707,7 +8251,12 @@
     </member>
     <member name="P:StockSharp.Algo.Licensing.License.HardwareId">
       <summary>
-            Идентификатор компьютера.
+            Идентификатор компьютера, к которому привязан лицензия.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Algo.Licensing.License.Account">
+      <summary>
+            Номер счета, к которому привязан лицензия.
             </summary>
     </member>
     <member name="P:StockSharp.Algo.Licensing.License.Features">
@@ -7772,15 +8321,6 @@
       <param name="hardwareId">Уникальная информация о компьютере.</param>
       <returns>Временная лицензия.</returns>
     </member>
-    <member name="M:StockSharp.Algo.Licensing.ILicenseService.GetFullLicense(System.String,System.String,System.String)">
-      <summary>
-            Получить полную лицензию.
-            </summary>
-      <param name="login">Логин.</param>
-      <param name="password">Пароль.</param>
-      <param name="hardwareId">Уникальная информация о компьютере.</param>
-      <returns>Полная лицензия.</returns>
-    </member>
     <member name="M:StockSharp.Algo.Licensing.ILicenseService.DownloadFullLicense(System.Guid,System.String)">
       <summary>
             Получить полную лицензию.
@@ -7835,6 +8375,14 @@
       <param name="featureName">Название функциональности.</param>
       <returns>True, если функциональность поддерживается, иначе, false.</returns>
     </member>
+    <member name="M:StockSharp.Algo.Licensing.LicenseHelper.IsLicenseSupport(StockSharp.BusinessEntities.ITrader,StockSharp.BusinessEntities.Portfolio)">
+      <summary>
+            Проверить лицензию по шлюзу и номеру счета.
+            </summary>
+      <param name="trader">Шлюз, через который идет регистрация заявки.</param>
+      <param name="portfolio">Портфель, номер счета которого будет использоваться для проверки.</param>
+      <returns>True, если функциональность поддерживается, иначе, false.</returns>
+    </member>
     <member name="M:StockSharp.Algo.Licensing.LicenseHelper.Save(StockSharp.Algo.Licensing.License)">
       <summary>
             Сохранить лицензию на диске.
@@ -7843,18 +8391,32 @@
     </member>
     <member name="E:StockSharp.Algo.Licensing.LicenseHelper.LicenseChanged">
       <summary>
-            Событие измения <see cref="P:StockSharp.Algo.Licensing.LicenseHelper.CurrentLicense" />.
+            Событие измения <see cref="P:StockSharp.Algo.Licensing.LicenseHelper.Licenses" />.
             </summary>
     </member>
-    <member name="P:StockSharp.Algo.Licensing.LicenseHelper.CurrentLicense">
+    <member name="P:StockSharp.Algo.Licensing.LicenseHelper.Licenses">
       <summary>
-            Текущая лицензия. Если лицензия не существует, то будет возвращено null.
+            Текущие лицензии на компьютере.
             </summary>
     </member>
     <member name="T:StockSharp.Algo.Notification.INotificationService">
       <summary>
             Интерфейс к сервису отправки уведомлений на телефон или почту.
             </summary>
+    </member>
+    <member name="M:StockSharp.Algo.Notification.INotificationService.GetSmsCount(System.Guid)">
+      <summary>
+            Получить доступное количество SMS-сообщений.
+            </summary>
+      <param name="sessionId">Идентификатор сессии.</param>
+      <returns>Доступное количество SMS-сообщений.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.Notification.INotificationService.GetEmailCount(System.Guid)">
+      <summary>
+            Получить доступное количество email-сообщений.
+            </summary>
+      <param name="sessionId">Идентификатор сессии.</param>
+      <returns>Доступное количество email-сообщений.</returns>
     </member>
     <member name="M:StockSharp.Algo.Notification.INotificationService.SendSms(System.Guid,System.String)">
       <summary>
@@ -7902,6 +8464,16 @@
       <param name="caption">Заголовок сообщения.</param>
       <param name="message">Тело сообщения.</param>
     </member>
+    <member name="P:StockSharp.Algo.Notification.NotificationClient.SmsCount">
+      <summary>
+            Доступное количество SMS-сообщений.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Algo.Notification.NotificationClient.EmailCount">
+      <summary>
+            Доступное количество email-сообщений.
+            </summary>
+    </member>
     <member name="T:StockSharp.Algo.Storages.DataFeedTrader">
       <summary>
             Эмуляционный шлюз. Использует исторические данные и/или случайно сгенерированные.
@@ -7912,10 +8484,11 @@
             Базовый класс для создания шлюзов к торговым системам.
             </summary>
     </member>
-    <member name="M:StockSharp.Algo.BaseTrader.#ctor(Ecng.Interop.Platforms,System.Boolean)">
+    <member name="M:StockSharp.Algo.BaseTrader.#ctor(System.Boolean,Ecng.Interop.Platforms,System.Boolean)">
       <summary>
             Инициализировать <see cref="T:StockSharp.Algo.BaseTrader" />.
             </summary>
+      <param name="isMarketDataIndependent">Является ли получение маркет-данных независимым от транзакций или используется одно и то же подключение.</param>
       <param name="platform">Разрядность процесса, в котором может работать шлюз.</param>
       <param name="checkLicense">Проверять наличие лицензии.</param>
     </member>
@@ -7925,6 +8498,18 @@
             </summary>
       <param name="exchange">Биржа.</param>
       <returns>Биржевое время.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.BaseTrader.IsConnectionAlive">
+      <summary>
+            Проверить, установлено ли еще соединение. Проверяется только в том случае, если был вызван метод <see cref="M:StockSharp.BusinessEntities.ITrader.Connect" />.
+            </summary>
+      <returns>True, если соединение еще установлено, false, если торговая система разорвала подключение.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.BaseTrader.IsExportAlive">
+      <summary>
+            Проверить, установлено ли еще соединение для экспорта. Проверяется только в том случае, если <see cref="P:StockSharp.Algo.BaseTrader.ExportState" /> равен <see cref="F:StockSharp.BusinessEntities.ConnectionStates.Connected" />.
+            </summary>
+      <returns>True, если соединение еще установлено, false, если торговая система разорвала подключение и экспорт не активен.</returns>
     </member>
     <member name="M:StockSharp.Algo.BaseTrader.Connect">
       <summary>
@@ -7944,11 +8529,6 @@
     <member name="M:StockSharp.Algo.BaseTrader.OnDisconnect">
       <summary>
             Отключиться от торговой системы.
-            </summary>
-    </member>
-    <member name="M:StockSharp.Algo.BaseTrader.Reconnect">
-      <summary>
-            Переподключиться к торговой системе.
             </summary>
     </member>
     <member name="M:StockSharp.Algo.BaseTrader.LookupSecurities(StockSharp.BusinessEntities.Security)">
@@ -8070,6 +8650,7 @@
             Начать получать новую информацию (например, <see cref="P:StockSharp.BusinessEntities.Security.LastTrade" /> или <see cref="P:StockSharp.BusinessEntities.Security.BestBid" />) по инструменту.
             </summary>
       <param name="security">Инструмент, по которому необходимо начать получать новую информацию.</param>
+      <returns>true, если удалось подписаться на получение данных, иначе false.</returns>
     </member>
     <member name="M:StockSharp.Algo.BaseTrader.UnRegisterSecurity(StockSharp.BusinessEntities.Security)">
       <summary>
@@ -8096,6 +8677,7 @@
             Значение котировок можно получить через метод <see cref="M:StockSharp.BusinessEntities.ITrader.GetMarketDepth(StockSharp.BusinessEntities.Security)" />.
             </summary>
       <param name="security">Инструмент, по которому необходимо начать получать котировки.</param>
+      <returns>true, если удалось подписаться на получение данных, иначе false.</returns>
     </member>
     <member name="M:StockSharp.Algo.BaseTrader.UnRegisterMarketDepth(StockSharp.BusinessEntities.Security)">
       <summary>
@@ -8122,6 +8704,7 @@
             событие <see cref="E:StockSharp.BusinessEntities.ITrader.NewTrades" />.
             </summary>
       <param name="security">Инструмент, по которому необходимо начать получать сделки.</param>
+      <returns>true, если удалось подписаться на получение данных, иначе false.</returns>
     </member>
     <member name="M:StockSharp.Algo.BaseTrader.UnRegisterTrades(StockSharp.BusinessEntities.Security)">
       <summary>
@@ -8170,6 +8753,7 @@
             Начать получать лог заявок для инструмента.
             </summary>
       <param name="security">Инструмент, по которому необходимо начать получать лог заявок.</param>
+      <returns>true, если удалось подписаться на получение данных, иначе false.</returns>
     </member>
     <member name="M:StockSharp.Algo.BaseTrader.UnRegisterOrderLog(StockSharp.BusinessEntities.Security)">
       <summary>
@@ -8202,13 +8786,6 @@
       <summary>
             Остановить получение новостей.
             </summary>
-    </member>
-    <member name="M:StockSharp.Algo.BaseTrader.IsSupport(StockSharp.BusinessEntities.Security)">
-      <summary>
-            Поддерживает ли шлюз инструмент.
-            </summary>
-      <param name="security">Инструмент.</param>
-      <returns>True, если шлюз поддерживает инструмент, иначе, false.</returns>
     </member>
     <member name="M:StockSharp.Algo.BaseTrader.ProcessEvents(System.Action)">
       <summary>
@@ -8377,6 +8954,12 @@
             </summary>
       <param name="news">Новость.</param>
     </member>
+    <member name="M:StockSharp.Algo.BaseTrader.RaiseNewsChanged(StockSharp.BusinessEntities.News)">
+      <summary>
+            Вызвать событие <see cref="E:StockSharp.Algo.BaseTrader.NewsChanged" />.
+            </summary>
+      <param name="news">Новость.</param>
+    </member>
     <member name="M:StockSharp.Algo.BaseTrader.RaiseNewOrderLogItem(StockSharp.BusinessEntities.OrderLogItem)">
       <summary>
             Вызвать событие <see cref="E:StockSharp.Algo.BaseTrader.NewOrderLogItems" />.
@@ -8405,6 +8988,22 @@
             </summary>
       <param name="exception">Ошибка соединения.</param>
     </member>
+    <member name="M:StockSharp.Algo.BaseTrader.RaiseExportStarted">
+      <summary>
+            Вызвать событие <see cref="E:StockSharp.Algo.BaseTrader.ExportStarted" />.
+            </summary>
+    </member>
+    <member name="M:StockSharp.Algo.BaseTrader.RaiseExportStopped">
+      <summary>
+            Вызвать событие <see cref="E:StockSharp.Algo.BaseTrader.ExportStopped" />.
+            </summary>
+    </member>
+    <member name="M:StockSharp.Algo.BaseTrader.RaiseExportError(System.Exception)">
+      <summary>
+            Вызвать событие <see cref="E:StockSharp.Algo.BaseTrader.ExportError" />.
+            </summary>
+      <param name="exception">Ошибка соединения.</param>
+    </member>
     <member name="M:StockSharp.Algo.BaseTrader.RaiseProcessDataError(System.Exception)">
       <summary>
             Вызвать событие <see cref="E:StockSharp.Algo.BaseTrader.ProcessDataError" />.
@@ -8414,22 +9013,6 @@
     <member name="M:StockSharp.Algo.BaseTrader.RaiseNewDataExported">
       <summary>
             Вызвать событие <see cref="E:StockSharp.Algo.BaseTrader.NewDataExported" />.
-            </summary>
-    </member>
-    <member name="M:StockSharp.Algo.BaseTrader.RaiseConnectionRestored">
-      <summary>
-            Вызвать событие <see cref="E:StockSharp.Algo.ReConnectionSettings.ConnectionRestored" />.
-            </summary>
-    </member>
-    <member name="M:StockSharp.Algo.BaseTrader.RaiseConnectionAttemptError(System.Exception)">
-      <summary>
-            Вызвать событие <see cref="E:StockSharp.Algo.ReConnectionSettings.ConnectionAttemptError" />.
-            </summary>
-      <param name="exception">Ошибка соединения.</param>
-    </member>
-    <member name="M:StockSharp.Algo.BaseTrader.RaiseExportTimeOut">
-      <summary>
-            Вызвать событие <see cref="E:StockSharp.Algo.ReConnectionSettings.ExportTimeOut" />.
             </summary>
     </member>
     <member name="M:StockSharp.Algo.BaseTrader.RaiseMarketTimeChanged(System.TimeSpan)">
@@ -8443,6 +9026,58 @@
             Вызвать событие <see cref="E:StockSharp.Algo.BaseTrader.LookupResult" />.
             </summary>
       <param name="securities">Найденные инструменты.</param>
+    </member>
+    <member name="M:StockSharp.Algo.BaseTrader.RaiseTradesSubscriptionSucceeded(StockSharp.BusinessEntities.Security)">
+      <summary>
+            Вызвать событие <see cref="E:StockSharp.Algo.BaseTrader.TradesSubscriptionSucceeded" />.
+            </summary>
+      <param name="security">Инструмент.</param>
+    </member>
+    <member name="M:StockSharp.Algo.BaseTrader.RaiseTradesSubscriptionFailed(StockSharp.BusinessEntities.Security,System.Exception)">
+      <summary>
+            Вызвать событие <see cref="E:StockSharp.Algo.BaseTrader.TradesSubscriptionFailed" />.
+            </summary>
+      <param name="security">Инструмент.</param>
+      <param name="error">Ошибка.</param>
+    </member>
+    <member name="M:StockSharp.Algo.BaseTrader.RaiseSecuritySubscriptionSucceeded(StockSharp.BusinessEntities.Security)">
+      <summary>
+            Вызвать событие <see cref="E:StockSharp.Algo.BaseTrader.SecuritySubscriptionSucceeded" />.
+            </summary>
+      <param name="security">Инструмент.</param>
+    </member>
+    <member name="M:StockSharp.Algo.BaseTrader.RaiseSecuritySubscriptionFailed(StockSharp.BusinessEntities.Security,System.Exception)">
+      <summary>
+            Вызвать событие <see cref="E:StockSharp.Algo.BaseTrader.SecuritySubscriptionFailed" />.
+            </summary>
+      <param name="security">Инструмент.</param>
+      <param name="error">Ошибка.</param>
+    </member>
+    <member name="M:StockSharp.Algo.BaseTrader.RaiseMarketDepthSubscriptionSucceeded(StockSharp.BusinessEntities.Security)">
+      <summary>
+            Вызвать событие <see cref="E:StockSharp.Algo.BaseTrader.MarketDepthSubscriptionSucceeded" />.
+            </summary>
+      <param name="security">Инструмент.</param>
+    </member>
+    <member name="M:StockSharp.Algo.BaseTrader.RaiseMarketDepthSubscriptionFailed(StockSharp.BusinessEntities.Security,System.Exception)">
+      <summary>
+            Вызвать событие <see cref="E:StockSharp.Algo.BaseTrader.MarketDepthSubscriptionFailed" />.
+            </summary>
+      <param name="security">Инструмент.</param>
+      <param name="error">Ошибка.</param>
+    </member>
+    <member name="M:StockSharp.Algo.BaseTrader.RaiseOrderLogSubscriptionSucceeded(StockSharp.BusinessEntities.Security)">
+      <summary>
+            Вызвать событие <see cref="E:StockSharp.Algo.BaseTrader.OrderLogSubscriptionSucceeded" />.
+            </summary>
+      <param name="security">Инструмент.</param>
+    </member>
+    <member name="M:StockSharp.Algo.BaseTrader.RaiseOrderLogSubscriptionFailed(StockSharp.BusinessEntities.Security,System.Exception)">
+      <summary>
+            Вызвать событие <see cref="E:StockSharp.Algo.BaseTrader.OrderLogSubscriptionFailed" />.
+            </summary>
+      <param name="security">Инструмент.</param>
+      <param name="error">Ошибка.</param>
     </member>
     <member name="M:StockSharp.Algo.BaseTrader.GetSecurity(System.String,System.Func{StockSharp.BusinessEntities.Security,System.Boolean})">
       <summary>
@@ -8502,15 +9137,44 @@
       <param name="createTrade">Обработчик, создающий сделку.</param>
       <returns>Сделка.</returns>
     </member>
-    <member name="M:StockSharp.Algo.BaseTrader.GetOrder(StockSharp.BusinessEntities.Security,System.Int64,System.Func{System.Int64,StockSharp.BusinessEntities.Order},System.Func{StockSharp.BusinessEntities.Order,System.Boolean})">
+    <member name="M:StockSharp.Algo.BaseTrader.GetOrder(StockSharp.BusinessEntities.Security,StockSharp.BusinessEntities.OrderTypes,System.Int64)">
       <summary>
-            Получить заявку по инструменту и номеру. Если заявка не зарегистрирована, то она создается через <paramref name="createOrder" />.
+            Получить заявку по заданным критериям.
             </summary>
       <param name="security">Инструмент.</param>
-      <param name="id">Номер заявки.</param>
+      <param name="type">Тип заявки.</param>
+      <param name="transactionId">Номер транзакции.</param>
+      <returns>Заявка. Если заявка не найдена по заданным критериям, то будет возвращено null.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.BaseTrader.GetOrder(System.Nullable{System.Boolean},System.Int64)">
+      <summary>
+            Получить заявка по заданным критериям.
+            </summary>
+      <param name="isConditional">Является ли заявка условной. Если значение равно null, то в начале ищется обычная заявка, затем условная.</param>
+      <param name="transactionId">Номер транзакции.</param>
+      <returns>Заявка. Если заявка не найдена по заданным критериям, то будет возвращено null.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.BaseTrader.GetOrder(StockSharp.BusinessEntities.Security,StockSharp.BusinessEntities.OrderTypes,System.Int64,System.Func{System.Int64,StockSharp.BusinessEntities.Order},System.Func{StockSharp.BusinessEntities.Order,System.Boolean})">
+      <summary>
+            Получить заявку по инструменту и номеру транзакции. Если заявка не зарегистрирована, то она создается через <paramref name="createOrder" />.
+            </summary>
+      <param name="security">Инструмент.</param>
+      <param name="type">Тип заявки.</param>
+      <param name="transactionId">Номер транзакции.</param>
       <param name="createOrder">Обработчик, создающий заявку.</param>
       <param name="changeOrder">Обработчик, изменяющий заявку. Возвращает true, если заявка была изменена, и необходимо вызвать <see cref="E:StockSharp.BusinessEntities.ITrader.OrdersChanged" />.</param>
       <returns>Заявка.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.BaseTrader.AddDerivedOrder(StockSharp.BusinessEntities.Security,System.Int64,StockSharp.BusinessEntities.Order,System.Action{StockSharp.BusinessEntities.Order,StockSharp.BusinessEntities.Order})">
+      <summary>
+            Добавить ассоциацию между номером обычной заявки и стоп-заявкой. Необходимо использовать, когда заявки и стоп-заявки приходят
+            в разных потоках, и стоп-заявка с информацией о производной заявке пришла раньше, чем сама заявка.
+            </summary>
+      <param name="security">Инструмент.</param>
+      <param name="derivedOrderId">Номер производной заявки.</param>
+      <param name="stopOrder">Стоп-заявка.</param>
+      <param name="handler">Обработчик, который будет вызван, как только придет информация о производной заявке.
+            Первым параметром идет стоп-заявка, вторым - производная.</param>
     </member>
     <member name="M:StockSharp.Algo.BaseTrader.AddMyTrade(StockSharp.BusinessEntities.Security,System.Int64,System.Int64,StockSharp.BusinessEntities.Trade)">
       <summary>
@@ -8559,31 +9223,6 @@
       <param name="changePortfolio">Обработчик, изменяющий портфель. Возвращает true, если портфель был изменен, и необходимо вызвать <see cref="E:StockSharp.BusinessEntities.ITrader.PortfoliosChanged" />.</param>
       <returns>Портфель.</returns>
     </member>
-    <member name="M:StockSharp.Algo.BaseTrader.GetOrderByTransactionId(System.Int64)">
-      <summary>
-            Получить заявку по номеру транзакции <see cref="P:StockSharp.BusinessEntities.Order.TransactionId" />.
-            </summary>
-      <param name="transactionId">Номер транзакции.</param>
-      <returns>Заявка.</returns>
-    </member>
-    <member name="M:StockSharp.Algo.BaseTrader.GetStopOrderByTransactionId(System.Int64)">
-      <summary>
-            Получить стоп-заявку по номеру транзакции <see cref="P:StockSharp.BusinessEntities.Order.TransactionId" />.
-            </summary>
-      <param name="transactionId">Номер транзакции.</param>
-      <returns>Стоп-заявка.</returns>
-    </member>
-    <member name="M:StockSharp.Algo.BaseTrader.AddDerivedOrder(StockSharp.BusinessEntities.Security,System.Int64,StockSharp.BusinessEntities.Order,System.Action{StockSharp.BusinessEntities.Order,StockSharp.BusinessEntities.Order})">
-      <summary>
-            Добавить ассоциацию между номером обычной заявки и стоп-заявкой. Необходимо использовать, когда заявки и стоп-заявки приходят
-            в разных потоках, и стоп-заявка с информацией о производной заявке пришла раньше, чем сама заявка.
-            </summary>
-      <param name="security">Инструмент.</param>
-      <param name="derivedOrderId">Номер производной заявки.</param>
-      <param name="stopOrder">Стоп-заявка.</param>
-      <param name="handler">Обработчик, который будет вызван, как только придет информация о производной заявке.
-            Первым параметром идет стоп-заявка, вторым - производная.</param>
-    </member>
     <member name="M:StockSharp.Algo.BaseTrader.CreateSecurityId(System.String,System.String)">
       <summary>
             Сгенерировать <see cref="P:StockSharp.BusinessEntities.Security.Id" /> инструмента.
@@ -8620,12 +9259,21 @@
       <param name="changeNews">Обработчик, изменяющий новость.</param>
       <returns>Новость.</returns>
     </member>
-    <member name="M:StockSharp.Algo.BaseTrader.StartMarketTimeExport">
+    <member name="M:StockSharp.Algo.BaseTrader.GetNews(System.Int64,System.Func{System.Int64,StockSharp.BusinessEntities.News},System.Func{StockSharp.BusinessEntities.News,System.Boolean})">
       <summary>
-            Начать экспорт события об изменении времени.
+            Получить новость по номеру.
+            </summary>
+      <param name="id">Номер новости.</param>
+      <param name="createNews">Обработчик, создающий <see cref="T:StockSharp.BusinessEntities.News" />.</param>
+      <param name="changeNews">Обработчик, изменяющий <see cref="T:StockSharp.BusinessEntities.News" />.</param>
+      <returns>Новость.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.BaseTrader.StartMarketTimer">
+      <summary>
+            Запустить таймер изменении времени.
             </summary>
     </member>
-    <member name="M:StockSharp.Algo.BaseTrader.StopMarketTimeExport">
+    <member name="M:StockSharp.Algo.BaseTrader.StopMarketTimer">
       <summary>
             Завершить экспорт события об изменении времени.
             </summary>
@@ -8635,15 +9283,26 @@
             Запустить экспорт данных из торговой системы в программу (получение портфелей, инструментов, заявок и т.д.).
             </summary>
     </member>
+    <member name="M:StockSharp.Algo.BaseTrader.OnStartExport">
+      <summary>
+            Запустить экспорт данных из торговой системы в программу (получение портфелей, инструментов, заявок и т.д.).
+            </summary>
+    </member>
     <member name="M:StockSharp.Algo.BaseTrader.StopExport">
       <summary>
             Остановить экспорт данных из торговой системы в программу, запущенный через <see cref="M:StockSharp.BusinessEntities.ITrader.StartExport" />.
             </summary>
     </member>
-    <member name="M:StockSharp.Algo.BaseTrader.ReStartExport">
+    <member name="M:StockSharp.Algo.BaseTrader.OnStopExport">
       <summary>
-            Перезапустить экспорт данных из торговой системы через методы <see cref="M:StockSharp.BusinessEntities.ITrader.StopExport" /> и <see cref="M:StockSharp.BusinessEntities.ITrader.StartExport" />.
+            Остановить экспорт данных из торговой системы в программу.
             </summary>
+    </member>
+    <member name="M:StockSharp.Algo.BaseTrader.CreateOrderCondition">
+      <summary>
+            Создать для заявки типа <see cref="F:StockSharp.BusinessEntities.OrderTypes.Conditional" /> условие, которое поддерживается шлюзом.
+            </summary>
+      <returns>Условие для заявки. Если шлюз не поддерживает заявки типа <see cref="F:StockSharp.BusinessEntities.OrderTypes.Conditional" />, то будет возвращено null.</returns>
     </member>
     <member name="M:StockSharp.Algo.BaseTrader.DisposeManaged">
       <summary>
@@ -8802,6 +9461,11 @@
             Событие появления новости.
             </summary>
     </member>
+    <member name="E:StockSharp.Algo.BaseTrader.NewsChanged">
+      <summary>
+            Событие изменения новости (например, при скачивании текста <see cref="P:StockSharp.BusinessEntities.News.Story" />).
+            </summary>
+    </member>
     <member name="E:StockSharp.Algo.BaseTrader.Connected">
       <summary>
             Событие успешного подключения.
@@ -8817,6 +9481,21 @@
             Событие ошибки подключения (например, соединения было разорвано).
             </summary>
     </member>
+    <member name="E:StockSharp.Algo.BaseTrader.ExportStarted">
+      <summary>
+            Событие успешного запуска экспорта.
+            </summary>
+    </member>
+    <member name="E:StockSharp.Algo.BaseTrader.ExportStopped">
+      <summary>
+            Событие успешной остановки экспорта.
+            </summary>
+    </member>
+    <member name="E:StockSharp.Algo.BaseTrader.ExportError">
+      <summary>
+            Событие ошибки экспорта (например, соединения было разорвано).
+            </summary>
+    </member>
     <member name="E:StockSharp.Algo.BaseTrader.ProcessDataError">
       <summary>
             Событие, сигнализирующее об ошибке при получении или обработке новых данных с сервера.
@@ -8830,6 +9509,46 @@
     <member name="E:StockSharp.Algo.BaseTrader.LookupResult">
       <summary>
             Событие, передающее результат поиска, запущенного через метод <see cref="M:StockSharp.BusinessEntities.ITrader.LookupSecurities(StockSharp.BusinessEntities.Security)" />.
+            </summary>
+    </member>
+    <member name="E:StockSharp.Algo.BaseTrader.TradesSubscriptionSucceeded">
+      <summary>
+            Событие успешной регистрации инструмента для получения тиковых данных.
+            </summary>
+    </member>
+    <member name="E:StockSharp.Algo.BaseTrader.TradesSubscriptionFailed">
+      <summary>
+            Событие ошибки регистрации инструмента для получения тиковых данных.
+            </summary>
+    </member>
+    <member name="E:StockSharp.Algo.BaseTrader.SecuritySubscriptionSucceeded">
+      <summary>
+            Событие успешной регистрации инструмента для получения общих данных.
+            </summary>
+    </member>
+    <member name="E:StockSharp.Algo.BaseTrader.SecuritySubscriptionFailed">
+      <summary>
+            Событие ошибки регистрации инструмента для получения общих данных.
+            </summary>
+    </member>
+    <member name="E:StockSharp.Algo.BaseTrader.MarketDepthSubscriptionSucceeded">
+      <summary>
+            Событие успешной регистрации инструмента для получения стакана.
+            </summary>
+    </member>
+    <member name="E:StockSharp.Algo.BaseTrader.MarketDepthSubscriptionFailed">
+      <summary>
+            Событие ошибки регистрации инструмента для получения стакана.
+            </summary>
+    </member>
+    <member name="E:StockSharp.Algo.BaseTrader.OrderLogSubscriptionSucceeded">
+      <summary>
+            Событие успешной регистрации инструмента для получения ордер-лога.
+            </summary>
+    </member>
+    <member name="E:StockSharp.Algo.BaseTrader.OrderLogSubscriptionFailed">
+      <summary>
+            Событие ошибки регистрации инструмента для получения ордер-лога.
             </summary>
     </member>
     <member name="P:StockSharp.Algo.BaseTrader.TransactionIdGenerator">
@@ -8903,14 +9622,14 @@
             Все новости.
             </summary>
     </member>
-    <member name="P:StockSharp.Algo.BaseTrader.IsConnected">
+    <member name="P:StockSharp.Algo.BaseTrader.ConnectionState">
       <summary>
-            Проверить соединение.
+            Состояние соединения.
             </summary>
     </member>
-    <member name="P:StockSharp.Algo.BaseTrader.IsExportStarted">
+    <member name="P:StockSharp.Algo.BaseTrader.ExportState">
       <summary>
-            Запущен ли экспорт. Экспорт запускается через метод <see cref="M:StockSharp.Algo.BaseTrader.StartExport" />.
+            Состояние экспорта.
             </summary>
     </member>
     <member name="P:StockSharp.Algo.BaseTrader.IsSupportAtomicReRegister">
@@ -9017,7 +9736,14 @@
       <param name="portfolios">Портфели, с которыми будет вестись работа.</param>
       <param name="storageRegistry">Хранилище данных.</param>
     </member>
-    <member name="M:StockSharp.Algo.Storages.DataFeedTrader.StartMarketTimeExport">
+    <member name="M:StockSharp.Algo.Storages.DataFeedTrader.#ctor(StockSharp.Algo.Storages.IEntityRegistry,StockSharp.Algo.Storages.IStorageRegistry)">
+      <summary>
+            Создать <see cref="T:StockSharp.Algo.Testing.EmulationTrader" />.
+            </summary>
+      <param name="entityRegistry">Хранилище торговых объектов.</param>
+      <param name="storageRegistry">Хранилище данных.</param>
+    </member>
+    <member name="M:StockSharp.Algo.Storages.DataFeedTrader.StartMarketTimer">
       <summary>
             Начать экспорт события об изменении времени.
             </summary>
@@ -9029,9 +9755,14 @@
       <param name="exchange">Биржа.</param>
       <returns>Биржевое время.</returns>
     </member>
-    <member name="M:StockSharp.Algo.Storages.DataFeedTrader.StartExport">
+    <member name="M:StockSharp.Algo.Storages.DataFeedTrader.OnStartExport">
       <summary>
             Запустить экспорт данных из торговой системы в программу (получение портфелей, инструментов, заявок и т.д.).
+            </summary>
+    </member>
+    <member name="M:StockSharp.Algo.Storages.DataFeedTrader.OnStopExport">
+      <summary>
+            Остановить экспорт данных из торговой системы в программу.
             </summary>
     </member>
     <member name="M:StockSharp.Algo.Storages.DataFeedTrader.Start(System.DateTime,System.DateTime)">
@@ -9054,6 +9785,16 @@
     <member name="M:StockSharp.Algo.Storages.DataFeedTrader.Resume">
       <summary>
             Возобновить эмуляцию.
+            </summary>
+    </member>
+    <member name="M:StockSharp.Algo.Storages.DataFeedTrader.OnConnect">
+      <summary>
+            Подключиться к торговой системе.
+            </summary>
+    </member>
+    <member name="M:StockSharp.Algo.Storages.DataFeedTrader.OnDisconnect">
+      <summary>
+            Отключиться от торговой системы.
             </summary>
     </member>
     <member name="M:StockSharp.Algo.Storages.DataFeedTrader.OnRegisterOrder(StockSharp.BusinessEntities.Order)">
@@ -9111,11 +9852,54 @@
             </summary>
       <param name="generator">Генератор лога заявок.</param>
     </member>
+    <member name="M:StockSharp.Algo.Storages.DataFeedTrader.OnRegisterSecurity(StockSharp.BusinessEntities.Security)">
+      <summary>
+            Начать получать новую информацию (например, <see cref="P:StockSharp.BusinessEntities.Security.LastTrade" /> или <see cref="P:StockSharp.BusinessEntities.Security.BestBid" />) по инструменту.
+            </summary>
+      <param name="security">Инструмент, по которому необходимо начать получать новую информацию.</param>
+      <returns>true, если удалось подписаться на получение данных, иначе false.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.Storages.DataFeedTrader.OnRegisterMarketDepth(StockSharp.BusinessEntities.Security)">
+      <summary>
+            Начать получать котировки (стакан) по инструменту.
+            Значение котировок можно получить через метод <see cref="M:StockSharp.BusinessEntities.ITrader.GetMarketDepth(StockSharp.BusinessEntities.Security)" />.
+            </summary>
+      <param name="security">Инструмент, по которому необходимо начать получать котировки.</param>
+      <returns>true, если удалось подписаться на получение данных, иначе false.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.Storages.DataFeedTrader.OnRegisterTrades(StockSharp.BusinessEntities.Security)">
+      <summary>
+            Начать получать сделки (тиковые данные) по инструменту. Новые сделки будут приходить через
+            событие <see cref="E:StockSharp.BusinessEntities.ITrader.NewTrades" />.
+            </summary>
+      <param name="security">Инструмент, по которому необходимо начать получать сделки.</param>
+      <returns>true, если удалось подписаться на получение данных, иначе false.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.Storages.DataFeedTrader.OnRegisterOrderLog(StockSharp.BusinessEntities.Security)">
+      <summary>
+            Начать получать лог заявок для инструмента.
+            </summary>
+      <param name="security">Инструмент, по которому необходимо начать получать лог заявок.</param>
+      <returns>true, если удалось подписаться на получение данных, иначе false.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.Storages.DataFeedTrader.LookupSecurities(StockSharp.BusinessEntities.Security)">
+      <summary>
+            Найти инструменты, соответствующие фильтру <paramref name="criteria" />.
+            Найденные инструменты будут переданы через событие <see cref="E:StockSharp.BusinessEntities.ITrader.LookupResult" />.
+            </summary>
+      <param name="criteria">Инструмент, поля которого будут использоваться в качестве фильтра.</param>
+    </member>
     <member name="M:StockSharp.Algo.Storages.DataFeedTrader.RaiseMarketDepthChanged(StockSharp.BusinessEntities.MarketDepth)">
       <summary>
             Вызвать событие <see cref="E:StockSharp.BusinessEntities.ITrader.MarketDepthsChanged" />.
             </summary>
       <param name="marketDepth">Стакан, который нужно передать в событие.</param>
+    </member>
+    <member name="M:StockSharp.Algo.Storages.DataFeedTrader.CreateOrderCondition">
+      <summary>
+            Создать для заявки типа <see cref="F:StockSharp.BusinessEntities.OrderTypes.Conditional" /> условие, которое поддерживается шлюзом.
+            </summary>
+      <returns>Условие для заявки. Если шлюз не поддерживает заявки типа <see cref="F:StockSharp.BusinessEntities.OrderTypes.Conditional" />, то будет возвращено null.</returns>
     </member>
     <member name="M:StockSharp.Algo.Storages.DataFeedTrader.DisposeManaged">
       <summary>
@@ -9222,6 +10006,33 @@
       <summary>
             Текущее время, которое будет передано в <see cref="P:StockSharp.Logging.LogMessage.Time" />.
             </summary>
+    </member>
+    <member name="T:StockSharp.Algo.Storages.ISecurityList">
+      <summary>
+            Интерфейс для доступа к хранилищу инструментов.
+            </summary>
+    </member>
+    <member name="T:StockSharp.Algo.History.ISecurityStorage">
+      <summary>
+            Интерфейс для доступа к хранилищу информации об инструментах.
+            </summary>
+    </member>
+    <member name="M:StockSharp.Algo.History.ISecurityStorage.Save(StockSharp.BusinessEntities.Security)">
+      <summary>
+            Сохранить инструмент.
+            </summary>
+      <param name="security">Инструмент.</param>
+    </member>
+    <member name="T:StockSharp.Algo.Storages.NewsList">
+      <summary>
+            Класс для представления в виде списка новостей, хранящихся во внешнем хранилище.
+            </summary>
+    </member>
+    <member name="M:StockSharp.Algo.Storages.NewsList.#ctor(Ecng.Serialization.IStorage)">
+      <summary>
+            Создать <see cref="T:StockSharp.Algo.Storages.NewsList" />.
+            </summary>
+      <param name="storage">Специальный интерфейс для прямого доступа к хранилищу.</param>
     </member>
     <member name="T:StockSharp.Algo.Storages.SecurityChangeContainer">
       <summary>
@@ -9393,6 +10204,11 @@
     <member name="F:StockSharp.Algo.Testing.MarketDataTypes.Time">
       <summary>
             Изменение времени.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Algo.Testing.MarketDataTypes.News">
+      <summary>
+            Новость.
             </summary>
     </member>
     <member name="F:StockSharp.Algo.Testing.MarketDataTypes.MyTrades">
@@ -10157,150 +10973,6 @@
       <param name="marketTime">Биржевое время.</param>
       <param name="position">Новое значение позиции.</param>
     </member>
-    <member name="T:StockSharp.Algo.History.Finam.FinamHistorySource">
-      <summary>
-            Источник для скачивания исторических сделок с Finam.
-            </summary>
-    </member>
-    <member name="F:StockSharp.Algo.History.Finam.FinamHistorySource.FinamMarketIdField">
-      <summary>
-            Ключ, по которому в <see cref="P:StockSharp.BusinessEntities.Security.ExtensionInfo" /> будет присутствовать номер финамовского идентификатора рынка.
-            </summary>
-    </member>
-    <member name="F:StockSharp.Algo.History.Finam.FinamHistorySource.FinamSecurityIdField">
-      <summary>
-            Ключ, по которому в <see cref="P:StockSharp.BusinessEntities.Security.ExtensionInfo" /> будет присутствовать номер финамовского идентификатора инструмента.
-            </summary>
-    </member>
-    <member name="M:StockSharp.Algo.History.Finam.FinamHistorySource.#ctor(StockSharp.Algo.History.ISecurityStorage)">
-      <summary>
-            Создать <see cref="T:StockSharp.Algo.History.Finam.FinamHistorySource" />.
-            </summary>
-      <param name="securityStorage">Интерфейс для доступа к хранилищу информации об инструментах.</param>
-    </member>
-    <member name="M:StockSharp.Algo.History.Finam.FinamHistorySource.GetTrades(StockSharp.BusinessEntities.Security,System.DateTime)">
-      <summary>
-            Получить исторические сделки.
-            </summary>
-      <param name="security">Инструмент, для которого необходимо получить все сделки. Если значение равно null, то возвращаются сделки по всем инструментам.</param>
-      <param name="time">Время торговой сессии, для которой необходимо получить сделки.</param>
-      <returns>Исторические сделки.</returns>
-    </member>
-    <member name="M:StockSharp.Algo.History.Finam.FinamHistorySource.DownloadSecurityInfo">
-      <summary>
-            Загрузить информацию об инструментах.
-            </summary>
-      <returns>Информация об инструментах.</returns>
-    </member>
-    <member name="M:StockSharp.Algo.History.Finam.FinamHistorySource.GetCandles(StockSharp.BusinessEntities.Security,System.DateTime,System.DateTime,System.TimeSpan)">
-      <summary>
-            Загрузить свечи.
-            </summary>
-      <param name="security">Инструмент, для которого необходимо получить свечки.</param>
-      <param name="beginDate">Дата начала данных.</param>
-      <param name="endDate">Дата конца данных.</param>
-      <param name="tf">Тайм-фрейм (1min, 5min, 10min, 15min, 30min, 1hour, 1day).</param>
-      <returns>Загруженные свечки.</returns>
-    </member>
-    <member name="M:StockSharp.Algo.History.Finam.FinamHistorySource.GetNewSecurities">
-      <summary>
-            Получить новые инструменты.
-            </summary>
-      <returns>Новые инструменты.</returns>
-    </member>
-    <member name="T:StockSharp.Algo.History.Rts.RtsHistorySource">
-      <summary>
-            Источник для скачивания исторических сделок с RTS.
-            </summary>
-    </member>
-    <member name="M:StockSharp.Algo.History.Rts.RtsHistorySource.#ctor(StockSharp.Algo.History.ISecurityStorage)">
-      <summary>
-            Создать <see cref="T:StockSharp.Algo.History.Rts.RtsHistorySource" />.
-            </summary>
-      <param name="securityStorage">Интерфейс для доступа к хранилищу информации об инструментах.</param>
-    </member>
-    <member name="M:StockSharp.Algo.History.Rts.RtsHistorySource.LoadTrades(System.DateTime,System.Collections.Generic.IDictionary{StockSharp.BusinessEntities.Security,System.Collections.Generic.IList{StockSharp.BusinessEntities.Trade}})">
-      <summary>
-            Загрузить исторические сделки.
-            </summary>
-      <param name="date">Дата торговой сессии, для которой необходимо получить сделки.</param>
-      <param name="trades">Контейнер для загруженных сделок.</param>
-      <returns>Исторические сделки.</returns>
-    </member>
-    <member name="P:StockSharp.Algo.History.Rts.RtsHistorySource.Host">
-      <summary>
-            Адрес ftp RTS сервера.
-            </summary>
-    </member>
-    <member name="P:StockSharp.Algo.History.Rts.RtsHistorySource.Port">
-      <summary>
-            Порт ftp RTS сервера.
-            </summary>
-    </member>
-    <member name="P:StockSharp.Algo.History.Rts.RtsHistorySource.UserName">
-      <summary>
-            Логин к ftp.
-            </summary>
-    </member>
-    <member name="P:StockSharp.Algo.History.Rts.RtsHistorySource.Password">
-      <summary>
-            Пароль к ftp.
-            </summary>
-    </member>
-    <member name="P:StockSharp.Algo.History.Rts.RtsHistorySource.ExchangeBoard">
-      <summary>
-            Информация о площадке.
-            </summary>
-    </member>
-    <member name="P:StockSharp.Algo.History.Rts.RtsHistorySource.MinAvaliableTime">
-      <summary>
-            Минимальная дата, для которой есть исторические данные.
-            </summary>
-    </member>
-    <member name="P:StockSharp.Algo.History.Rts.RtsHistorySource.DbfDirectory">
-      <summary>
-            Путь к папке с историческими данными в формате DBF.
-            </summary>
-      <remarks>
-            Если значение равно пустой строке, то данные в формате DBF не обрабатываются.
-            </remarks>
-    </member>
-    <member name="P:StockSharp.Algo.History.Rts.RtsHistorySource.TxtDirectory">
-      <summary>
-            Путь к папке с историческими данными в формате CSV и Excel.
-            </summary>
-      <remarks>
-            Если значение равно пустой строке, то данные в формате CSV и Excel не обрабатываются.
-            </remarks>
-    </member>
-    <member name="P:StockSharp.Algo.History.Rts.RtsHistorySource.DumpFolder">
-      <summary>
-            Путь к директории, куда будут сохранятся скаченные файлы.
-            </summary>
-      <remarks>
-            Если значение равно пустой строке, то данные сохраняются в текущую директорию.
-            </remarks>
-    </member>
-    <member name="P:StockSharp.Algo.History.Rts.RtsHistorySource.SaveRtsStdTrades">
-      <summary>
-            Сохранять сделки для инструментов РТС Стандарт. По-умолчанию выключено.
-            </summary>
-    </member>
-    <member name="P:StockSharp.Algo.History.Rts.RtsHistorySource.SaveRtsStdCombinedOnly">
-      <summary>
-            Склеивать сделки для инструментов РТС Стандарт (сделки для T+N не разбиваются по папкам). По-умолчанию выключено.
-            </summary>
-    </member>
-    <member name="P:StockSharp.Algo.History.Rts.RtsHistorySource.IsSystemOnly">
-      <summary>
-            Сохранять только системные сделки. По-умолчанию включено.
-            </summary>
-    </member>
-    <member name="P:StockSharp.Algo.History.Rts.RtsHistorySource.LoadEveningSession">
-      <summary>
-            Скачивать данные вечерней сессии.
-            </summary>
-    </member>
     <member name="T:StockSharp.Algo.IEntityFactory">
       <summary>
             Интерфейс фабрики бизнес-сущностей (<see cref="T:StockSharp.BusinessEntities.Security" />, <see cref="T:StockSharp.BusinessEntities.Order" /> и т.д.).
@@ -10336,12 +11008,13 @@
       <param name="id">Номер сделки.</param>
       <returns>Созданная сделка.</returns>
     </member>
-    <member name="M:StockSharp.Algo.IEntityFactory.CreateOrder(StockSharp.BusinessEntities.Security,System.Int64)">
+    <member name="M:StockSharp.Algo.IEntityFactory.CreateOrder(StockSharp.BusinessEntities.Security,StockSharp.BusinessEntities.OrderTypes,System.Int64)">
       <summary>
-            Создать заявку по ее номеру.
+            Создать заявку по номеру транзакции.
             </summary>
       <param name="security">Инструмент.</param>
-      <param name="id">Номер заявки.</param>
+      <param name="type">Тип заявки.</param>
+      <param name="transactionId">Номер транзакции регистрации заявки.</param>
       <returns>Созданная заявка.</returns>
     </member>
     <member name="M:StockSharp.Algo.IEntityFactory.CreateOrderFail(StockSharp.BusinessEntities.Order,System.Exception)">
@@ -10374,6 +11047,13 @@
       <param name="order">Заявка.</param>
       <param name="trade">Тиковая сделка.</param>
       <returns>Строчка лога заявок.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.IEntityFactory.CreateNews(System.Int64)">
+      <summary>
+            Создать новость по номеру.
+            </summary>
+      <param name="id">Номер новости.</param>
+      <returns>Созданная новость.</returns>
     </member>
     <member name="T:StockSharp.Algo.EntityFactory">
       <summary>
@@ -10415,12 +11095,13 @@
       <param name="id">Номер сделки.</param>
       <returns>Созданная сделка.</returns>
     </member>
-    <member name="M:StockSharp.Algo.EntityFactory.CreateOrder(StockSharp.BusinessEntities.Security,System.Int64)">
+    <member name="M:StockSharp.Algo.EntityFactory.CreateOrder(StockSharp.BusinessEntities.Security,StockSharp.BusinessEntities.OrderTypes,System.Int64)">
       <summary>
-            Создать заявку по ее номеру.
+            Создать заявку по номеру транзакции.
             </summary>
       <param name="security">Инструмент.</param>
-      <param name="id">Номер заявки.</param>
+      <param name="type">Тип заявки.</param>
+      <param name="transactionId">Номер транзакции регистрации заявки.</param>
       <returns>Созданная заявка.</returns>
     </member>
     <member name="M:StockSharp.Algo.EntityFactory.CreateOrderFail(StockSharp.BusinessEntities.Order,System.Exception)">
@@ -10453,6 +11134,13 @@
       <param name="order">Заявка.</param>
       <param name="trade">Тиковая сделка.</param>
       <returns>Строчка лога заявок.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.EntityFactory.CreateNews(System.Int64)">
+      <summary>
+            Создать новость по номеру.
+            </summary>
+      <param name="id">Номер новости.</param>
+      <returns>Созданная новость.</returns>
     </member>
     <member name="P:StockSharp.Algo.EntityFactory.Instance">
       <summary>
@@ -10518,13 +11206,15 @@
             Настройки механизма отслеживания соединений <see cref="T:StockSharp.BusinessEntities.ITrader" /> с торговом системой.
             </summary>
     </member>
-    <member name="P:StockSharp.Algo.ReConnectionSettings.Interval">
+    <member name="P:StockSharp.Algo.ReConnectionSettings.ConnectionSettings">
       <summary>
-            Интервал, с которым будут происходить попытки <see cref="T:StockSharp.BusinessEntities.ITrader" /> установить соединение с торговой системой.
+            Настройки для подключения.
             </summary>
-      <remarks>
-            По умолчанию интервал равен 10 секунд.
-            </remarks>
+    </member>
+    <member name="P:StockSharp.Algo.ReConnectionSettings.ExportSettings">
+      <summary>
+            Настройки для экспорта.
+            </summary>
     </member>
     <member name="P:StockSharp.Algo.ReConnectionSettings.WorkingTime">
       <summary>
@@ -10532,55 +11222,48 @@
             Например, нет необходимости проводить подключение, когда окончены торги на бирже.
             </summary>
     </member>
-    <member name="P:StockSharp.Algo.ReConnectionSettings.ConnectingAttemptCount">
+    <member name="T:StockSharp.Algo.ReConnectionSettings.Settings">
       <summary>
-            Количество попыток установить первоначальное соеднинение, если оно не было установлено (тайм-аут, сетевой сбой и т.д.).
+            Настройки для подключения или экспорта.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Algo.ReConnectionSettings.Settings.Interval">
+      <summary>
+            Интервал, с которым будут происходить попытки установить соединение. По умолчанию интервал равен 10 секунд.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Algo.ReConnectionSettings.Settings.AttemptCount">
+      <summary>
+            Количество попыток установить первоначальное соединение, если оно не было установлено (тайм-аут, сетевой сбой и т.д.).
             По-умолчанию количество попыток равно 0. Для установление беконечного количества попыток используется значение -1.
             </summary>
     </member>
-    <member name="P:StockSharp.Algo.ReConnectionSettings.ReConnectingAttemptCount">
+    <member name="P:StockSharp.Algo.ReConnectionSettings.Settings.ReAttemptCount">
       <summary>
-            Количество попыток переподсоединиться, если соединение было утеряно в процессе работы.
+            Количество попыток переподключиться, если соединение было утеряно в процессе работы.
             По-умолчанию количество попыток равно 100. Для установление беконечного количества попыток используется значение -1.
             </summary>
     </member>
-    <member name="P:StockSharp.Algo.ReConnectionSettings.IsReStartExport">
+    <member name="P:StockSharp.Algo.ReConnectionSettings.Settings.TimeOutInterval">
       <summary>
-            Перезапускать ли экспорт после восстановления соединения или при тайм-ауте поступления данных.
-            По-умолчанию режим выключен.
-            </summary>
-    </member>
-    <member name="P:StockSharp.Algo.ReConnectionSettings.ConnectDisconnectTimeOutInterval">
-      <summary>
-            Время ожидания события успешного подключения/отключения. По-умолчанию значение равно 1 минуте.
+            Время ожидания успешного подключения/отключения.
             Если значение равно <see cref="F:System.TimeSpan.Zero" />, то мониторинг не производится.
             </summary>
     </member>
-    <member name="P:StockSharp.Algo.ReConnectionSettings.ExportTimeOutInterval">
-      <summary>
-            Интервал для мониторинга потери передачи данных между роботом и торговой программой.
-            </summary>
-      <remarks>
-            Если мониторинг уже был установлен до этого, то применяется новое значение для интервала.
-            Если значение равно <see cref="F:System.TimeSpan.Zero" />, то мониторинг останавливается.
-            По-умолчанию мониторинг выключен.
-            </remarks>
-    </member>
-    <member name="E:StockSharp.Algo.ReConnectionSettings.ConnectionRestored">
+    <member name="E:StockSharp.Algo.ReConnectionSettings.Settings.Restored">
       <summary>
             Событие об успешном восстановлении соединения.
             </summary>
     </member>
-    <member name="E:StockSharp.Algo.ReConnectionSettings.ConnectionAttemptError">
+    <member name="E:StockSharp.Algo.ReConnectionSettings.Settings.AttemptError">
       <summary>
             Событие об ошибке при попытке восстановить соединение.
             Возникает каждый раз при неудачной попытке восстановления соединения.
             </summary>
     </member>
-    <member name="E:StockSharp.Algo.ReConnectionSettings.ExportTimeOut">
+    <member name="E:StockSharp.Algo.ReConnectionSettings.Settings.TimeOut">
       <summary>
-            Событие о тайм-ауте поступающих данных в программу. Событие позволяет узнать, как долго торговая программа не посылала данные роботу.
-            Подобное событие сигнализирует о сбое передачи данных между роботом и торговой программой.
+            Событие о тайм-ауте подключения.
             </summary>
     </member>
     <member name="T:StockSharp.Algo.Statistics.ITradeStatisticParameter">
@@ -10961,6 +11644,18 @@
             или <see cref="M:StockSharp.Algo.Slippage.ISlippageManager.Registering(StockSharp.BusinessEntities.Order,System.Decimal)" />.
             </summary>
     </member>
+    <member name="T:StockSharp.Algo.Storages.IContinuousSecurityMarketDataStorage">
+      <summary>
+            Интерфейс, описывающий хранилище маркет-данных для непрерывного инструмента.
+            </summary>
+    </member>
+    <member name="M:StockSharp.Algo.Storages.IContinuousSecurityMarketDataStorage.GetStorage(System.DateTime)">
+      <summary>
+            Получить хранилище для составного инструмента.
+            </summary>
+      <param name="date">Дата.</param>
+      <returns>Хранилище составного инструмента.</returns>
+    </member>
     <member name="T:StockSharp.Algo.Storages.IMarketDataStorage`1">
       <summary>
             Интерфейс, описывающий хранилище маркет-данных (тики, стаканы и т.д.).
@@ -11110,12 +11805,12 @@
     </member>
     <member name="T:StockSharp.Algo.Storages.EntityRegistry">
       <summary>
-            Хранилище торговых сущностей.
+            Хранилище торговых объектов.
             </summary>
     </member>
     <member name="T:StockSharp.Algo.Storages.IEntityRegistry">
       <summary>
-            Интерфейс, описывающий хранилище торговых сущностей.
+            Интерфейс, описывающий хранилище торговых объектов.
             </summary>
     </member>
     <member name="P:StockSharp.Algo.Storages.IEntityRegistry.Exchanges">
@@ -11163,6 +11858,11 @@
             Список ошибок регистрации и снятия заявок.
             </summary>
     </member>
+    <member name="P:StockSharp.Algo.Storages.IEntityRegistry.News">
+      <summary>
+            Список новостей.
+            </summary>
+    </member>
     <member name="M:StockSharp.Algo.Storages.EntityRegistry.#ctor">
       <summary>
             Создать <see cref="T:StockSharp.Algo.Storages.EntityRegistry" />.
@@ -11173,6 +11873,18 @@
             Создать <see cref="T:StockSharp.Algo.Storages.EntityRegistry" />.
             </summary>
       <param name="storage">Специальный интерфейс для прямого доступа к хранилищу.</param>
+    </member>
+    <member name="M:StockSharp.Algo.Storages.EntityRegistry.EnqueueSecurity(StockSharp.BusinessEntities.Security)">
+      <summary>
+            Добавить инструмент в очередь сохранения.
+            </summary>
+      <param name="security">Инструмент.</param>
+    </member>
+    <member name="M:StockSharp.Algo.Storages.EntityRegistry.SaveExchangeBoard(StockSharp.BusinessEntities.ExchangeBoard)">
+      <summary>
+            Сохранить биржевую площадку. Учитывается сохранение как самой площадки, так и биржу <see cref="P:StockSharp.BusinessEntities.ExchangeBoard.Exchange" />.
+            </summary>
+      <param name="board">Биржевая площадка.</param>
     </member>
     <member name="P:StockSharp.Algo.Storages.EntityRegistry.Storage">
       <summary>
@@ -11224,6 +11936,16 @@
             Список ошибок регистрации и снятия заявок.
             </summary>
     </member>
+    <member name="P:StockSharp.Algo.Storages.EntityRegistry.News">
+      <summary>
+            Список новостей.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Algo.Storages.EntityRegistry.DelayAction">
+      <summary>
+            Отложенное действие.
+            </summary>
+    </member>
     <member name="T:StockSharp.Algo.Storages.ExchangeBoardList">
       <summary>
             Класс для представления в виде списка биржевых площадок, хранящихся во внешнем хранилище.
@@ -11256,6 +11978,11 @@
       <param name="arg">Параметр, ассоциированный с типом <paramref name="dataType" />. Например, <see cref="P:StockSharp.Algo.Candles.Candle.Arg" />.</param>
       <returns>Хранилище для <see cref="T:StockSharp.Algo.Storages.IMarketDataStorage" />.</returns>
     </member>
+    <member name="P:StockSharp.Algo.Storages.IMarketDataDrive.Path">
+      <summary>
+            Путь к данными.
+            </summary>
+    </member>
     <member name="T:StockSharp.Algo.Storages.BaseMarketDataDrive">
       <summary>
             Базовая реализация <see cref="T:StockSharp.Algo.Storages.IMarketDataDrive" />.
@@ -11282,9 +12009,37 @@
       <param name="arg">Параметр, ассоциированный с типом <paramref name="dataType" />. Например, <see cref="P:StockSharp.Algo.Candles.Candle.Arg" />.</param>
       <returns>Хранилище для <see cref="T:StockSharp.Algo.Storages.IMarketDataStorage" />.</returns>
     </member>
+    <member name="M:StockSharp.Algo.Storages.BaseMarketDataDrive.Load(Ecng.Serialization.SettingsStorage)">
+      <summary>
+            Загрузить настройки.
+            </summary>
+      <param name="storage">Хранилище настроек.</param>
+    </member>
+    <member name="M:StockSharp.Algo.Storages.BaseMarketDataDrive.Save(Ecng.Serialization.SettingsStorage)">
+      <summary>
+            Сохранить настройки.
+            </summary>
+      <param name="storage">Хранилище настроек.</param>
+    </member>
+    <member name="M:StockSharp.Algo.Storages.BaseMarketDataDrive.ToString">
+      <summary>
+            Получить строковое представление.
+            </summary>
+      <returns>Строковое представление.</returns>
+    </member>
+    <member name="P:StockSharp.Algo.Storages.BaseMarketDataDrive.Path">
+      <summary>
+            Путь к данными.
+            </summary>
+    </member>
     <member name="T:StockSharp.Algo.Storages.LocalMarketDataDrive">
       <summary>
             Файловое хранилище маркет-данных.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Algo.Storages.LocalMarketDataDrive.SecurityPairSeparator">
+      <summary>
+            Разделитель, заменяющий '/' в пути для инструментов вида USD/EUR. Равен '__'.
             </summary>
     </member>
     <member name="M:StockSharp.Algo.Storages.LocalMarketDataDrive.#ctor">
@@ -11314,6 +12069,18 @@
       <param name="dataType">Тип маркет-данных.</param>
       <param name="arg">Параметр, ассоциированный с типом <paramref name="dataType" />. Например, <see cref="P:StockSharp.Algo.Candles.Candle.Arg" />.</param>
       <returns>Хранилище для <see cref="T:StockSharp.Algo.Storages.IMarketDataStorage" />.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.Storages.LocalMarketDataDrive.Load(Ecng.Serialization.SettingsStorage)">
+      <summary>
+            Загрузить настройки.
+            </summary>
+      <param name="storage">Хранилище настроек.</param>
+    </member>
+    <member name="M:StockSharp.Algo.Storages.LocalMarketDataDrive.Save(Ecng.Serialization.SettingsStorage)">
+      <summary>
+            Сохранить настройки.
+            </summary>
+      <param name="storage">Хранилище настроек.</param>
     </member>
     <member name="P:StockSharp.Algo.Storages.LocalMarketDataDrive.Path">
       <summary>
@@ -11395,6 +12162,18 @@
       <param name="arg">Параметр, ассоциированный с типом <paramref name="dataType" />. Например, <see cref="P:StockSharp.Algo.Candles.Candle.Arg" />.</param>
       <returns>Хранилище для <see cref="T:StockSharp.Algo.Storages.IMarketDataStorage" />.</returns>
     </member>
+    <member name="M:StockSharp.Algo.Storages.RemoteMarketDataDrive.Load(Ecng.Serialization.SettingsStorage)">
+      <summary>
+            Загрузить настройки.
+            </summary>
+      <param name="storage">Хранилище настроек.</param>
+    </member>
+    <member name="M:StockSharp.Algo.Storages.RemoteMarketDataDrive.Save(Ecng.Serialization.SettingsStorage)">
+      <summary>
+            Сохранить настройки.
+            </summary>
+      <param name="storage">Хранилище настроек.</param>
+    </member>
     <member name="P:StockSharp.Algo.Storages.RemoteMarketDataDrive.Client">
       <summary>
             Клиент для доступа к серверу истории <see cref="T:StockSharp.Algo.History.Hydra.IRemoteStorage" />.
@@ -11403,6 +12182,11 @@
     <member name="P:StockSharp.Algo.Storages.RemoteMarketDataDrive.CacheDrive">
       <summary>
             Хранилище, используемое для кэширования скачиваемой с удаленного хранилища информации. По-умолчанию равно null, что значит кэш выключен.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Algo.Storages.RemoteMarketDataDrive.Path">
+      <summary>
+            Путь к данными.
             </summary>
     </member>
     <member name="T:StockSharp.Algo.Storages.SecurityChangeTypes">
@@ -11652,8 +12436,8 @@
             </summary>
       <typeparam name="TData">Тип данных.</typeparam>
       <param name="storage">Хранилище маркет-данных.</param>
-      <param name="from">Время начала, с которого необходимо загружать данные. Если значение не указано, то будут загружены данные с начальной даты <see cref="M:StockSharp.Algo.Storages.StorageHelper.GetFromDate``1(StockSharp.Algo.Storages.IMarketDataStorage{``0})" />.</param>
-      <param name="to">Время окончания, до которого включительно необходимо загружать данные. Если значение не указано, то будут загружены данные до конечной даты <see cref="M:StockSharp.Algo.Storages.StorageHelper.GetToDate``1(StockSharp.Algo.Storages.IMarketDataStorage{``0})" /> включительно.</param>
+      <param name="from">Время начала, с которого необходимо загружать данные. Если значение не указано, то будут загружены данные с начальной даты <see cref="M:StockSharp.Algo.Storages.StorageHelper.GetFromDate(StockSharp.Algo.Storages.IMarketDataStorage)" />.</param>
+      <param name="to">Время окончания, до которого включительно необходимо загружать данные. Если значение не указано, то будут загружены данные до конечной даты <see cref="M:StockSharp.Algo.Storages.StorageHelper.GetToDate(StockSharp.Algo.Storages.IMarketDataStorage)" /> включительно.</param>
       <returns>Итерационный загрузчик маркет-данных.</returns>
     </member>
     <member name="M:StockSharp.Algo.Storages.StorageHelper.Delete``1(StockSharp.Algo.Storages.IMarketDataStorage{``0},System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
@@ -11662,22 +12446,20 @@
             </summary>
       <typeparam name="TData">Тип данных.</typeparam>
       <param name="storage">Хранилище маркет-данных.</param>
-      <param name="from">Время начала, с которого необходимо удалять данные. Если значение не указано, то будут удалены данные с начальной даты <see cref="M:StockSharp.Algo.Storages.StorageHelper.GetFromDate``1(StockSharp.Algo.Storages.IMarketDataStorage{``0})" />.</param>
-      <param name="to">Время окончания, до которого включительно необходимо удалять данные. Если значение не указано, то будут удалены данные до конечной даты <see cref="M:StockSharp.Algo.Storages.StorageHelper.GetToDate``1(StockSharp.Algo.Storages.IMarketDataStorage{``0})" /> включительно.</param>
+      <param name="from">Время начала, с которого необходимо удалять данные. Если значение не указано, то будут удалены данные с начальной даты <see cref="M:StockSharp.Algo.Storages.StorageHelper.GetFromDate(StockSharp.Algo.Storages.IMarketDataStorage)" />.</param>
+      <param name="to">Время окончания, до которого включительно необходимо удалять данные. Если значение не указано, то будут удалены данные до конечной даты <see cref="M:StockSharp.Algo.Storages.StorageHelper.GetToDate(StockSharp.Algo.Storages.IMarketDataStorage)" /> включительно.</param>
     </member>
-    <member name="M:StockSharp.Algo.Storages.StorageHelper.GetFromDate``1(StockSharp.Algo.Storages.IMarketDataStorage{``0})">
+    <member name="M:StockSharp.Algo.Storages.StorageHelper.GetFromDate(StockSharp.Algo.Storages.IMarketDataStorage)">
       <summary>
             Получить начальную дату, с которой храняться маркет-данные в хранилище.
             </summary>
-      <typeparam name="TData">Тип данных.</typeparam>
       <param name="storage">Хранилище маркет-данных.</param>
       <returns>Начальная дата. Если значение не инициализировано, значит хранилище пустое.</returns>
     </member>
-    <member name="M:StockSharp.Algo.Storages.StorageHelper.GetToDate``1(StockSharp.Algo.Storages.IMarketDataStorage{``0})">
+    <member name="M:StockSharp.Algo.Storages.StorageHelper.GetToDate(StockSharp.Algo.Storages.IMarketDataStorage)">
       <summary>
             Получить конечную дату, по которую храняться маркет-данные в хранилище.
             </summary>
-      <typeparam name="TData">Тип данных.</typeparam>
       <param name="storage">Хранилище маркет-данных.</param>
       <returns>Конечная дата. Если значение не инициализировано, значит хранилище пустое.</returns>
     </member>
@@ -12100,12 +12882,6 @@
       <param name="oldOrder">Заявка, которую нужно снять и на основе нее зарегистрировать новую.</param>
       <param name="newOrder">Новая заявка.</param>
     </member>
-    <member name="M:StockSharp.Algo.Strategies.Strategy.AddOrder(StockSharp.BusinessEntities.Order)">
-      <summary>
-            Добавить заявку в стратегию.
-            </summary>
-      <param name="order">Заявка.</param>
-    </member>
     <member name="M:StockSharp.Algo.Strategies.Strategy.AttachOrder(StockSharp.BusinessEntities.Order,System.Collections.Generic.IEnumerable{StockSharp.BusinessEntities.MyTrade})">
       <summary>
             Добавить активную заявку в стратегию и обработать сделки по заявке.
@@ -12273,12 +13049,11 @@
             </summary>
       <param name="fail">Ошибка отмены стоп-заявки.</param>
     </member>
-    <member name="M:StockSharp.Algo.Strategies.Strategy.ProcessNewOrders(System.Collections.Generic.IEnumerable{StockSharp.BusinessEntities.Order},System.Boolean)">
+    <member name="M:StockSharp.Algo.Strategies.Strategy.ProcessNewOrders(System.Collections.Generic.IEnumerable{StockSharp.BusinessEntities.Order})">
       <summary>
             Обработать поступившие от шлюза <see cref="P:StockSharp.Algo.Strategies.Strategy.Trader" /> заявки, и найти из них те, что принадлежат стратегии.
             </summary>
       <param name="newOrders">Новые заявки.</param>
-      <param name="isStopOrders">Признак того, пришли ли это обычные заявки или стоп-заявки.</param>
       <returns>Заявки, принадлежащие стратегии.</returns>
     </member>
     <member name="M:StockSharp.Algo.Strategies.Strategy.Load(Ecng.Serialization.SettingsStorage)">
@@ -12684,11 +13459,6 @@
       <remarks>
             Значение по-умолчанию равно 1 минуте.
             </remarks>
-    </member>
-    <member name="P:StockSharp.Algo.Strategies.Strategy.PendingOrders">
-      <summary>
-            Заявки, ожидающие отправленные на регистрацию, но еще не получившие ответа.
-            </summary>
     </member>
     <member name="E:StockSharp.Algo.Strategies.Strategy.PropertyChanged">
       <summary>
@@ -14973,11 +15743,6 @@
             Отключиться от торговой системы.
             </summary>
     </member>
-    <member name="M:StockSharp.Algo.BasketTrader.Reconnect">
-      <summary>
-            Переподключиться к торговой системе.
-            </summary>
-    </member>
     <member name="M:StockSharp.Algo.BasketTrader.StartExport">
       <summary>
             Запустить экспорт данных из торговой системы в программу (получение портфелей, инструментов, заявок и т.д.).
@@ -14986,11 +15751,6 @@
     <member name="M:StockSharp.Algo.BasketTrader.StopExport">
       <summary>
             Остановить экспорт данных из торговой системы в программу, запущенный через <see cref="M:StockSharp.BusinessEntities.ITrader.StartExport" />.
-            </summary>
-    </member>
-    <member name="M:StockSharp.Algo.BasketTrader.ReStartExport">
-      <summary>
-            Перезапустить экспорт данных из торговой системы через методы <see cref="M:StockSharp.BusinessEntities.ITrader.StopExport" /> и <see cref="M:StockSharp.BusinessEntities.ITrader.StartExport" />.
             </summary>
     </member>
     <member name="M:StockSharp.Algo.BasketTrader.LookupSecurities(StockSharp.BusinessEntities.Security)">
@@ -15127,12 +15887,63 @@
             </summary>
       <param name="security">Инструмент, по которому необходимо остановить получение лога заявок.</param>
     </member>
-    <member name="M:StockSharp.Algo.BasketTrader.IsSupport(StockSharp.BusinessEntities.Security)">
+    <member name="M:StockSharp.Algo.BasketTrader.CreateOrderCondition">
       <summary>
-            Поддерживает ли шлюз инструмент.
+            Создать для заявки типа <see cref="F:StockSharp.BusinessEntities.OrderTypes.Conditional" /> условие, которое поддерживается шлюзом.
+            </summary>
+      <returns>Условие для заявки. Если шлюз не поддерживает заявки типа <see cref="F:StockSharp.BusinessEntities.OrderTypes.Conditional" />, то будет возвращено null.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.BasketTrader.RaiseTradesSubscriptionSucceeded(StockSharp.BusinessEntities.Security)">
+      <summary>
+            Вызвать событие <see cref="E:StockSharp.Algo.BasketTrader.TradesSubscriptionSucceeded" />.
             </summary>
       <param name="security">Инструмент.</param>
-      <returns>True, если шлюз поддерживает инструмент, иначе, false.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.BasketTrader.RaiseTradesSubscriptionFailed(StockSharp.BusinessEntities.Security,System.Exception)">
+      <summary>
+            Вызвать событие <see cref="E:StockSharp.Algo.BasketTrader.TradesSubscriptionFailed" />.
+            </summary>
+      <param name="security">Инструмент.</param>
+      <param name="error">Ошибка.</param>
+    </member>
+    <member name="M:StockSharp.Algo.BasketTrader.RaiseSecuritySubscriptionSucceeded(StockSharp.BusinessEntities.Security)">
+      <summary>
+            Вызвать событие <see cref="E:StockSharp.Algo.BasketTrader.SecuritySubscriptionSucceeded" />.
+            </summary>
+      <param name="security">Инструмент.</param>
+    </member>
+    <member name="M:StockSharp.Algo.BasketTrader.RaiseSecuritySubscriptionFailed(StockSharp.BusinessEntities.Security,System.Exception)">
+      <summary>
+            Вызвать событие <see cref="E:StockSharp.Algo.BasketTrader.SecuritySubscriptionFailed" />.
+            </summary>
+      <param name="security">Инструмент.</param>
+      <param name="error">Ошибка.</param>
+    </member>
+    <member name="M:StockSharp.Algo.BasketTrader.RaiseMarketDepthSubscriptionSucceeded(StockSharp.BusinessEntities.Security)">
+      <summary>
+            Вызвать событие <see cref="E:StockSharp.Algo.BasketTrader.MarketDepthSubscriptionSucceeded" />.
+            </summary>
+      <param name="security">Инструмент.</param>
+    </member>
+    <member name="M:StockSharp.Algo.BasketTrader.RaiseMarketDepthSubscriptionFailed(StockSharp.BusinessEntities.Security,System.Exception)">
+      <summary>
+            Вызвать событие <see cref="E:StockSharp.Algo.BasketTrader.MarketDepthSubscriptionFailed" />.
+            </summary>
+      <param name="security">Инструмент.</param>
+      <param name="error">Ошибка.</param>
+    </member>
+    <member name="M:StockSharp.Algo.BasketTrader.RaiseOrderLogSubscriptionSucceeded(StockSharp.BusinessEntities.Security)">
+      <summary>
+            Вызвать событие <see cref="E:StockSharp.Algo.BasketTrader.OrderLogSubscriptionSucceeded" />.
+            </summary>
+      <param name="security">Инструмент.</param>
+    </member>
+    <member name="M:StockSharp.Algo.BasketTrader.RaiseOrderLogSubscriptionFailed(StockSharp.BusinessEntities.Security,System.Exception)">
+      <summary>
+            Вызвать событие <see cref="E:StockSharp.Algo.BasketTrader.OrderLogSubscriptionFailed" />.
+            </summary>
+      <param name="security">Инструмент.</param>
+      <param name="error">Ошибка.</param>
     </member>
     <member name="M:StockSharp.Algo.BasketTrader.Load(Ecng.Serialization.SettingsStorage)">
       <summary>
@@ -15305,6 +16116,25 @@
       <param name="innerTrader">Вложенный шлюз.</param>
       <param name="error">Информация об ошибке.</param>
     </member>
+    <member name="M:StockSharp.Algo.BasketTrader.OnInnerTraderExportStarted(StockSharp.BusinessEntities.ITrader)">
+      <summary>
+            Обработчик события <see cref="E:StockSharp.BusinessEntities.ITrader.ExportStarted" /> вложенного шлюза.
+            </summary>
+      <param name="innerTrader">Вложенный шлюз.</param>
+    </member>
+    <member name="M:StockSharp.Algo.BasketTrader.OnInnerTraderExportStopped(StockSharp.BusinessEntities.ITrader)">
+      <summary>
+            Обработчик события <see cref="E:StockSharp.BusinessEntities.ITrader.ExportStopped" /> вложенного шлюза.
+            </summary>
+      <param name="innerTrader">Вложенный шлюз.</param>
+    </member>
+    <member name="M:StockSharp.Algo.BasketTrader.OnInnerTraderExportError(StockSharp.BusinessEntities.ITrader,System.Exception)">
+      <summary>
+            Обработчик события <see cref="E:StockSharp.BusinessEntities.ITrader.ExportError" /> вложенного шлюза.
+            </summary>
+      <param name="innerTrader">Вложенный шлюз.</param>
+      <param name="error">Информация об ошибке.</param>
+    </member>
     <member name="M:StockSharp.Algo.BasketTrader.OnInnerTraderProcessDataError(StockSharp.BusinessEntities.ITrader,System.Exception)">
       <summary>
             Обработчик события <see cref="E:StockSharp.BusinessEntities.ITrader.ProcessDataError" /> вложенного шлюза.
@@ -15321,6 +16151,13 @@
     <member name="M:StockSharp.Algo.BasketTrader.OnInnerTraderNewNews(StockSharp.BusinessEntities.ITrader,StockSharp.BusinessEntities.News)">
       <summary>
             Обработчик события <see cref="E:StockSharp.BusinessEntities.ITrader.NewNews" /> вложенного шлюза.
+            </summary>
+      <param name="innerTrader">Вложенный шлюз.</param>
+      <param name="news">Новость.</param>
+    </member>
+    <member name="M:StockSharp.Algo.BasketTrader.OnInnerTraderNewsChanged(StockSharp.BusinessEntities.ITrader,StockSharp.BusinessEntities.News)">
+      <summary>
+            Обработчик события <see cref="E:StockSharp.BusinessEntities.ITrader.NewsChanged" /> вложенного шлюза.
             </summary>
       <param name="innerTrader">Вложенный шлюз.</param>
       <param name="news">Новость.</param>
@@ -15418,14 +16255,14 @@
             Все новости.
             </summary>
     </member>
-    <member name="P:StockSharp.Algo.BasketTrader.IsConnected">
+    <member name="P:StockSharp.Algo.BasketTrader.ConnectionState">
       <summary>
-            Проверить соединение.
+            Состояние соединения.
             </summary>
     </member>
-    <member name="P:StockSharp.Algo.BasketTrader.IsExportStarted">
+    <member name="P:StockSharp.Algo.BasketTrader.ExportState">
       <summary>
-            Запущен ли экспорт. Экспорт запускается через метод <see cref="M:StockSharp.Algo.BasketTrader.StartExport" />.
+            Состояние экспорта.
             </summary>
     </member>
     <member name="P:StockSharp.Algo.BasketTrader.IsSupportAtomicReRegister">
@@ -15564,6 +16401,11 @@
             Событие появления новости.
             </summary>
     </member>
+    <member name="E:StockSharp.Algo.BasketTrader.NewsChanged">
+      <summary>
+            Событие изменения новости (например, при скачивании текста <see cref="P:StockSharp.BusinessEntities.News.Story" />).
+            </summary>
+    </member>
     <member name="E:StockSharp.Algo.BasketTrader.Connected">
       <summary>
             Событие успешного подключения.
@@ -15577,6 +16419,21 @@
     <member name="E:StockSharp.Algo.BasketTrader.ConnectionError">
       <summary>
             Событие ошибки подключения (например, соединения было разорвано).
+            </summary>
+    </member>
+    <member name="E:StockSharp.Algo.BasketTrader.ExportStarted">
+      <summary>
+            Событие успешного запуска экспорта.
+            </summary>
+    </member>
+    <member name="E:StockSharp.Algo.BasketTrader.ExportStopped">
+      <summary>
+            Событие успешной остановки экспорта.
+            </summary>
+    </member>
+    <member name="E:StockSharp.Algo.BasketTrader.ExportError">
+      <summary>
+            Событие ошибки экспорта (например, соединения было разорвано).
             </summary>
     </member>
     <member name="E:StockSharp.Algo.BasketTrader.NewDataExported">
@@ -15600,10 +16457,57 @@
             Событие, передающее результат поиска, запущенного через метод <see cref="M:StockSharp.BusinessEntities.ITrader.LookupSecurities(StockSharp.BusinessEntities.Security)" />.
             </summary>
     </member>
+    <member name="E:StockSharp.Algo.BasketTrader.TradesSubscriptionSucceeded">
+      <summary>
+            Событие успешной регистрации инструмента для получения тиковых данных.
+            </summary>
+    </member>
+    <member name="E:StockSharp.Algo.BasketTrader.TradesSubscriptionFailed">
+      <summary>
+            Событие ошибки регистрации инструмента для получения тиковых данных.
+            </summary>
+    </member>
+    <member name="E:StockSharp.Algo.BasketTrader.SecuritySubscriptionSucceeded">
+      <summary>
+            Событие успешной регистрации инструмента для получения общих данных.
+            </summary>
+    </member>
+    <member name="E:StockSharp.Algo.BasketTrader.SecuritySubscriptionFailed">
+      <summary>
+            Событие ошибки регистрации инструмента для получения общих данных.
+            </summary>
+    </member>
+    <member name="E:StockSharp.Algo.BasketTrader.MarketDepthSubscriptionSucceeded">
+      <summary>
+            Событие успешной регистрации инструмента для получения стакана.
+            </summary>
+    </member>
+    <member name="E:StockSharp.Algo.BasketTrader.MarketDepthSubscriptionFailed">
+      <summary>
+            Событие ошибки регистрации инструмента для получения стакана.
+            </summary>
+    </member>
+    <member name="E:StockSharp.Algo.BasketTrader.OrderLogSubscriptionSucceeded">
+      <summary>
+            Событие успешной регистрации инструмента для получения ордер-лога.
+            </summary>
+    </member>
+    <member name="E:StockSharp.Algo.BasketTrader.OrderLogSubscriptionFailed">
+      <summary>
+            Событие ошибки регистрации инструмента для получения ордер-лога.
+            </summary>
+    </member>
     <member name="T:StockSharp.Algo.BasketTrader.IInnerTraderList">
       <summary>
             Интерфейс, описывающий список шлюзов к торговым системам, с которыми оперирует агрегатор.
             </summary>
+    </member>
+    <member name="M:StockSharp.Algo.BasketTrader.IInnerTraderList.GetTrader(StockSharp.BusinessEntities.Portfolio)">
+      <summary>
+            Найти внутренний шлюз, которому принадлежит портфель <paramref name="portfolio" />.
+            </summary>
+      <param name="portfolio">Порфель.</param>
+      <returns>Найденный шлюз. Если шлюз для переданного портфеля не найден, то будет возвращено null.</returns>
     </member>
     <member name="P:StockSharp.Algo.BasketTrader.IInnerTraderList.SortedTraders">
       <summary>
@@ -16235,7 +17139,14 @@
       <param name="portfolios">Портфели, с которыми будет вестись работа.</param>
       <param name="storageRegistry">Хранилище данных.</param>
     </member>
-    <member name="M:StockSharp.Algo.Testing.EmulationTrader.StartMarketTimeExport">
+    <member name="M:StockSharp.Algo.Testing.EmulationTrader.#ctor(StockSharp.Algo.Storages.IEntityRegistry,StockSharp.Algo.Storages.IStorageRegistry)">
+      <summary>
+            Создать <see cref="T:StockSharp.Algo.Testing.EmulationTrader" />.
+            </summary>
+      <param name="entityRegistry">Хранилище торговых объектов.</param>
+      <param name="storageRegistry">Хранилище данных.</param>
+    </member>
+    <member name="M:StockSharp.Algo.Testing.EmulationTrader.StartMarketTimer">
       <summary>
             Начать экспорт события об изменении времени.
             </summary>
@@ -16252,9 +17163,19 @@
             Подключиться к торговой системе.
             </summary>
     </member>
-    <member name="M:StockSharp.Algo.Testing.EmulationTrader.StartExport">
+    <member name="M:StockSharp.Algo.Testing.EmulationTrader.OnDisconnect">
+      <summary>
+            Отключиться от торговой системы.
+            </summary>
+    </member>
+    <member name="M:StockSharp.Algo.Testing.EmulationTrader.OnStartExport">
       <summary>
             Запустить экспорт данных из торговой системы в программу (получение портфелей, инструментов, заявок и т.д.).
+            </summary>
+    </member>
+    <member name="M:StockSharp.Algo.Testing.EmulationTrader.OnStopExport">
+      <summary>
+            Остановить экспорт данных из торговой системы в программу.
             </summary>
     </member>
     <member name="M:StockSharp.Algo.Testing.EmulationTrader.Start(System.DateTime,System.DateTime)">
@@ -16351,6 +17272,43 @@
             Начать получать новую информацию (например, <see cref="P:StockSharp.BusinessEntities.Security.LastTrade" /> или <see cref="P:StockSharp.BusinessEntities.Security.BestBid" />) по инструменту.
             </summary>
       <param name="security">Инструмент, по которому необходимо начать получать новую информацию.</param>
+      <returns>true, если удалось подписаться на получение данных, иначе false.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.Testing.EmulationTrader.OnRegisterMarketDepth(StockSharp.BusinessEntities.Security)">
+      <summary>
+            Начать получать котировки (стакан) по инструменту.
+            Значение котировок можно получить через метод <see cref="M:StockSharp.BusinessEntities.ITrader.GetMarketDepth(StockSharp.BusinessEntities.Security)" />.
+            </summary>
+      <param name="security">Инструмент, по которому необходимо начать получать котировки.</param>
+      <returns>true, если удалось подписаться на получение данных, иначе false.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.Testing.EmulationTrader.OnRegisterTrades(StockSharp.BusinessEntities.Security)">
+      <summary>
+            Начать получать сделки (тиковые данные) по инструменту. Новые сделки будут приходить через
+            событие <see cref="E:StockSharp.BusinessEntities.ITrader.NewTrades" />.
+            </summary>
+      <param name="security">Инструмент, по которому необходимо начать получать сделки.</param>
+      <returns>true, если удалось подписаться на получение данных, иначе false.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.Testing.EmulationTrader.OnRegisterOrderLog(StockSharp.BusinessEntities.Security)">
+      <summary>
+            Начать получать лог заявок для инструмента.
+            </summary>
+      <param name="security">Инструмент, по которому необходимо начать получать лог заявок.</param>
+      <returns>true, если удалось подписаться на получение данных, иначе false.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.Testing.EmulationTrader.LookupSecurities(StockSharp.BusinessEntities.Security)">
+      <summary>
+            Найти инструменты, соответствующие фильтру <paramref name="criteria" />.
+            Найденные инструменты будут переданы через событие <see cref="E:StockSharp.BusinessEntities.ITrader.LookupResult" />.
+            </summary>
+      <param name="criteria">Инструмент, поля которого будут использоваться в качестве фильтра.</param>
+    </member>
+    <member name="M:StockSharp.Algo.Testing.EmulationTrader.CreateOrderCondition">
+      <summary>
+            Создать для заявки типа <see cref="F:StockSharp.BusinessEntities.OrderTypes.Conditional" /> условие, которое поддерживается шлюзом.
+            </summary>
+      <returns>Условие для заявки. Если шлюз не поддерживает заявки типа <see cref="F:StockSharp.BusinessEntities.OrderTypes.Conditional" />, то будет возвращено null.</returns>
     </member>
     <member name="M:StockSharp.Algo.Testing.EmulationTrader.DisposeManaged">
       <summary>
@@ -16392,6 +17350,11 @@
     <member name="P:StockSharp.Algo.Testing.EmulationTrader.Drive">
       <summary>
             Хранилище, которое используется по-умолчанию. По умолчанию используется <see cref="P:StockSharp.Algo.Storages.IStorageRegistry.DefaultDrive" />.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Algo.Testing.EmulationTrader.EntityRegistry">
+      <summary>
+            Хранилище торговых объектов.
             </summary>
     </member>
     <member name="P:StockSharp.Algo.Testing.EmulationTrader.MarketEmulator">
@@ -16556,6 +17519,16 @@
             По умолчанию 0 мс.
             </summary>
     </member>
+    <member name="P:StockSharp.Algo.Testing.MarketEmulatorSettings.InitialOrderId">
+      <summary>
+            Номер, начиная с которого эмулятор будет генерировать номера для заявок <see cref="P:StockSharp.BusinessEntities.Order.Id" />.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Algo.Testing.MarketEmulatorSettings.InitialTradeId">
+      <summary>
+            Номер, начиная с которого эмулятор будет генерировать номера для заявок <see cref="P:StockSharp.BusinessEntities.Trade.Id" />.
+            </summary>
+    </member>
     <member name="T:StockSharp.Algo.Testing.MarketEmulatorSettings.FillModes">
       <summary>
             Режимы разрешения конфликтов.
@@ -16680,7 +17653,7 @@
     </member>
     <member name="P:StockSharp.Algo.Testing.IMarketEmulator.Positions">
       <summary>
-            Получить все позиции.
+            Получить или задать позиции.
             </summary>
     </member>
     <member name="E:StockSharp.Algo.Testing.IMarketEmulator.NewMyTrades">
@@ -16713,9 +17686,14 @@
             Событие о новых сделках.
             </summary>
     </member>
+    <member name="E:StockSharp.Algo.Testing.IMarketEmulator.NewMarketDepths">
+      <summary>
+            Событие появления новых стаканов с котировками.
+            </summary>
+    </member>
     <member name="E:StockSharp.Algo.Testing.IMarketEmulator.MarketDepthsChanged">
       <summary>
-            Событие о изменении стакана.
+            Событие изменения стаканов с котировками.
             </summary>
     </member>
     <member name="E:StockSharp.Algo.Testing.IMarketEmulator.NewOrderLogItems">
@@ -16741,6 +17719,16 @@
     <member name="E:StockSharp.Algo.Testing.IMarketEmulator.PositionsChanged">
       <summary>
             Событие изменения параметров позиций.
+            </summary>
+    </member>
+    <member name="E:StockSharp.Algo.Testing.IMarketEmulator.NewNews">
+      <summary>
+            Событие появления новости.
+            </summary>
+    </member>
+    <member name="E:StockSharp.Algo.Testing.IMarketEmulator.NewsChanged">
+      <summary>
+            Событие изменения новости (например, при скачивании текста <see cref="P:StockSharp.BusinessEntities.News.Story" />).
             </summary>
     </member>
     <member name="E:StockSharp.Algo.Testing.IMarketEmulator.MarketTimeChanged">
@@ -17033,7 +18021,7 @@
     </member>
     <member name="M:StockSharp.Algo.Testing.MarketEmulator.#ctor(StockSharp.BusinessEntities.ITrader)">
       <summary>
-            Инициализировать <see cref="T:StockSharp.Algo.Testing.MarketEmulator" />.
+            Создать <see cref="T:StockSharp.Algo.Testing.MarketEmulator" />.
             </summary>
       <param name="trader">Шлюз к торговой системе.</param>
     </member>
@@ -17127,7 +18115,7 @@
     </member>
     <member name="P:StockSharp.Algo.Testing.MarketEmulator.Positions">
       <summary>
-            Получить все позиции.
+            Получить или задать позиции.
             </summary>
     </member>
     <member name="E:StockSharp.Algo.Testing.MarketEmulator.MarketTimeChanged">
@@ -17185,9 +18173,24 @@
             Событие изменения параметров позиций.
             </summary>
     </member>
+    <member name="E:StockSharp.Algo.Testing.MarketEmulator.NewNews">
+      <summary>
+            Событие появления новости.
+            </summary>
+    </member>
+    <member name="E:StockSharp.Algo.Testing.MarketEmulator.NewsChanged">
+      <summary>
+            Событие изменения новости (например, при скачивании текста <see cref="P:StockSharp.BusinessEntities.News.Story" />).
+            </summary>
+    </member>
     <member name="E:StockSharp.Algo.Testing.MarketEmulator.NewTrades">
       <summary>
             Событие появления всех новых сделок.
+            </summary>
+    </member>
+    <member name="E:StockSharp.Algo.Testing.MarketEmulator.NewMarketDepths">
+      <summary>
+            Событие появления новых стаканов с котировками.
             </summary>
     </member>
     <member name="E:StockSharp.Algo.Testing.MarketEmulator.MarketDepthsChanged">
@@ -17331,6 +18334,21 @@
             </summary>
       <param name="storage">Специальный интерфейс для прямого доступа к хранилищу.</param>
     </member>
+    <member name="M:StockSharp.Algo.Storages.SecurityList.LoadBy(System.String,System.Object)">
+      <summary>
+            Получить инструмент по значению его поля.
+            </summary>
+      <param name="fieldName">Название поля инструмента.</param>
+      <param name="fieldValue">Значение поля инструмента.</param>
+      <returns>Полученный инструмент. Если инструмент по данным критериям отсутствует, то будет возвращено null.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.Storages.SecurityList.Lookup(StockSharp.BusinessEntities.Security)">
+      <summary>
+            Найти инструменты, соответствующие фильтру <paramref name="criteria" />.
+            </summary>
+      <param name="criteria">Инструмент, поля которого будут использоваться в качестве фильтра.</param>
+      <returns>Найденные инструменты.</returns>
+    </member>
     <member name="T:StockSharp.Algo.Testing.Message">
       <summary>
             Сообщение, содержащее рыночные данные(события) или команду на операцию с заявкой, или статус заявки.
@@ -17442,16 +18460,18 @@
             </summary>
       <typeparam name="TUnderlyingTrader">Тип реального шлюза, с которым будет вестить тестирование.</typeparam>
     </member>
-    <member name="M:StockSharp.Algo.Testing.RealTimeEmulationTrader`1.#ctor">
+    <member name="M:StockSharp.Algo.Testing.RealTimeEmulationTrader`1.#ctor(System.Collections.Generic.IEnumerable{StockSharp.BusinessEntities.Portfolio})">
       <summary>
             Создать <see cref="T:StockSharp.Algo.Testing.RealTimeEmulationTrader`1" />.
             </summary>
+      <param name="portfolios">Симуляционные портфели.</param>
     </member>
-    <member name="M:StockSharp.Algo.Testing.RealTimeEmulationTrader`1.#ctor(`0,System.Boolean)">
+    <member name="M:StockSharp.Algo.Testing.RealTimeEmulationTrader`1.#ctor(`0,System.Collections.Generic.IEnumerable{StockSharp.BusinessEntities.Portfolio},System.Boolean)">
       <summary>
             Создать <see cref="T:StockSharp.Algo.Testing.RealTimeEmulationTrader`1" />.
             </summary>
       <param name="underlyingTrader">Реальный шлюз к торговой системе.</param>
+      <param name="portfolios">Симуляционные портфели.</param>
       <param name="ownTrader">Контролировать время жизни шлюза <paramref name="underlyingTrader" />.</param>
     </member>
     <member name="M:StockSharp.Algo.Testing.RealTimeEmulationTrader`1.GetMarketTime(StockSharp.BusinessEntities.Exchange)">
@@ -17469,16 +18489,6 @@
     <member name="M:StockSharp.Algo.Testing.RealTimeEmulationTrader`1.Disconnect">
       <summary>
             Отключиться от торговой системы.
-            </summary>
-    </member>
-    <member name="M:StockSharp.Algo.Testing.RealTimeEmulationTrader`1.Reconnect">
-      <summary>
-            Переподключиться к торговой системе.
-            </summary>
-    </member>
-    <member name="M:StockSharp.Algo.Testing.RealTimeEmulationTrader`1.ReStartExport">
-      <summary>
-            Перезапустить экспорт данных из торговой системы через методы <see cref="M:StockSharp.BusinessEntities.ITrader.StopExport" /> и <see cref="M:StockSharp.BusinessEntities.ITrader.StartExport" />.
             </summary>
     </member>
     <member name="M:StockSharp.Algo.Testing.RealTimeEmulationTrader`1.LookupSecurities(StockSharp.BusinessEntities.Security)">
@@ -17504,13 +18514,6 @@
             </summary>
       <param name="security">Инструмент, по которому нужно получить стакан.</param>
       <returns>Стакан котировок.</returns>
-    </member>
-    <member name="M:StockSharp.Algo.Testing.RealTimeEmulationTrader`1.IsSupport(StockSharp.BusinessEntities.Security)">
-      <summary>
-            Поддерживает ли шлюз инструмент.
-            </summary>
-      <param name="security">Инструмент.</param>
-      <returns>True, если шлюз поддерживает инструмент, иначе, false.</returns>
     </member>
     <member name="M:StockSharp.Algo.Testing.RealTimeEmulationTrader`1.RegisterPortfolio(StockSharp.BusinessEntities.Portfolio)">
       <summary>
@@ -17630,6 +18633,12 @@
       <summary>
             Остановить экспорт данных из торговой системы в программу, запущенный через <see cref="M:StockSharp.BusinessEntities.ITrader.StartExport" />.
             </summary>
+    </member>
+    <member name="M:StockSharp.Algo.Testing.RealTimeEmulationTrader`1.CreateOrderCondition">
+      <summary>
+            Создать для заявки типа <see cref="F:StockSharp.BusinessEntities.OrderTypes.Conditional" /> условие, которое поддерживается шлюзом.
+            </summary>
+      <returns>Условие для заявки. Если шлюз не поддерживает заявки типа <see cref="F:StockSharp.BusinessEntities.OrderTypes.Conditional" />, то будет возвращено null.</returns>
     </member>
     <member name="M:StockSharp.Algo.Testing.RealTimeEmulationTrader`1.Load(Ecng.Serialization.SettingsStorage)">
       <summary>
@@ -17768,6 +18777,11 @@
             Событие появления новости.
             </summary>
     </member>
+    <member name="E:StockSharp.Algo.Testing.RealTimeEmulationTrader`1.NewsChanged">
+      <summary>
+            Событие изменения новости (например, при скачивании текста <see cref="P:StockSharp.BusinessEntities.News.Story" />).
+            </summary>
+    </member>
     <member name="E:StockSharp.Algo.Testing.RealTimeEmulationTrader`1.Connected">
       <summary>
             Событие успешного подключения.
@@ -17781,6 +18795,21 @@
     <member name="E:StockSharp.Algo.Testing.RealTimeEmulationTrader`1.ConnectionError">
       <summary>
             Событие ошибки подключения (например, соединения было разорвано).
+            </summary>
+    </member>
+    <member name="E:StockSharp.Algo.Testing.RealTimeEmulationTrader`1.ExportStarted">
+      <summary>
+            Событие успешного запуска экспорта.
+            </summary>
+    </member>
+    <member name="E:StockSharp.Algo.Testing.RealTimeEmulationTrader`1.ExportStopped">
+      <summary>
+            Событие успешной остановки экспорта.
+            </summary>
+    </member>
+    <member name="E:StockSharp.Algo.Testing.RealTimeEmulationTrader`1.ExportError">
+      <summary>
+            Событие ошибки экспорта (например, соединения было разорвано).
             </summary>
     </member>
     <member name="E:StockSharp.Algo.Testing.RealTimeEmulationTrader`1.NewDataExported">
@@ -17802,6 +18831,46 @@
     <member name="E:StockSharp.Algo.Testing.RealTimeEmulationTrader`1.LookupResult">
       <summary>
             Событие, передающее результат поиска, запущенного через метод <see cref="M:StockSharp.BusinessEntities.ITrader.LookupSecurities(StockSharp.BusinessEntities.Security)" />.
+            </summary>
+    </member>
+    <member name="E:StockSharp.Algo.Testing.RealTimeEmulationTrader`1.TradesSubscriptionSucceeded">
+      <summary>
+            Событие успешной регистрации инструмента для получения тиковых данных.
+            </summary>
+    </member>
+    <member name="E:StockSharp.Algo.Testing.RealTimeEmulationTrader`1.TradesSubscriptionFailed">
+      <summary>
+            Событие ошибки регистрации инструмента для получения тиковых данных.
+            </summary>
+    </member>
+    <member name="E:StockSharp.Algo.Testing.RealTimeEmulationTrader`1.SecuritySubscriptionSucceeded">
+      <summary>
+            Событие успешной регистрации инструмента для получения общих данных.
+            </summary>
+    </member>
+    <member name="E:StockSharp.Algo.Testing.RealTimeEmulationTrader`1.SecuritySubscriptionFailed">
+      <summary>
+            Событие ошибки регистрации инструмента для получения общих данных.
+            </summary>
+    </member>
+    <member name="E:StockSharp.Algo.Testing.RealTimeEmulationTrader`1.MarketDepthSubscriptionSucceeded">
+      <summary>
+            Событие успешной регистрации инструмента для получения стакана.
+            </summary>
+    </member>
+    <member name="E:StockSharp.Algo.Testing.RealTimeEmulationTrader`1.MarketDepthSubscriptionFailed">
+      <summary>
+            Событие ошибки регистрации инструмента для получения стакана.
+            </summary>
+    </member>
+    <member name="E:StockSharp.Algo.Testing.RealTimeEmulationTrader`1.OrderLogSubscriptionSucceeded">
+      <summary>
+            Событие успешной регистрации инструмента для получения ордер-лога.
+            </summary>
+    </member>
+    <member name="E:StockSharp.Algo.Testing.RealTimeEmulationTrader`1.OrderLogSubscriptionFailed">
+      <summary>
+            Событие ошибки регистрации инструмента для получения ордер-лога.
             </summary>
     </member>
     <member name="P:StockSharp.Algo.Testing.RealTimeEmulationTrader`1.DisplayName">
@@ -17850,11 +18919,6 @@
             Получить все собственные сделки.
             </summary>
     </member>
-    <member name="P:StockSharp.Algo.Testing.RealTimeEmulationTrader`1.CustomPortfolios">
-      <summary>
-            Список эмуляционных портфелей.
-            </summary>
-    </member>
     <member name="P:StockSharp.Algo.Testing.RealTimeEmulationTrader`1.Portfolios">
       <summary>
             Получить все портфели.
@@ -17870,14 +18934,14 @@
             Все новости.
             </summary>
     </member>
-    <member name="P:StockSharp.Algo.Testing.RealTimeEmulationTrader`1.IsConnected">
+    <member name="P:StockSharp.Algo.Testing.RealTimeEmulationTrader`1.ConnectionState">
       <summary>
-            Проверить соединение.
+            Состояние соединения.
             </summary>
     </member>
-    <member name="P:StockSharp.Algo.Testing.RealTimeEmulationTrader`1.IsExportStarted">
+    <member name="P:StockSharp.Algo.Testing.RealTimeEmulationTrader`1.ExportState">
       <summary>
-            Запущен ли экспорт. Экспорт запускается через метод <see cref="M:StockSharp.BusinessEntities.ITrader.StartExport" />.
+            Состояние экспорта.
             </summary>
     </member>
     <member name="P:StockSharp.Algo.Testing.RealTimeEmulationTrader`1.IsSupportAtomicReRegister">
@@ -17924,11 +18988,12 @@
             но без реального выставления заявок на бирже. Испонение заявок и их сделки эмулируются шлюзом, используя информацию по стаканам, приходящих от реального шлюза.
             </summary>
     </member>
-    <member name="M:StockSharp.Algo.Testing.RealTimeEmulationTrader.#ctor(StockSharp.BusinessEntities.ITrader)">
+    <member name="M:StockSharp.Algo.Testing.RealTimeEmulationTrader.#ctor(StockSharp.BusinessEntities.ITrader,System.Collections.Generic.IEnumerable{StockSharp.BusinessEntities.Portfolio})">
       <summary>
             Создать <see cref="T:StockSharp.Algo.Testing.RealTimeEmulationTrader" />.
             </summary>
       <param name="underlyingTrader">Реальный шлюз к торговой системе.</param>
+      <param name="portfolios">Симуляционные портфели.</param>
     </member>
     <member name="T:StockSharp.Algo.Testing.EmulationDebug">
       <summary>
@@ -18862,6 +19927,14 @@
       <param name="order">Заявка.</param>
       <param name="operation">Операция, которая проводится в заявокй.</param>
       <param name="getAdditionalInfo">Дополнительная информация о заявке.</param>
+    </member>
+    <member name="M:StockSharp.Algo.TraderHelper.SyncLookupSecurities(StockSharp.BusinessEntities.ITrader,StockSharp.BusinessEntities.Security)">
+      <summary>
+            Выполнить блокирующий поиск инструментов, соответствующих фильтру criteria.
+            </summary>
+      <param name="trader">Шлюз взаимодействия с торговой системой.</param>
+      <param name="criteria">Критерий поиска инструментов.</param>
+      <returns>Найденные инструменты.</returns>
     </member>
     <member name="T:StockSharp.Algo.TransactionIdGenerator">
       <summary>

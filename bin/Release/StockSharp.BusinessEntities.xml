@@ -337,7 +337,7 @@
         </member>
         <member name="P:StockSharp.BusinessEntities.Security.LowPrice">
             <summary>
-            Наинизшая цена сделки за сессию.
+            Наименьшая цена сделки за сессию.
             </summary>
         </member>
         <member name="P:StockSharp.BusinessEntities.Security.HighPrice">
@@ -1672,7 +1672,27 @@
         </member>
         <member name="P:StockSharp.BusinessEntities.Exchange.Lmax">
             <summary>
-            Информация о бирже LMAX (LMAX Exchange).
+            Информация о брокере LMAX (LMAX Exchange).
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Exchange.DukasCopy">
+            <summary>
+            Информация о брокере DukasCopy.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Exchange.GainCapital">
+            <summary>
+            Информация о брокере GAIN Capital.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Exchange.MBTrading">
+            <summary>
+            Информация о брокере MB Trading.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Exchange.TrueFX">
+            <summary>
+            Информация о брокере TrueFX
             </summary>
         </member>
         <member name="P:StockSharp.BusinessEntities.Exchange.ExtensionInfo">
@@ -1707,6 +1727,12 @@
             <param name="code">Код площадки.</param>
             <param name="createBoard">Обработчик, создающий площадку, если она не найдена. Если значение равно null, то площадка создается с инициализацией по-умолчанию.</param>
             <returns>Биржевая площадка.</returns>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.ExchangeBoard.AddBoard(StockSharp.BusinessEntities.ExchangeBoard)">
+            <summary>
+            Добавить площадку в <see cref="P:StockSharp.BusinessEntities.ExchangeBoard.AllBoards"/>.
+            </summary>
+            <param name="board">Площадка.</param>
         </member>
         <member name="M:StockSharp.BusinessEntities.ExchangeBoard.ToString">
             <summary>
@@ -2063,6 +2089,21 @@
             Информация о площадке Rpmo биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
             </summary>
         </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexRpua">
+            <summary>
+            Информация о площадке Rpua биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexRpuo">
+            <summary>
+            Информация о площадке Rpuo биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexRpuq">
+            <summary>
+            Информация о площадке Rpuq биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
+            </summary>
+        </member>
         <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexFbcb">
             <summary>
             Информация о площадке Fbcb биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Me"/>.
@@ -2395,7 +2436,27 @@
         </member>
         <member name="P:StockSharp.BusinessEntities.ExchangeBoard.Lmax">
             <summary>
-            Информация о площадке биржи <see cref="P:StockSharp.BusinessEntities.Exchange.Lmax"/>.
+            Информация о площадке брокера <see cref="P:StockSharp.BusinessEntities.Exchange.Lmax"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.DukasCopy">
+            <summary>
+            Информация о площадке брокера <see cref="P:StockSharp.BusinessEntities.Exchange.DukasCopy"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.GainCapital">
+            <summary>
+            Информация о площадке брокера <see cref="P:StockSharp.BusinessEntities.Exchange.GainCapital"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MBTrading">
+            <summary>
+            Информация о площадке брокера <see cref="P:StockSharp.BusinessEntities.Exchange.MBTrading"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.TrueFX">
+            <summary>
+            Информация о площадке брокера <see cref="P:StockSharp.BusinessEntities.Exchange.TrueFX"/>.
             </summary>
         </member>
         <member name="P:StockSharp.BusinessEntities.ExchangeBoard.Code">
@@ -2480,6 +2541,36 @@
             </summary>
             <param name="entity">Сущность.</param>
         </member>
+        <member name="T:StockSharp.BusinessEntities.ConnectionStates">
+            <summary>
+            Состояния подключений.
+            </summary>
+        </member>
+        <member name="F:StockSharp.BusinessEntities.ConnectionStates.Disconnected">
+            <summary>
+            Не активно.
+            </summary>
+        </member>
+        <member name="F:StockSharp.BusinessEntities.ConnectionStates.Disconnecting">
+            <summary>
+            В процессе отключения.
+            </summary>
+        </member>
+        <member name="F:StockSharp.BusinessEntities.ConnectionStates.Connecting">
+            <summary>
+            В процессе подключения.
+            </summary>
+        </member>
+        <member name="F:StockSharp.BusinessEntities.ConnectionStates.Connected">
+            <summary>
+            Подключение активно.
+            </summary>
+        </member>
+        <member name="F:StockSharp.BusinessEntities.ConnectionStates.Failed">
+            <summary>
+            Ошибка подключения.
+            </summary>
+        </member>
         <member name="T:StockSharp.BusinessEntities.ITrader">
             <summary>
             Основной интерфейс, предоставляющий шлюз взаимодействия с торговыми системами.
@@ -2502,11 +2593,6 @@
             Отключиться от торговой системы.
             </summary>
         </member>
-        <member name="M:StockSharp.BusinessEntities.ITrader.Reconnect">
-            <summary>
-            Переподключиться к торговой системе.
-            </summary>
-        </member>
         <member name="M:StockSharp.BusinessEntities.ITrader.StartExport">
             <summary>
             Запустить экспорт данных из торговой системы в программу (получение портфелей, инструментов, заявок и т.д.).
@@ -2515,11 +2601,6 @@
         <member name="M:StockSharp.BusinessEntities.ITrader.StopExport">
             <summary>
             Остановить экспорт данных из торговой системы в программу, запущенный через <see cref="M:StockSharp.BusinessEntities.ITrader.StartExport"/>.
-            </summary>
-        </member>
-        <member name="M:StockSharp.BusinessEntities.ITrader.ReStartExport">
-            <summary>
-            Перезапустить экспорт данных из торговой системы через методы <see cref="M:StockSharp.BusinessEntities.ITrader.StopExport"/> и <see cref="M:StockSharp.BusinessEntities.ITrader.StartExport"/>.
             </summary>
         </member>
         <member name="M:StockSharp.BusinessEntities.ITrader.LookupSecurities(StockSharp.BusinessEntities.Security)">
@@ -2656,12 +2737,11 @@
             Остановить получение новостей.
             </summary>
         </member>
-        <member name="M:StockSharp.BusinessEntities.ITrader.IsSupport(StockSharp.BusinessEntities.Security)">
+        <member name="M:StockSharp.BusinessEntities.ITrader.CreateOrderCondition">
             <summary>
-            Поддерживает ли шлюз инструмент.
+            Создать для заявки типа <see cref="F:StockSharp.BusinessEntities.OrderTypes.Conditional"/> условие, которое поддерживается шлюзом.
             </summary>
-            <param name="security">Инструмент.</param>
-            <returns>True, если шлюз поддерживает инструмент, иначе, false.</returns>
+            <returns>Условие для заявки. Если шлюз не поддерживает заявки типа <see cref="F:StockSharp.BusinessEntities.OrderTypes.Conditional"/>, то будет возвращено null.</returns>
         </member>
         <member name="P:StockSharp.BusinessEntities.ITrader.DisplayName">
             <summary>
@@ -2768,6 +2848,11 @@
             Событие появления новости.
             </summary>
         </member>
+        <member name="E:StockSharp.BusinessEntities.ITrader.NewsChanged">
+            <summary>
+            Событие изменения новости (например, при скачивании текста <see cref="P:StockSharp.BusinessEntities.News.Story"/>).
+            </summary>
+        </member>
         <member name="E:StockSharp.BusinessEntities.ITrader.Connected">
             <summary>
             Событие успешного подключения.
@@ -2781,6 +2866,21 @@
         <member name="E:StockSharp.BusinessEntities.ITrader.ConnectionError">
             <summary>
             Событие ошибки подключения (например, соединения было разорвано).
+            </summary>
+        </member>
+        <member name="E:StockSharp.BusinessEntities.ITrader.ExportStarted">
+            <summary>
+            Событие успешного запуска экспорта.
+            </summary>
+        </member>
+        <member name="E:StockSharp.BusinessEntities.ITrader.ExportStopped">
+            <summary>
+            Событие успешной остановки экспорта.
+            </summary>
+        </member>
+        <member name="E:StockSharp.BusinessEntities.ITrader.ExportError">
+            <summary>
+            Событие ошибки экспорта (например, соединения было разорвано).
             </summary>
         </member>
         <member name="E:StockSharp.BusinessEntities.ITrader.ProcessDataError">
@@ -2802,6 +2902,46 @@
         <member name="E:StockSharp.BusinessEntities.ITrader.LookupResult">
             <summary>
             Событие, передающее результат поиска, запущенного через метод <see cref="M:StockSharp.BusinessEntities.ITrader.LookupSecurities(StockSharp.BusinessEntities.Security)"/>.
+            </summary>
+        </member>
+        <member name="E:StockSharp.BusinessEntities.ITrader.TradesSubscriptionSucceeded">
+            <summary>
+            Событие успешной регистрации инструмента для получения тиковых данных.
+            </summary>
+        </member>
+        <member name="E:StockSharp.BusinessEntities.ITrader.TradesSubscriptionFailed">
+            <summary>
+            Событие ошибки регистрации инструмента для получения тиковых данных.
+            </summary>
+        </member>
+        <member name="E:StockSharp.BusinessEntities.ITrader.SecuritySubscriptionSucceeded">
+            <summary>
+            Событие успешной регистрации инструмента для получения общих данных.
+            </summary>
+        </member>
+        <member name="E:StockSharp.BusinessEntities.ITrader.SecuritySubscriptionFailed">
+            <summary>
+            Событие ошибки регистрации инструмента для получения общих данных.
+            </summary>
+        </member>
+        <member name="E:StockSharp.BusinessEntities.ITrader.MarketDepthSubscriptionSucceeded">
+            <summary>
+            Событие успешной регистрации инструмента для получения стакана.
+            </summary>
+        </member>
+        <member name="E:StockSharp.BusinessEntities.ITrader.MarketDepthSubscriptionFailed">
+            <summary>
+            Событие ошибки регистрации инструмента для получения стакана.
+            </summary>
+        </member>
+        <member name="E:StockSharp.BusinessEntities.ITrader.OrderLogSubscriptionSucceeded">
+            <summary>
+            Событие успешной регистрации инструмента для получения ордер-лога.
+            </summary>
+        </member>
+        <member name="E:StockSharp.BusinessEntities.ITrader.OrderLogSubscriptionFailed">
+            <summary>
+            Событие ошибки регистрации инструмента для получения ордер-лога.
             </summary>
         </member>
         <member name="P:StockSharp.BusinessEntities.ITrader.ExchangeBoards">
@@ -2860,14 +3000,14 @@
             Все новости.
             </summary>
         </member>
-        <member name="P:StockSharp.BusinessEntities.ITrader.IsConnected">
+        <member name="P:StockSharp.BusinessEntities.ITrader.ConnectionState">
             <summary>
-            Проверить соединение.
+            Состояние соединения.
             </summary>
         </member>
-        <member name="P:StockSharp.BusinessEntities.ITrader.IsExportStarted">
+        <member name="P:StockSharp.BusinessEntities.ITrader.ExportState">
             <summary>
-            Запущен ли экспорт. Экспорт запускается через метод <see cref="M:StockSharp.BusinessEntities.ITrader.StartExport"/>.
+            Состояние экспорта.
             </summary>
         </member>
         <member name="P:StockSharp.BusinessEntities.ITrader.IsSupportAtomicReRegister">
@@ -3369,12 +3509,12 @@
             Источник новости.
             </summary>
         </member>
-        <member name="P:StockSharp.BusinessEntities.News.Title">
+        <member name="P:StockSharp.BusinessEntities.News.Headline">
             <summary>
             Заголовок.
             </summary>
         </member>
-        <member name="P:StockSharp.BusinessEntities.News.Message">
+        <member name="P:StockSharp.BusinessEntities.News.Story">
             <summary>
             Текст новости.
             </summary>
@@ -3417,7 +3557,7 @@
             Не отправлена в торговую систему.
             </summary>
             <remarks>
-            Первоначальное значение заявки, когда еще программа не отправила транзакцию в торговую систему, или ожидает от биржи подтверждение регистрации.
+            Первоначальное значение заявки, когда еще программа не отправила транзакцию в торговую систему.
             </remarks>
         </member>
         <member name="F:StockSharp.BusinessEntities.OrderStates.Active">
@@ -3433,6 +3573,11 @@
         <member name="F:StockSharp.BusinessEntities.OrderStates.Failed">
             <summary>
             Заявка не принята торговой системой.
+            </summary>
+        </member>
+        <member name="F:StockSharp.BusinessEntities.OrderStates.Pending">
+            <summary>
+            Заявка ожидает от биржи подтверждение регистрации.
             </summary>
         </member>
         <member name="T:StockSharp.BusinessEntities.OrderTypes">
@@ -3480,6 +3625,11 @@
             Базовое условие заявок (например, параметры стоп- или алго- заявков).
             </summary>
         </member>
+        <member name="F:StockSharp.BusinessEntities.OrderCondition.ParametersCategory">
+            <summary>
+            Категория для параметров.
+            </summary>
+        </member>
         <member name="M:StockSharp.BusinessEntities.OrderCondition.#ctor">
             <summary>
             Инициализировать <see cref="T:StockSharp.BusinessEntities.OrderCondition"/>.
@@ -3520,7 +3670,7 @@
         </member>
         <member name="F:StockSharp.BusinessEntities.OrderExecutionConditions.CancelBalance">
             <summary>
-            Cнять остаток.
+            Снять остаток.
             </summary>
         </member>
         <member name="T:StockSharp.BusinessEntities.OrderStatus">
@@ -3738,11 +3888,11 @@
         </member>
         <member name="P:StockSharp.BusinessEntities.Order.ExpiryDate">
             <summary>
-            Время экспирации заявки.
+            Время экспирации заявки. По-умолчанию равно <see cref="F:System.DateTime.MaxValue"/>, что означает действие заявки до отмены (GTC).
             </summary>
             <remarks>
-            Если значение null, то оно не учитывается при регистрации заявки. Если значение равно <see cref="P:System.DateTime.Today"/>,
-            то заявка выставляется сроком на текущую сессию. Если значение равно <see cref="F:System.DateTime.MaxValue"/>, то заявка выставляется до отмены.
+            Если значение равно <see cref="P:System.DateTime.Today"/>, то заявка выставляется сроком на текущую сессию.
+            Если значение равно <see cref="F:System.DateTime.MaxValue"/>, то заявка выставляется до отмены.
             Иначе, указывается конкретный срок.
             </remarks>
         </member>
@@ -3915,6 +4065,12 @@
             <summary>
             Создать <see cref="T:StockSharp.BusinessEntities.Portfolio"/>.
             </summary>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.Portfolio.Clone">
+            <summary>
+            Создать копию объекта <see cref="T:StockSharp.BusinessEntities.Portfolio"/>.
+            </summary>
+            <returns>Копия объекта.</returns>
         </member>
         <member name="M:StockSharp.BusinessEntities.Portfolio.ToString">
             <summary>

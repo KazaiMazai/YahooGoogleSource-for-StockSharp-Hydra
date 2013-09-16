@@ -11,18 +11,16 @@ using StockSharp;
 using StockSharp.Algo;
 using StockSharp.Algo.Candles;
 using StockSharp.Algo.History;
-using StockSharp.Algo.History.Finam;
+
 using StockSharp.BusinessEntities;
 using StockSharp.Hydra;
 using StockSharp.Hydra.Core;
 using StockSharp.Logging;
 
-namespace Yahoo
+namespace StockSharp.Hydra.YahooGoogle
 {
       class YahooGoogelHistorySource : BaseHistorySource
       {
-        // public static string YahooSecurityIdField= "YahooSecurityId";
-        //  public static string YahooMarketIdField = "YahooMarketId";
           private  List<string> _errorSecurititesList = new List<string>();
 
           private DateTime _cachedBeginDate ;
@@ -256,7 +254,7 @@ namespace Yahoo
 
           }
 
-          public List<Security> GetSecuritiesFromTxt()
+          private List<Security> GetSecuritiesFromTxt()
           {
               var securities = new List<Security>();
               string filepath = Directory.GetCurrentDirectory() + "\\YahooGoogleSourceTickers.txt";
@@ -332,6 +330,11 @@ namespace Yahoo
 
           }
           
+          public IEnumerable<Security> GetNewSecurities()
+          {
+              return GetSecuritiesFromTxt();
+
+          }
         
       }
 
